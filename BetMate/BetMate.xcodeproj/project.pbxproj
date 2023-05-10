@@ -16,6 +16,8 @@
 		06BE2C082A0C4DC30003C875 /* Exo-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06BE2C072A0C4DC30003C875 /* Exo-SemiBold.ttf */; };
 		06BE2C0A2A0C4DD10003C875 /* Exo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06BE2C092A0C4DD10003C875 /* Exo-Bold.ttf */; };
 		06BE2C0D2A0C4EAD0003C875 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 06BE2C0C2A0C4EAD0003C875 /* SnapKit */; };
+		06BE2C0F2A0C52CD0003C875 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BE2C0E2A0C52CD0003C875 /* Constants.swift */; };
+		06BE2C112A0C55310003C875 /* Extension + UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BE2C102A0C55310003C875 /* Extension + UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		06BE2C052A0C4DB10003C875 /* Exo-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo-Medium.ttf"; sourceTree = "<group>"; };
 		06BE2C072A0C4DC30003C875 /* Exo-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo-SemiBold.ttf"; sourceTree = "<group>"; };
 		06BE2C092A0C4DD10003C875 /* Exo-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo-Bold.ttf"; sourceTree = "<group>"; };
+		06BE2C0E2A0C52CD0003C875 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		06BE2C102A0C55310003C875 /* Extension + UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,8 @@
 				06BE2BF92A0C4C570003C875 /* Assets.xcassets */,
 				06BE2BFB2A0C4C570003C875 /* LaunchScreen.storyboard */,
 				06BE2BFE2A0C4C570003C875 /* Info.plist */,
+				06BE2C0E2A0C52CD0003C875 /* Constants.swift */,
+				06BE2C102A0C55310003C875 /* Extension + UIView.swift */,
 			);
 			path = BetMate;
 			sourceTree = "<group>";
@@ -163,8 +169,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				06BE2BF52A0C4C550003C875 /* OnboardingViewController.swift in Sources */,
+				06BE2C112A0C55310003C875 /* Extension + UIView.swift in Sources */,
 				06BE2BF12A0C4C550003C875 /* AppDelegate.swift in Sources */,
 				06BE2BF32A0C4C550003C875 /* SceneDelegate.swift in Sources */,
+				06BE2C0F2A0C52CD0003C875 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
