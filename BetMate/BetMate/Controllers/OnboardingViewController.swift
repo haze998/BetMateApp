@@ -10,11 +10,13 @@ import SnapKit
 
 class OnboardingViewController: UIViewController {
     
+    private let router: MainRouter = Router.shared
+    
     private let topLabel: UILabel = {
         let label = UILabel()
         label.text = "Welcome to your"
         label.font = UIFont(name: FontNames.exoSemiBold.rawValue, size: 32)
-        label.textColor = UIColor(red: 0.114, green: 0.208, blue: 0.341, alpha: 1)
+        label.textColor = .labelColor
         return label
     }()
     
@@ -22,31 +24,33 @@ class OnboardingViewController: UIViewController {
         let label = UILabel()
         label.text = "Betting App"
         label.font = UIFont(name: FontNames.exoSemiBold.rawValue, size: 32)
-        label.textColor = UIColor(red: 0.114, green: 0.208, blue: 0.341, alpha: 1)
+        label.textColor = .labelColor
         return label
     }()
     
-    private let loginButton: UIButton = {
+    private lazy var loginButton: UIButton = {
         let button = UIButton()
         button.setTitle("Log into account", for: .normal)
         button.titleLabel?.font = UIFont(name: FontNames.exoSemiBold.rawValue, size: 16)
-        button.setTitleColor(UIColor(red: 0.95, green: 0.98, blue: 0.93, alpha: 1.00), for: .normal)
+        button.setTitleColor(.loginButtonLabelColor, for: .normal)
         button.titleLabel?.textAlignment = .center
         button.layer.cornerRadius = 10
-        button.backgroundColor = UIColor(red: 0.90, green: 0.22, blue: 0.27, alpha: 1.00)
+        button.backgroundColor = .loginButtonColor
+        button.addTarget(self, action: #selector(loginButtonDidTap), for: .touchUpInside)
         return button
     }()
     
-    private let registerButton: UIButton = {
+    private lazy var registerButton: UIButton = {
         let button = UIButton()
         button.setTitle("Create an account", for: .normal)
         button.titleLabel?.font = UIFont(name: FontNames.exoSemiBold.rawValue, size: 16)
-        button.setTitleColor(UIColor(red: 0.11, green: 0.21, blue: 0.34, alpha: 1.00), for: .normal)
+        button.setTitleColor(.labelColor, for: .normal)
         button.titleLabel?.textAlignment = .center
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 3
-        button.layer.borderColor = UIColor(red: 0.90, green: 0.22, blue: 0.27, alpha: 1.00).cgColor
+        button.layer.borderColor = UIColor.borderViewColor
         button.backgroundColor = .clear
+        button.addTarget(self, action: #selector(registerButtonDidTap), for: .touchUpInside)
         return button
     }()
 
@@ -54,7 +58,6 @@ class OnboardingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        
     }
     
     override func viewWillLayoutSubviews() {
@@ -64,7 +67,16 @@ class OnboardingViewController: UIViewController {
 
     // MARK: - Setup UI
     private func setupUI() {
-        self.view.backgroundColor = UIColor(red: 0.66, green: 0.85, blue: 0.86, alpha: 1.00)
+        self.view.backgroundColor = .background
+    }
+    
+    // MARK: - Selectors
+    @objc private func loginButtonDidTap() {
+        self.router.showLogin(from: self)
+    }
+    
+    @objc private func registerButtonDidTap() {
+        self.router.showRegistry(from: self)
     }
     
     // MARK: - Setup constraints
