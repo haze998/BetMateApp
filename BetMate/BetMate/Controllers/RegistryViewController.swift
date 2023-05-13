@@ -18,7 +18,7 @@ class RegistryViewController: UIViewController {
     
     // MARK: Setup UI
     private func setupUI() {
-        self.view.backgroundColor = UIColor(red: 0.66, green: 0.85, blue: 0.86, alpha: 1.00)
+        self.view.backgroundColor = .background
         
         navigationController?.navigationBar.prefersLargeTitles = true
         let largeTitleTextAttr = [

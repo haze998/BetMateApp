@@ -5,7 +5,6 @@
 //  Created by Evgeniy Docenko on 11.05.2023.
 //
 
-import Foundation
 import UIKit
 
 final class CustomTextField: UITextField {
@@ -16,8 +15,9 @@ final class CustomTextField: UITextField {
         case password
     }
     
-    // MARK: - Private propertyes
-    private let padding = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 40)
+    // MARK: - Private properties
+    private let padding = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
+    private let eyePadding = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
     private let fieldType: TextFieldType
     
     init(fieldType: TextFieldType) {
@@ -40,10 +40,19 @@ final class CustomTextField: UITextField {
         bounds.inset(by: padding)
     }
     
+    override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
+        let eyeButtonBounds = CGRect(x: frame.width - (rightView?.frame.width ?? 0), y: frame.height - ((rightView?.frame.height ?? 0) / 0.8), width: 24, height: 24)
+        return eyeButtonBounds
+    }
+    
     // MARK: - Setup custom text field
     private func setupTextField() {
         backgroundColor = .lightBackgroundView
         layer.cornerRadius = 10
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowRadius = 15
+        layer.shadowOpacity = 0.4
+        layer.shadowOffset = CGSize(width: 15, height: 15)
         tintColor = UIColor(red: 0.90, green: 0.22, blue: 0.27, alpha: 1.00)
         font = UIFont(name: FontNames.exoSemiBold.rawValue, size: 16)
         returnKeyType = .done
@@ -106,7 +115,7 @@ final class CustomTextField: UITextField {
             passContainerView.addSubview(passView)
             leftView = passContainerView
             leftViewMode = .always
-            
+
             // setup placeholder
             let placeholderAttrs = [
                 NSAttributedString.Key.font: UIFont(name: FontNames.exoSemiBold.rawValue, size: 16),
@@ -120,6 +129,7 @@ final class CustomTextField: UITextField {
         }
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

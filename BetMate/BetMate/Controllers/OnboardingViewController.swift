@@ -10,6 +10,7 @@ import SnapKit
 
 class OnboardingViewController: UIViewController {
     
+    // MARK: - Private properties
     private let router: MainRouter = Router.shared
     
     private let topLabel: UILabel = {
@@ -36,6 +37,10 @@ class OnboardingViewController: UIViewController {
         button.titleLabel?.textAlignment = .center
         button.layer.cornerRadius = 10
         button.backgroundColor = .loginButtonColor
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.5
+        button.layer.shadowRadius = 5
+        button.layer.shadowOffset = CGSize(width: 0, height: 4)
         button.addTarget(self, action: #selector(loginButtonDidTap), for: .touchUpInside)
         return button
     }()
@@ -49,6 +54,10 @@ class OnboardingViewController: UIViewController {
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 3
         button.layer.borderColor = UIColor.borderViewColor
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.5
+        button.layer.shadowRadius = 4
+        button.layer.shadowOffset = CGSize(width: 0, height: 4)
         button.backgroundColor = .clear
         button.addTarget(self, action: #selector(registerButtonDidTap), for: .touchUpInside)
         return button
