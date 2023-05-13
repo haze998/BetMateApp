@@ -12,7 +12,7 @@ class LoginViewController: UIViewController {
     
     private let emailTextField = CustomTextField(fieldType: .email)
     private let passwordtextField = CustomTextField(fieldType: .password)
-
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
