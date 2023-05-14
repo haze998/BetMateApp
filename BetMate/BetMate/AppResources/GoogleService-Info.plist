@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>394227711474-0b57s9010jmllb3ds0pvl41sjfj9n28g.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.394227711474-0b57s9010jmllb3ds0pvl41sjfj9n28g</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCVf47TIR5bhStHr3LQd4DEDgFxnYHwV8s</string>
+	<key>GCM_SENDER_ID</key>
+	<string>394227711474</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>e.docenko.BetMate</string>
+	<key>PROJECT_ID</key>
+	<string>betmate-4b804</string>
+	<key>STORAGE_BUCKET</key>
+	<string>betmate-4b804.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:394227711474:ios:15c98ae4255c58fcf07f6b</string>
+</dict>
+</plist>
