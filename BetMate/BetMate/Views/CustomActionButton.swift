@@ -1,5 +1,5 @@
 //
-//  LoginButton.swift
+//  CustomActionButton.swift
 //  BetMate
 //
 //  Created by Evgeniy Docenko on 13.05.2023.
@@ -7,11 +7,22 @@
 
 import UIKit
 
-final class CustomLoginButton: UIButton {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+final class CustomActionButton: UIButton {
+    
+    enum ActionButtonType {
+        case login
+        case registry
+        case reset
+    }
+    
+    // MARK: - Private properties
+    private let actionButtonType: ActionButtonType
+    
+    init(actionButtonType: ActionButtonType) {
+        self.actionButtonType = actionButtonType
+        super.init(frame: .zero)
         
-        setupLoginButton()
+        setupActionButton()
     }
     
     @available(*, unavailable)
@@ -20,7 +31,7 @@ final class CustomLoginButton: UIButton {
     }
     
     // MARK: - Setup login button
-    private func setupLoginButton() {
+    private func setupActionButton() {
         setTitle("Login", for: .normal)
         setTitleColor(.loginButtonLabelColor, for: .normal)
         titleLabel?.font = UIFont(name: FontNames.exoSemiBold.rawValue, size: 20)
@@ -32,5 +43,14 @@ final class CustomLoginButton: UIButton {
         layer.shadowRadius = 20
         layer.shadowOpacity = 1
         layer.shadowOffset = CGSize(width: 0, height: 0)
+        
+        switch actionButtonType {
+        case .login:
+            setTitle("Login", for: .normal)
+        case .registry:
+            setTitle("Create account", for: .normal)
+        case .reset:
+            setTitle("Resert password", for: .normal)
+        }
     }
 }

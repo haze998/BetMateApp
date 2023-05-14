@@ -43,7 +43,7 @@ class LoginViewController: UIViewController {
     private let emailTextField = CustomTextField(fieldType: .email)
     private let passwordtextField = CustomTextField(fieldType: .password)
     private let eyeButton = EyeButton(frame: CGRect(x: 10, y: 0, width: 24, height: 24))
-    private let customLoginButton = CustomLoginButton()
+    private let customLoginButton = CustomActionButton(actionButtonType: .login)
     private let googleButton = CustomSocialsButton(typeOfSocials: .google)
     private let facebookButton = CustomSocialsButton(typeOfSocials: .facebook)
     private let appleButton = CustomSocialsButton(typeOfSocials: .apple)

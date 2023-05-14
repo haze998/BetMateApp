@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		068DD22F2A0F9FE60000913B /* EyeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068DD22E2A0F9FE60000913B /* EyeButton.swift */; };
-		068DD2352A0FCF8F0000913B /* CustomLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068DD2342A0FCF8F0000913B /* CustomLoginButton.swift */; };
+		068DD2352A0FCF8F0000913B /* CustomActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068DD2342A0FCF8F0000913B /* CustomActionButton.swift */; };
 		068DD2372A0FD8190000913B /* CustomSocialsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068DD2362A0FD8190000913B /* CustomSocialsButton.swift */; };
 		06982BB62A0D0E22007284BC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06982BB52A0D0E22007284BC /* LoginViewController.swift */; };
 		06982BBB2A0D0E6A007284BC /* RegistryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06982BBA2A0D0E6A007284BC /* RegistryViewController.swift */; };
@@ -28,11 +28,12 @@
 		06BE2C0D2A0C4EAD0003C875 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 06BE2C0C2A0C4EAD0003C875 /* SnapKit */; };
 		06BE2C0F2A0C52CD0003C875 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BE2C0E2A0C52CD0003C875 /* Constants.swift */; };
 		06BE2C112A0C55310003C875 /* Extension + UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BE2C102A0C55310003C875 /* Extension + UIView.swift */; };
+		06F75A9D2A11320D000A174B /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F75A9C2A11320D000A174B /* NewsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		068DD22E2A0F9FE60000913B /* EyeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeButton.swift; sourceTree = "<group>"; };
-		068DD2342A0FCF8F0000913B /* CustomLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoginButton.swift; sourceTree = "<group>"; };
+		068DD2342A0FCF8F0000913B /* CustomActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActionButton.swift; sourceTree = "<group>"; };
 		068DD2362A0FD8190000913B /* CustomSocialsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSocialsButton.swift; sourceTree = "<group>"; };
 		06982BB52A0D0E22007284BC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		06982BBA2A0D0E6A007284BC /* RegistryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistryViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +54,7 @@
 		06BE2C092A0C4DD10003C875 /* Exo-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo-Bold.ttf"; sourceTree = "<group>"; };
 		06BE2C0E2A0C52CD0003C875 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		06BE2C102A0C55310003C875 /* Extension + UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIView.swift"; sourceTree = "<group>"; };
+		06F75A9C2A11320D000A174B /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				06982BB52A0D0E22007284BC /* LoginViewController.swift */,
 				06982BBA2A0D0E6A007284BC /* RegistryViewController.swift */,
 				06982BC12A0D0F41007284BC /* ForgotPasswordViewController.swift */,
+				06F75A9C2A11320D000A174B /* NewsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -113,7 +116,7 @@
 			children = (
 				06982BC42A0D1682007284BC /* CustomTextField.swift */,
 				068DD22E2A0F9FE60000913B /* EyeButton.swift */,
-				068DD2342A0FCF8F0000913B /* CustomLoginButton.swift */,
+				068DD2342A0FCF8F0000913B /* CustomActionButton.swift */,
 				068DD2362A0FD8190000913B /* CustomSocialsButton.swift */,
 			);
 			path = Views;
@@ -248,11 +251,12 @@
 				06982BC72A0D1EDB007284BC /* Extension + UIColor.swift in Sources */,
 				06BE2C112A0C55310003C875 /* Extension + UIView.swift in Sources */,
 				06BE2BF12A0C4C550003C875 /* AppDelegate.swift in Sources */,
-				068DD2352A0FCF8F0000913B /* CustomLoginButton.swift in Sources */,
+				068DD2352A0FCF8F0000913B /* CustomActionButton.swift in Sources */,
 				06982BC22A0D0F41007284BC /* ForgotPasswordViewController.swift in Sources */,
 				06BE2BF32A0C4C550003C875 /* SceneDelegate.swift in Sources */,
 				06BE2C0F2A0C52CD0003C875 /* Constants.swift in Sources */,
 				06982BC02A0D0EEC007284BC /* MainRouter.swift in Sources */,
+				06F75A9D2A11320D000A174B /* NewsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
