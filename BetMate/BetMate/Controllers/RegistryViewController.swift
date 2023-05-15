@@ -67,6 +67,7 @@ class RegistryViewController: UIViewController {
     // MARK: - Actions
     private func addActions() {
         eyeButton.addTarget(self, action: #selector(eyeButtonDidTap), for: .touchUpInside)
+        customRegistryButton.addTarget(self, action: #selector(registryButtonDidTap), for: .touchUpInside)
     }
     
     // MARK: - Selectors
@@ -76,6 +77,46 @@ class RegistryViewController: UIViewController {
         passwordTextField.isSecureTextEntry.toggle()
         eyeButton.setImage(UIImage(named: imageName), for: .normal)
         isPrivate.toggle()
+    }
+    
+    @objc
+    private func registryButtonDidTap() {
+        let registerUser = RegisterUserInfo(
+            userName: usernamtextField.text ?? "",
+            email: emailTextField.text ?? "",
+            password: passwordTextField.text ?? "")
+        
+        // check username
+        if !Validator.isValidUserName(userName: registerUser.userName) {
+            AlertManager.preventInvaliUserName(on: self)
+            return
+        }
+        
+        // check email
+        if !Validator.isValidEmail(email: registerUser.email) {
+            AlertManager.preventInvalidEmail(on: self)
+            return
+        }
+        
+         // check password
+        if !Validator.isPasswordValid(for: registerUser.password) {
+            AlertManager.preventInvalidPassword(on: self)
+            return
+        }
+        
+        AuthNetworkManager.shared.registerUser(with: registerUser) { [weak self] wasRegistered, error in
+            guard let self = self else { return}
+            if let error = error {
+                AlertManager.showRegistrationErrorAlert(on: self, with: error)
+                return
+            }
+            
+            if wasRegistered {
+                if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+                    sceneDelegate.checkDefaultUserAuth()
+                }
+            }
+        }
     }
     
     @objc

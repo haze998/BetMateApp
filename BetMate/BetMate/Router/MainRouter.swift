@@ -12,6 +12,7 @@ protocol MainRouter {
     func showLogin(from viewController: UIViewController)
     func showRegistry(from viewController: UIViewController)
     func showForgotPass(from viewController: UIViewController)
+    func showNews(from viewController: UIViewController)
 }
 
 extension Router: MainRouter {
@@ -29,6 +30,8 @@ extension Router: MainRouter {
         let vc = ForgotPasswordViewController()
         viewController.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    
+    func showNews(from viewController: UIViewController) {
+        let vc = NewsViewController()
+        viewController.navigationController?.pushViewController(vc, animated: true)
+    }
 }

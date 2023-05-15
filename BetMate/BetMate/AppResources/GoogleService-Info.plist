@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>394227711474-0b57s9010jmllb3ds0pvl41sjfj9n28g.apps.googleusercontent.com</string>
+	<string>750369326371-sjadflnmq41koog1mo2qiodalivvqs24.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.394227711474-0b57s9010jmllb3ds0pvl41sjfj9n28g</string>
+	<string>com.googleusercontent.apps.750369326371-sjadflnmq41koog1mo2qiodalivvqs24</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCVf47TIR5bhStHr3LQd4DEDgFxnYHwV8s</string>
+	<string>AIzaSyDNh4pCgyJ4XHoCg6nll1l0PCt2kkFkjaY</string>
 	<key>GCM_SENDER_ID</key>
-	<string>394227711474</string>
+	<string>750369326371</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>e.docenko.BetMate</string>
 	<key>PROJECT_ID</key>
-	<string>betmate-4b804</string>
+	<string>betmate-483c8</string>
 	<key>STORAGE_BUCKET</key>
-	<string>betmate-4b804.appspot.com</string>
+	<string>betmate-483c8.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:394227711474:ios:15c98ae4255c58fcf07f6b</string>
+	<string>1:750369326371:ios:5aa25adecd1b78cbbd7896</string>
 </dict>
 </plist>

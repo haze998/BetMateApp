@@ -8,13 +8,14 @@
 import UIKit
 
 class NewsViewController: UIViewController {
-
+    
     // MARK: - Private properties
+    private let router: MainRouter = Router.shared
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         sutepUI()
     }
     
@@ -27,6 +28,7 @@ class NewsViewController: UIViewController {
     // MARK: - SetupUI
     private func sutepUI() {
         self.view.backgroundColor = .background
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutButtonDidTap))
         navigationController?.navigationBar.prefersLargeTitles = true
         let largeTitleTextAttr = [
             NSAttributedString.Key.foregroundColor: UIColor(red: 0.11, green: 0.21, blue: 0.34, alpha: 1.00),
@@ -36,7 +38,22 @@ class NewsViewController: UIViewController {
         title = "News"
     }
     
+    // MARK: - Selectors
+    @objc
+    private func logoutButtonDidTap() {
+        AuthNetworkManager.shared.signOutUser { [weak self] error in
+            guard let self = self else { return }
+            if let error = error {
+                AlertManager.showLogoutErrorAlert(on: self, with: error)
+                return
+            }
+            
+            if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+                sceneDelegate.checkDefaultUserAuth()
+            }
+        }
+    }
+    
     // MARK: - Setup constraints
     private func setupConstraints() {}
-
 }

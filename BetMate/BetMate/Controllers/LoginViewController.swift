@@ -84,6 +84,7 @@ class LoginViewController: UIViewController {
     // MARK: - Actions
     private func addActions() {
         eyeButton.addTarget(self, action: #selector(eyeButtonDidTap), for: .touchUpInside)
+        customLoginButton.addTarget(self, action: #selector(loginButtonDidTap), for: .touchUpInside)
     }
     
     // MARK: - Selectors
@@ -98,6 +99,36 @@ class LoginViewController: UIViewController {
     @objc
     private func forgotPassButtonDidTap() {
         router.showForgotPass(from: self)
+    }
+    
+    @objc
+    private func loginButtonDidTap() {
+        let loginUser = SignInUserInfo(
+            email: self.emailTextField.text ?? "",
+            password: self.passwordtextField.text ?? ""
+        )
+        
+        // Email check
+        if !Validator.isValidEmail(email: loginUser.email){
+            AlertManager.showSignInErrorAlert(on: self)
+            return
+        }
+
+        // Password check
+        if !Validator.isPasswordValid(for: loginUser.password) {
+            AlertManager.showSignInErrorAlert(on: self)
+            return
+        }
+        
+        AuthNetworkManager.shared.signInUser(with: loginUser) { error in
+            if let error = error {
+                AlertManager.showSignInErrorAlert(on: self, with: error)
+                return
+            }
+            if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+                sceneDelegate.checkDefaultUserAuth()
+            }
+        }
     }
     
     @objc

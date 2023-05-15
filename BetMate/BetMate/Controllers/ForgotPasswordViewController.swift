@@ -19,6 +19,7 @@ class ForgotPasswordViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
+        addActions()
     }
     
     override func viewWillLayoutSubviews() {
@@ -38,6 +39,32 @@ class ForgotPasswordViewController: UIViewController {
         ]
         navigationController?.navigationBar.largeTitleTextAttributes = largeTitleTextAttr as [NSAttributedString.Key : Any]
         title = "Forgot password"
+    }
+    
+    // MARK: - Acrions
+    private func addActions() {
+        customResetButton.addTarget(self, action: #selector(resetPasswordDidTap), for: .touchUpInside)
+    }
+    
+    // MARK: - Selectors
+    @objc
+    private func resetPasswordDidTap() {
+        let email = emailtextField.text ?? ""
+        
+        if !Validator.isValidEmail(email: email) {
+            AlertManager.preventInvalidEmail(on: self)
+            return
+        }
+        
+        AuthNetworkManager.shared.forgotPassword(with: email) { [weak self] error in
+            guard let self = self else { return }
+            if let error = error {
+                AlertManager.showResetPasswordAlert(on: self, with: error)
+                return
+            }
+            
+            AlertManager.showPasswordResetAlert(on: self)
+        }
     }
     
     // MARK: - Setup constraints
