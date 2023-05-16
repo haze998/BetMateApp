@@ -50,24 +50,24 @@ class AuthNetworkManager {
     }
     
     // MARK: - Login user to account
-    public func signInUser(with userInfo: SignInUserInfo, completion: @escaping(Error?) -> Void) {
+    public func signInUser(with userInfo: SignInUserInfo, completion: @escaping(Bool, Error?) -> Void) {
         Auth.auth().signIn(withEmail: userInfo.email, password: userInfo.password) { result, error in
             if let error = error {
-                completion(error)
+                completion(false, error)
                 return
             } else {
-                completion(nil)
+                completion(true, nil)
             }
         }
     }
     
     // MARK: - Sign out user from account
-    public func signOutUser(completion: @escaping(Error?) -> Void) {
+    public func signOutUser(completion: @escaping(Bool, Error?) -> Void) {
         do {
             try Auth.auth().signOut()
-            completion(nil)
+            completion(true, nil)
         } catch let error {
-            completion(error)
+            completion(false, error)
         }
     }
     

@@ -22,7 +22,7 @@ class RegistryViewController: UIViewController {
         return button
     }()
     
-    private let router: MainRouter = Router.shared
+    private let router: AuthRouter = Router.shared
     private let usernamtextField = CustomTextField(fieldType: .username)
     private let emailTextField = CustomTextField(fieldType: .email)
     private let passwordTextField = CustomTextField(fieldType: .password)
@@ -111,10 +111,16 @@ class RegistryViewController: UIViewController {
                 return
             }
             
-            if wasRegistered {
-                if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
-                    sceneDelegate.checkDefaultUserAuth()
-                }
+//            if wasRegistered {
+//                if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+//                    sceneDelegate.checkDefaultUserAuth()
+//                }
+//            }
+            switch wasRegistered {
+            case true:
+                router.showNews(from: self)
+            case false:
+                return
             }
         }
     }

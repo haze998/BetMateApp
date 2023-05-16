@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import GoogleSignIn
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
@@ -15,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         self.setupWindow(with: scene)
-        self.checkDefaultUserAuth()
+        self.checkUserAuth()
     }
     
     // MARK: - Setup window
@@ -26,8 +27,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
     }
     
-    // MARK: - Check user authenfication with email / password
-    public func checkDefaultUserAuth() {
+    // MARK: - Check user authenfication with email / password / google signin
+    public func checkUserAuth() {
         if Auth.auth().currentUser == nil {
             let vc = OnboardingViewController()
             let nav = UINavigationController(rootViewController: vc)

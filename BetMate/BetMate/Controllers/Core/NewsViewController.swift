@@ -10,7 +10,7 @@ import UIKit
 class NewsViewController: UIViewController {
     
     // MARK: - Private properties
-    private let router: MainRouter = Router.shared
+    private let router: AuthRouter = Router.shared
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -41,15 +41,21 @@ class NewsViewController: UIViewController {
     // MARK: - Selectors
     @objc
     private func logoutButtonDidTap() {
-        AuthNetworkManager.shared.signOutUser { [weak self] error in
+        AuthNetworkManager.shared.signOutUser { [weak self] wasLogout, error in
             guard let self = self else { return }
             if let error = error {
                 AlertManager.showLogoutErrorAlert(on: self, with: error)
                 return
             }
             
-            if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
-                sceneDelegate.checkDefaultUserAuth()
+//            if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+//                sceneDelegate.checkDefaultUserAuth()
+//            }
+            switch wasLogout {
+            case true:
+                router.showLogout(from: self)
+            case false:
+                return
             }
         }
     }

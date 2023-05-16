@@ -11,7 +11,7 @@ import SnapKit
 class OnboardingViewController: UIViewController {
     
     // MARK: - Private properties
-    private let router: MainRouter = Router.shared
+    private let router: AuthRouter = Router.shared
     
     private let topLabel: UILabel = {
         let label = UILabel()

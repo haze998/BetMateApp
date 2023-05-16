@@ -12,7 +12,7 @@ class LoginViewController: UIViewController {
     
     // MARK: - Private properties
     private lazy var forgotPassButton: UIButton = {
-       let button = UIButton()
+        let button = UIButton()
         button.setTitle("Forgot password ?", for: .normal)
         button.setTitleColor(.labelColor, for: .normal)
         button.titleLabel?.font = UIFont(name: FontNames.exoSemiBold.rawValue, size: 14)
@@ -39,14 +39,15 @@ class LoginViewController: UIViewController {
         return button
     }()
     
-    private let router: MainRouter = Router.shared
+    private let router: AuthRouter = Router.shared
     private let emailTextField = CustomTextField(fieldType: .email)
     private let passwordtextField = CustomTextField(fieldType: .password)
     private let eyeButton = EyeButton(frame: CGRect(x: 10, y: 0, width: 24, height: 24))
     private let customLoginButton = CustomActionButton(actionButtonType: .login)
     private let googleButton = CustomSocialsButton(typeOfSocials: .google)
-    private let facebookButton = CustomSocialsButton(typeOfSocials: .facebook)
-    private let appleButton = CustomSocialsButton(typeOfSocials: .apple)
+    //    private let facebookButton = CustomSocialsButton(typeOfSocials: .facebook)
+    //    private let appleButton = CustomSocialsButton(typeOfSocials: .apple)
+    private let viewModel = GoogleAuthViewModel()
     private var isPrivate = true
     
     // MARK: - Lifecycle
@@ -85,6 +86,7 @@ class LoginViewController: UIViewController {
     private func addActions() {
         eyeButton.addTarget(self, action: #selector(eyeButtonDidTap), for: .touchUpInside)
         customLoginButton.addTarget(self, action: #selector(loginButtonDidTap), for: .touchUpInside)
+        googleButton.addTarget(self, action: #selector(googleButtonDidtap), for: .touchUpInside)
     }
     
     // MARK: - Selectors
@@ -102,6 +104,18 @@ class LoginViewController: UIViewController {
     }
     
     @objc
+    private func googleButtonDidtap() {
+        viewModel.signInWithGoogle(viewController: self) { isLogin in
+            switch isLogin {
+            case true:
+                self.router.showNews(from: self)
+            case false:
+                return
+            }
+        }
+    }
+    
+    @objc
     private func loginButtonDidTap() {
         let loginUser = SignInUserInfo(
             email: self.emailTextField.text ?? "",
@@ -113,20 +127,27 @@ class LoginViewController: UIViewController {
             AlertManager.showSignInErrorAlert(on: self)
             return
         }
-
+        
         // Password check
         if !Validator.isPasswordValid(for: loginUser.password) {
             AlertManager.showSignInErrorAlert(on: self)
             return
         }
         
-        AuthNetworkManager.shared.signInUser(with: loginUser) { error in
+        AuthNetworkManager.shared.signInUser(with: loginUser) { [weak self] wasLogin, error in
+            guard let self = self else { return }
             if let error = error {
                 AlertManager.showSignInErrorAlert(on: self, with: error)
                 return
             }
-            if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
-                sceneDelegate.checkDefaultUserAuth()
+            //            if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+            //                sceneDelegate.checkDefaultUserAuth()
+            //            }
+            switch wasLogin {
+            case true:
+                self.router.showNews(from: self)
+            case false:
+                return
             }
         }
     }
@@ -138,7 +159,7 @@ class LoginViewController: UIViewController {
     
     // MARK: - Setup constraints
     private func setupConstraints() {
-        self.view.addSubviews(view: [emailTextField, passwordtextField, forgotPassButton, customLoginButton, loginWithLabel, googleButton, facebookButton, appleButton, registerAccButton])
+        self.view.addSubviews(view: [emailTextField, passwordtextField, forgotPassButton, customLoginButton, loginWithLabel, googleButton, registerAccButton])
         
         emailTextField.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
@@ -176,28 +197,14 @@ class LoginViewController: UIViewController {
         googleButton.snp.makeConstraints { make in
             make.width.equalTo(68)
             make.height.equalTo(55)
-            make.left.equalTo(44)
-            make.top.equalTo(loginWithLabel.snp.bottom).offset(24)
-        }
-        
-        facebookButton.snp.makeConstraints { make in
-            make.width.equalTo(68)
-            make.height.equalTo(55)
             make.top.equalTo(loginWithLabel.snp.bottom).offset(24)
             make.centerX.equalTo(loginWithLabel)
         }
         
-        appleButton.snp.makeConstraints { make in
-            make.width.equalTo(68)
-            make.height.equalTo(55)
-            make.left.equalTo(facebookButton.snp.right).offset(44)
-            make.top.equalTo(loginWithLabel.snp.bottom).offset(24)
-        }
-        
         registerAccButton.snp.makeConstraints { make in
             make.width.equalTo(300)
-            make.top.equalTo(facebookButton.snp.bottom).offset(24)
-            make.centerX.equalTo(facebookButton)
+            make.top.equalTo(googleButton.snp.bottom).offset(24)
+            make.centerX.equalTo(googleButton)
         }
     }
 }
