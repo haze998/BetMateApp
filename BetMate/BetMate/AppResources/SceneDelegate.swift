@@ -13,7 +13,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
     
-    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         self.setupWindow(with: scene)
         self.checkUserAuth()
@@ -35,7 +34,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             nav.modalPresentationStyle = .fullScreen
             self.window?.rootViewController = nav
         } else {
-            let vc = NewsViewController()
+            let vc = TabBarViewController()
             let nav = UINavigationController(rootViewController: vc)
             nav.modalPresentationStyle = .fullScreen
             self.window?.rootViewController = nav
