@@ -21,6 +21,13 @@
 		06982BC22A0D0F41007284BC /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06982BC12A0D0F41007284BC /* ForgotPasswordViewController.swift */; };
 		06982BC52A0D1682007284BC /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06982BC42A0D1682007284BC /* CustomTextField.swift */; };
 		06982BC72A0D1EDB007284BC /* Extension + UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06982BC62A0D1EDB007284BC /* Extension + UIColor.swift */; };
+		06A6B4542A150BD600CFFB33 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A6B4532A150BD600CFFB33 /* News.swift */; };
+		06A6B45A2A150C8400CFFB33 /* NewsSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A6B4592A150C8400CFFB33 /* NewsSource.swift */; };
+		06A6B45E2A150F0500CFFB33 /* NewsNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A6B45D2A150F0500CFFB33 /* NewsNetworkManager.swift */; };
+		06A6B4602A15146900CFFB33 /* NewsArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A6B45F2A15146900CFFB33 /* NewsArticle.swift */; };
+		06A6B4622A1515C800CFFB33 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A6B4612A1515C800CFFB33 /* NewsViewModel.swift */; };
+		06A6B4652A15193300CFFB33 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A6B4642A15193300CFFB33 /* NewsTableViewCell.swift */; };
+		06A6B4682A151C4400CFFB33 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 06A6B4672A151C4400CFFB33 /* SDWebImage */; };
 		06BE2BF12A0C4C550003C875 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BE2BF02A0C4C550003C875 /* AppDelegate.swift */; };
 		06BE2BF32A0C4C550003C875 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BE2BF22A0C4C550003C875 /* SceneDelegate.swift */; };
 		06BE2BF52A0C4C550003C875 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BE2BF42A0C4C550003C875 /* OnboardingViewController.swift */; };
@@ -85,6 +92,12 @@
 		06982BC12A0D0F41007284BC /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		06982BC42A0D1682007284BC /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		06982BC62A0D1EDB007284BC /* Extension + UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIColor.swift"; sourceTree = "<group>"; };
+		06A6B4532A150BD600CFFB33 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		06A6B4592A150C8400CFFB33 /* NewsSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSource.swift; sourceTree = "<group>"; };
+		06A6B45D2A150F0500CFFB33 /* NewsNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsNetworkManager.swift; sourceTree = "<group>"; };
+		06A6B45F2A15146900CFFB33 /* NewsArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsArticle.swift; sourceTree = "<group>"; };
+		06A6B4612A1515C800CFFB33 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
+		06A6B4642A15193300CFFB33 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		06BE2BED2A0C4C550003C875 /* BetMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06BE2BF02A0C4C550003C875 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06BE2BF22A0C4C550003C875 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +147,7 @@
 				06F75AC62A1134C7000A174B /* FirebaseInstallations in Frameworks */,
 				06F75ACE2A1134C7000A174B /* FirebaseRemoteConfig in Frameworks */,
 				06F75AD22A1134C7000A174B /* FirebaseStorage in Frameworks */,
+				06A6B4682A151C4400CFFB33 /* SDWebImage in Frameworks */,
 				06F75AB22A1134C7000A174B /* FirebaseDatabase in Frameworks */,
 				06F75AD42A1134C7000A174B /* FirebaseStorageCombine-Community in Frameworks */,
 				06BE2C0D2A0C4EAD0003C875 /* SnapKit in Frameworks */,
@@ -151,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				061C90E52A13890900A8078C /* GoogleAuthViewModel.swift */,
+				06A6B4612A1515C800CFFB33 /* NewsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -221,12 +236,65 @@
 		06982BC32A0D1671007284BC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				06A6B4522A150B5800CFFB33 /* AuthViews */,
+				06A6B4632A15190000CFFB33 /* NewsViews */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		06A6B4522A150B5800CFFB33 /* AuthViews */ = {
+			isa = PBXGroup;
+			children = (
 				06982BC42A0D1682007284BC /* CustomTextField.swift */,
 				068DD22E2A0F9FE60000913B /* EyeButton.swift */,
 				068DD2342A0FCF8F0000913B /* CustomActionButton.swift */,
 				068DD2362A0FD8190000913B /* CustomSocialsButton.swift */,
 			);
-			path = Views;
+			path = AuthViews;
+			sourceTree = "<group>";
+		};
+		06A6B4552A150BF000CFFB33 /* AuthModels */ = {
+			isa = PBXGroup;
+			children = (
+				06DAC7AB2A1268960086CC41 /* RegisterUserInfo.swift */,
+				06DAC7AD2A1273B80086CC41 /* SignInUserInfo.swift */,
+			);
+			path = AuthModels;
+			sourceTree = "<group>";
+		};
+		06A6B4562A150C0000CFFB33 /* NewsModels */ = {
+			isa = PBXGroup;
+			children = (
+				06A6B4532A150BD600CFFB33 /* News.swift */,
+				06A6B45F2A15146900CFFB33 /* NewsArticle.swift */,
+				06A6B4592A150C8400CFFB33 /* NewsSource.swift */,
+			);
+			path = NewsModels;
+			sourceTree = "<group>";
+		};
+		06A6B45B2A150EE000CFFB33 /* AuthManagers */ = {
+			isa = PBXGroup;
+			children = (
+				06DAC7A82A12679C0086CC41 /* AuthNetworkManager.swift */,
+				06DAC7B12A1289E40086CC41 /* AlertManager.swift */,
+			);
+			path = AuthManagers;
+			sourceTree = "<group>";
+		};
+		06A6B45C2A150EF100CFFB33 /* NewsManager */ = {
+			isa = PBXGroup;
+			children = (
+				06A6B45D2A150F0500CFFB33 /* NewsNetworkManager.swift */,
+			);
+			path = NewsManager;
+			sourceTree = "<group>";
+		};
+		06A6B4632A15190000CFFB33 /* NewsViews */ = {
+			isa = PBXGroup;
+			children = (
+				06A6B4642A15193300CFFB33 /* NewsTableViewCell.swift */,
+			);
+			path = NewsViews;
 			sourceTree = "<group>";
 		};
 		06BE2BE42A0C4C550003C875 = {
@@ -248,10 +316,10 @@
 		06BE2BEF2A0C4C550003C875 /* BetMate */ = {
 			isa = PBXGroup;
 			children = (
-				061C90E42A1388C100A8078C /* ViewModel */,
 				06DAC7AA2A1268830086CC41 /* Models */,
-				06DAC7A72A12676C0086CC41 /* Managers */,
 				06982BC32A0D1671007284BC /* Views */,
+				061C90E42A1388C100A8078C /* ViewModel */,
+				06DAC7A72A12676C0086CC41 /* Managers */,
 				06982BB92A0D0E53007284BC /* Controllers */,
 				06982BBC2A0D0EA8007284BC /* Router */,
 				06982BB82A0D0E49007284BC /* Extensions */,
@@ -275,8 +343,8 @@
 		06DAC7A72A12676C0086CC41 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				06DAC7A82A12679C0086CC41 /* AuthNetworkManager.swift */,
-				06DAC7B12A1289E40086CC41 /* AlertManager.swift */,
+				06A6B45B2A150EE000CFFB33 /* AuthManagers */,
+				06A6B45C2A150EF100CFFB33 /* NewsManager */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -284,8 +352,8 @@
 		06DAC7AA2A1268830086CC41 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				06DAC7AB2A1268960086CC41 /* RegisterUserInfo.swift */,
-				06DAC7AD2A1273B80086CC41 /* SignInUserInfo.swift */,
+				06A6B4552A150BF000CFFB33 /* AuthModels */,
+				06A6B4562A150C0000CFFB33 /* NewsModels */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -337,6 +405,7 @@
 				06F75AD32A1134C7000A174B /* FirebaseStorageCombine-Community */,
 				06DAC7B62A129B150086CC41 /* GoogleSignIn */,
 				06DAC7B82A129B150086CC41 /* GoogleSignInSwift */,
+				06A6B4672A151C4400CFFB33 /* SDWebImage */,
 			);
 			productName = BetMate;
 			productReference = 06BE2BED2A0C4C550003C875 /* BetMate.app */;
@@ -370,6 +439,7 @@
 				06BE2C0B2A0C4EAD0003C875 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				06F75A9E2A1134C7000A174B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				06DAC7B52A129B150086CC41 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				06A6B4662A151C4400CFFB33 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 06BE2BEE2A0C4C550003C875 /* Products */;
 			projectDirPath = "";
@@ -402,14 +472,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				06982BBE2A0D0EB6007284BC /* Router.swift in Sources */,
+				06A6B45E2A150F0500CFFB33 /* NewsNetworkManager.swift in Sources */,
 				06DAC7AE2A1273B80086CC41 /* SignInUserInfo.swift in Sources */,
 				068DD2372A0FD8190000913B /* CustomSocialsButton.swift in Sources */,
+				06A6B4652A15193300CFFB33 /* NewsTableViewCell.swift in Sources */,
 				06982BC52A0D1682007284BC /* CustomTextField.swift in Sources */,
 				06982BB62A0D0E22007284BC /* LoginViewController.swift in Sources */,
 				061C90E62A13890900A8078C /* GoogleAuthViewModel.swift in Sources */,
+				06A6B4622A1515C800CFFB33 /* NewsViewModel.swift in Sources */,
 				0635A5BD2A13D06C003CBE55 /* ProfileViewController.swift in Sources */,
 				06DAC7B22A1289E40086CC41 /* AlertManager.swift in Sources */,
 				06982BBB2A0D0E6A007284BC /* RegistryViewController.swift in Sources */,
+				06A6B45A2A150C8400CFFB33 /* NewsSource.swift in Sources */,
 				06BE2BF52A0C4C550003C875 /* OnboardingViewController.swift in Sources */,
 				068DD22F2A0F9FE60000913B /* EyeButton.swift in Sources */,
 				0635A5BB2A13D05C003CBE55 /* GamesViewController.swift in Sources */,
@@ -417,12 +491,14 @@
 				0635A5BF2A13D124003CBE55 /* TabBarViewController.swift in Sources */,
 				06BE2C112A0C55310003C875 /* Extension + UIView.swift in Sources */,
 				06BE2BF12A0C4C550003C875 /* AppDelegate.swift in Sources */,
+				06A6B4602A15146900CFFB33 /* NewsArticle.swift in Sources */,
 				068DD2352A0FCF8F0000913B /* CustomActionButton.swift in Sources */,
 				06DAC7B02A127DB50086CC41 /* Validator.swift in Sources */,
 				06982BC22A0D0F41007284BC /* ForgotPasswordViewController.swift in Sources */,
 				06BE2BF32A0C4C550003C875 /* SceneDelegate.swift in Sources */,
 				06BE2C0F2A0C52CD0003C875 /* Constants.swift in Sources */,
 				06DAC7A92A12679C0086CC41 /* AuthNetworkManager.swift in Sources */,
+				06A6B4542A150BD600CFFB33 /* News.swift in Sources */,
 				06982BC02A0D0EEC007284BC /* MainRouter.swift in Sources */,
 				06DAC7AC2A1268960086CC41 /* RegisterUserInfo.swift in Sources */,
 				06F75A9D2A11320D000A174B /* NewsViewController.swift in Sources */,
@@ -635,6 +711,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		06A6B4662A151C4400CFFB33 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		06BE2C0B2A0C4EAD0003C875 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -662,6 +746,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		06A6B4672A151C4400CFFB33 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 06A6B4662A151C4400CFFB33 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
 		06BE2C0C2A0C4EAD0003C875 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 06BE2C0B2A0C4EAD0003C875 /* XCRemoteSwiftPackageReference "SnapKit" */;
