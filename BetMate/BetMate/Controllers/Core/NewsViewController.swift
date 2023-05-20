@@ -105,6 +105,7 @@ class NewsViewController: UIViewController {
     }
 }
 
+// MARK: - Extensions
 extension NewsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.sportNews.count

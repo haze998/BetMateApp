@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		061C90E62A13890900A8078C /* GoogleAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061C90E52A13890900A8078C /* GoogleAuthViewModel.swift */; };
+		0633A62C2A18E07900A027E5 /* GamesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0633A62B2A18E07900A027E5 /* GamesViewModel.swift */; };
+		0633A62F2A18E4EA00A027E5 /* GamesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0633A62E2A18E4EA00A027E5 /* GamesCollectionViewCell.swift */; };
+		0633A6322A18E73C00A027E5 /* Sports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0633A6312A18E73C00A027E5 /* Sports.swift */; };
+		0633A6342A18F17900A027E5 /* Extension + UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0633A6332A18F17900A027E5 /* Extension + UICollectionView.swift */; };
 		0635A5BB2A13D05C003CBE55 /* GamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0635A5BA2A13D05C003CBE55 /* GamesViewController.swift */; };
 		0635A5BD2A13D06C003CBE55 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0635A5BC2A13D06C003CBE55 /* ProfileViewController.swift */; };
 		0635A5BF2A13D124003CBE55 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0635A5BE2A13D124003CBE55 /* TabBarViewController.swift */; };
@@ -80,6 +84,10 @@
 
 /* Begin PBXFileReference section */
 		061C90E52A13890900A8078C /* GoogleAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthViewModel.swift; sourceTree = "<group>"; };
+		0633A62B2A18E07900A027E5 /* GamesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesViewModel.swift; sourceTree = "<group>"; };
+		0633A62E2A18E4EA00A027E5 /* GamesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesCollectionViewCell.swift; sourceTree = "<group>"; };
+		0633A6312A18E73C00A027E5 /* Sports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sports.swift; sourceTree = "<group>"; };
+		0633A6332A18F17900A027E5 /* Extension + UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UICollectionView.swift"; sourceTree = "<group>"; };
 		0635A5BA2A13D05C003CBE55 /* GamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesViewController.swift; sourceTree = "<group>"; };
 		0635A5BC2A13D06C003CBE55 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0635A5BE2A13D124003CBE55 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -168,8 +176,25 @@
 			children = (
 				061C90E52A13890900A8078C /* GoogleAuthViewModel.swift */,
 				06A6B4612A1515C800CFFB33 /* NewsViewModel.swift */,
+				0633A62B2A18E07900A027E5 /* GamesViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0633A62D2A18E4C200A027E5 /* GamesViews */ = {
+			isa = PBXGroup;
+			children = (
+				0633A62E2A18E4EA00A027E5 /* GamesCollectionViewCell.swift */,
+			);
+			path = GamesViews;
+			sourceTree = "<group>";
+		};
+		0633A6302A18E72200A027E5 /* GamesModels */ = {
+			isa = PBXGroup;
+			children = (
+				0633A6312A18E73C00A027E5 /* Sports.swift */,
+			);
+			path = GamesModels;
 			sourceTree = "<group>";
 		};
 		0635A5B82A13CF25003CBE55 /* AuthViewControllers */ = {
@@ -214,6 +239,7 @@
 				06BE2C102A0C55310003C875 /* Extension + UIView.swift */,
 				06982BC62A0D1EDB007284BC /* Extension + UIColor.swift */,
 				063DBC7B2A165A5A00406059 /* Extension + String.swift */,
+				0633A6332A18F17900A027E5 /* Extension + UICollectionView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -241,6 +267,7 @@
 			children = (
 				06A6B4522A150B5800CFFB33 /* AuthViews */,
 				06A6B4632A15190000CFFB33 /* NewsViews */,
+				0633A62D2A18E4C200A027E5 /* GamesViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -357,6 +384,7 @@
 			children = (
 				06A6B4552A150BF000CFFB33 /* AuthModels */,
 				06A6B4562A150C0000CFFB33 /* NewsModels */,
+				0633A6302A18E72200A027E5 /* GamesModels */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -479,6 +507,7 @@
 				06DAC7AE2A1273B80086CC41 /* SignInUserInfo.swift in Sources */,
 				068DD2372A0FD8190000913B /* CustomSocialsButton.swift in Sources */,
 				06A6B4652A15193300CFFB33 /* NewsTableViewCell.swift in Sources */,
+				0633A62C2A18E07900A027E5 /* GamesViewModel.swift in Sources */,
 				06982BC52A0D1682007284BC /* CustomTextField.swift in Sources */,
 				06982BB62A0D0E22007284BC /* LoginViewController.swift in Sources */,
 				061C90E62A13890900A8078C /* GoogleAuthViewModel.swift in Sources */,
@@ -494,7 +523,10 @@
 				0635A5BF2A13D124003CBE55 /* TabBarViewController.swift in Sources */,
 				063DBC7C2A165A5A00406059 /* Extension + String.swift in Sources */,
 				06BE2C112A0C55310003C875 /* Extension + UIView.swift in Sources */,
+				0633A6322A18E73C00A027E5 /* Sports.swift in Sources */,
+				0633A6342A18F17900A027E5 /* Extension + UICollectionView.swift in Sources */,
 				06BE2BF12A0C4C550003C875 /* AppDelegate.swift in Sources */,
+				0633A62F2A18E4EA00A027E5 /* GamesCollectionViewCell.swift in Sources */,
 				06A6B4602A15146900CFFB33 /* NewsArticle.swift in Sources */,
 				068DD2352A0FCF8F0000913B /* CustomActionButton.swift in Sources */,
 				06DAC7B02A127DB50086CC41 /* Validator.swift in Sources */,
