@@ -10,7 +10,7 @@ import SnapKit
 import SDWebImage
 
 class NewsTableViewCell: UITableViewCell {
-
+    
     // MARK: Views
     private lazy var bgView: UIView = {
         let view = UIView()
@@ -53,6 +53,11 @@ class NewsTableViewCell: UITableViewCell {
         return label
     }()
     
+    private lazy var postImageContainer: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
     private lazy var postImage: UIImageView = {
         let image = UIImageView()
         return image
@@ -63,7 +68,7 @@ class NewsTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         contentView.addSubview(bgView)
-        bgView.addSubviews(view: [logoNews, newsTitle, deviderView, newsContent, postDate, postImage])
+        bgView.addSubviews(view: [logoNews, newsTitle, deviderView, newsContent, postDate, postImageContainer, postImage])
         bgView.addSubview(logoNews)
         setupUI()
         setupLayout()
@@ -73,6 +78,7 @@ class NewsTableViewCell: UITableViewCell {
         // spacing between cells
         self.contentView.frame = self.contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 18, right: 0))
         backgroundColor = .clear
+        postImage.layer.cornerRadius = 10
     }
     
     // MARK: - Configure cell
@@ -81,15 +87,7 @@ class NewsTableViewCell: UITableViewCell {
         newsContent.text = newsArticle.content
         postDate.text = newsArticle.publishedAt
         let imageURL = URL(string: newsArticle.urlToImage ?? "")
-//        postImage.sd_setImage(with: imageURL)
-        postImage.sd_setImage(with: imageURL, completed: { (image, error, cacheType, url) in
-            if let image = image {
-                SDImageCache.shared.clearMemory()
-                SDImageCache.shared.clearDisk(onCompletion: nil)
-                let resizedImage = image.sd_resizedImage(with: self.targetSize, scaleMode: .fill)
-                self.postImage.image = resizedImage
-            }
-        })
+        postImage.sd_setImage(with: imageURL)
     }
     
     // MARK: - Setup Layout
@@ -102,15 +100,15 @@ class NewsTableViewCell: UITableViewCell {
         logoNews.snp.makeConstraints { make in
             make.width.height.equalTo(20)
             make.top.equalTo(bgView).inset(6)
-            make.left.equalTo(bgView).inset(4)
+            make.left.equalTo(bgView).inset(6)
         }
-
+        
         newsTitle.snp.makeConstraints { make in
-            make.left.equalTo(logoNews.snp.right).offset(12)
-            make.top.equalTo(10)
+            make.left.equalTo(logoNews.snp.right).offset(8)
+            make.top.equalTo(12)
             make.width.equalTo(300)
         }
-
+        
         deviderView.snp.makeConstraints { make in
             make.width.equalTo(340)
             make.centerX.equalToSuperview()
@@ -119,21 +117,26 @@ class NewsTableViewCell: UITableViewCell {
         }
         
         newsContent.snp.makeConstraints { make in
-            make.top.equalTo(deviderView.snp.bottom).offset(8)
-            make.width.equalTo(320)
+            make.top.equalTo(deviderView.snp.bottom).offset(6)
+            make.width.equalTo(300)
             make.left.equalTo(8)
         }
-
+        
         postDate.snp.makeConstraints { make in
             make.left.equalTo(8)
-            make.width.equalTo(300)
+            make.width.equalTo(200)
             make.top.equalTo(newsContent.snp.bottom).offset(1)
         }
-
+        
+        postImageContainer.snp.makeConstraints { make in
+            make.width.equalTo(335)
+            make.height.equalTo(145)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(postDate.snp.bottom).offset(2)
+        }
+        
         postImage.snp.makeConstraints { make in
-            make.width.equalTo(320)
-            make.height.equalTo(164)
-            make.leading.trailing.top.bottom.equalTo(8)
+            make.center.edges.equalTo(postImageContainer)
         }
     }
 }

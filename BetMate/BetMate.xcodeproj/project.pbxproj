@@ -11,6 +11,7 @@
 		0635A5BB2A13D05C003CBE55 /* GamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0635A5BA2A13D05C003CBE55 /* GamesViewController.swift */; };
 		0635A5BD2A13D06C003CBE55 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0635A5BC2A13D06C003CBE55 /* ProfileViewController.swift */; };
 		0635A5BF2A13D124003CBE55 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0635A5BE2A13D124003CBE55 /* TabBarViewController.swift */; };
+		063DBC7C2A165A5A00406059 /* Extension + String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063DBC7B2A165A5A00406059 /* Extension + String.swift */; };
 		068DD22F2A0F9FE60000913B /* EyeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068DD22E2A0F9FE60000913B /* EyeButton.swift */; };
 		068DD2352A0FCF8F0000913B /* CustomActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068DD2342A0FCF8F0000913B /* CustomActionButton.swift */; };
 		068DD2372A0FD8190000913B /* CustomSocialsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068DD2362A0FD8190000913B /* CustomSocialsButton.swift */; };
@@ -82,6 +83,7 @@
 		0635A5BA2A13D05C003CBE55 /* GamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesViewController.swift; sourceTree = "<group>"; };
 		0635A5BC2A13D06C003CBE55 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0635A5BE2A13D124003CBE55 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		063DBC7B2A165A5A00406059 /* Extension + String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + String.swift"; sourceTree = "<group>"; };
 		068DD22E2A0F9FE60000913B /* EyeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeButton.swift; sourceTree = "<group>"; };
 		068DD2342A0FCF8F0000913B /* CustomActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActionButton.swift; sourceTree = "<group>"; };
 		068DD2362A0FD8190000913B /* CustomSocialsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSocialsButton.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 			children = (
 				06BE2C102A0C55310003C875 /* Extension + UIView.swift */,
 				06982BC62A0D1EDB007284BC /* Extension + UIColor.swift */,
+				063DBC7B2A165A5A00406059 /* Extension + String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -489,6 +492,7 @@
 				0635A5BB2A13D05C003CBE55 /* GamesViewController.swift in Sources */,
 				06982BC72A0D1EDB007284BC /* Extension + UIColor.swift in Sources */,
 				0635A5BF2A13D124003CBE55 /* TabBarViewController.swift in Sources */,
+				063DBC7C2A165A5A00406059 /* Extension + String.swift in Sources */,
 				06BE2C112A0C55310003C875 /* Extension + UIView.swift in Sources */,
 				06BE2BF12A0C4C550003C875 /* AppDelegate.swift in Sources */,
 				06A6B4602A15146900CFFB33 /* NewsArticle.swift in Sources */,
