@@ -9,9 +9,10 @@
 /* Begin PBXBuildFile section */
 		061C90E62A13890900A8078C /* GoogleAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061C90E52A13890900A8078C /* GoogleAuthViewModel.swift */; };
 		0633A62C2A18E07900A027E5 /* GamesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0633A62B2A18E07900A027E5 /* GamesViewModel.swift */; };
-		0633A62F2A18E4EA00A027E5 /* GamesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0633A62E2A18E4EA00A027E5 /* GamesCollectionViewCell.swift */; };
+		0633A62F2A18E4EA00A027E5 /* SportsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0633A62E2A18E4EA00A027E5 /* SportsCollectionViewCell.swift */; };
 		0633A6322A18E73C00A027E5 /* Sports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0633A6312A18E73C00A027E5 /* Sports.swift */; };
 		0633A6342A18F17900A027E5 /* Extension + UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0633A6332A18F17900A027E5 /* Extension + UICollectionView.swift */; };
+		0633A6372A190B2700A027E5 /* FootballNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0633A6362A190B2700A027E5 /* FootballNetworkManager.swift */; };
 		0635A5BB2A13D05C003CBE55 /* GamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0635A5BA2A13D05C003CBE55 /* GamesViewController.swift */; };
 		0635A5BD2A13D06C003CBE55 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0635A5BC2A13D06C003CBE55 /* ProfileViewController.swift */; };
 		0635A5BF2A13D124003CBE55 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0635A5BE2A13D124003CBE55 /* TabBarViewController.swift */; };
@@ -85,9 +86,10 @@
 /* Begin PBXFileReference section */
 		061C90E52A13890900A8078C /* GoogleAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthViewModel.swift; sourceTree = "<group>"; };
 		0633A62B2A18E07900A027E5 /* GamesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesViewModel.swift; sourceTree = "<group>"; };
-		0633A62E2A18E4EA00A027E5 /* GamesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesCollectionViewCell.swift; sourceTree = "<group>"; };
+		0633A62E2A18E4EA00A027E5 /* SportsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsCollectionViewCell.swift; sourceTree = "<group>"; };
 		0633A6312A18E73C00A027E5 /* Sports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sports.swift; sourceTree = "<group>"; };
 		0633A6332A18F17900A027E5 /* Extension + UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UICollectionView.swift"; sourceTree = "<group>"; };
+		0633A6362A190B2700A027E5 /* FootballNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootballNetworkManager.swift; sourceTree = "<group>"; };
 		0635A5BA2A13D05C003CBE55 /* GamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesViewController.swift; sourceTree = "<group>"; };
 		0635A5BC2A13D06C003CBE55 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0635A5BE2A13D124003CBE55 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -184,7 +186,7 @@
 		0633A62D2A18E4C200A027E5 /* GamesViews */ = {
 			isa = PBXGroup;
 			children = (
-				0633A62E2A18E4EA00A027E5 /* GamesCollectionViewCell.swift */,
+				0633A62E2A18E4EA00A027E5 /* SportsCollectionViewCell.swift */,
 			);
 			path = GamesViews;
 			sourceTree = "<group>";
@@ -195,6 +197,14 @@
 				0633A6312A18E73C00A027E5 /* Sports.swift */,
 			);
 			path = GamesModels;
+			sourceTree = "<group>";
+		};
+		0633A6352A190AF500A027E5 /* FootballNetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				0633A6362A190B2700A027E5 /* FootballNetworkManager.swift */,
+			);
+			path = FootballNetworkManager;
 			sourceTree = "<group>";
 		};
 		0635A5B82A13CF25003CBE55 /* AuthViewControllers */ = {
@@ -349,8 +359,8 @@
 				06DAC7AA2A1268830086CC41 /* Models */,
 				06982BC32A0D1671007284BC /* Views */,
 				061C90E42A1388C100A8078C /* ViewModel */,
-				06DAC7A72A12676C0086CC41 /* Managers */,
 				06982BB92A0D0E53007284BC /* Controllers */,
+				06DAC7A72A12676C0086CC41 /* Managers */,
 				06982BBC2A0D0EA8007284BC /* Router */,
 				06982BB82A0D0E49007284BC /* Extensions */,
 				06982BB72A0D0E2A007284BC /* AppResources */,
@@ -375,6 +385,7 @@
 			children = (
 				06A6B45B2A150EE000CFFB33 /* AuthManagers */,
 				06A6B45C2A150EF100CFFB33 /* NewsManager */,
+				0633A6352A190AF500A027E5 /* FootballNetworkManager */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -526,9 +537,10 @@
 				0633A6322A18E73C00A027E5 /* Sports.swift in Sources */,
 				0633A6342A18F17900A027E5 /* Extension + UICollectionView.swift in Sources */,
 				06BE2BF12A0C4C550003C875 /* AppDelegate.swift in Sources */,
-				0633A62F2A18E4EA00A027E5 /* GamesCollectionViewCell.swift in Sources */,
+				0633A62F2A18E4EA00A027E5 /* SportsCollectionViewCell.swift in Sources */,
 				06A6B4602A15146900CFFB33 /* NewsArticle.swift in Sources */,
 				068DD2352A0FCF8F0000913B /* CustomActionButton.swift in Sources */,
+				0633A6372A190B2700A027E5 /* FootballNetworkManager.swift in Sources */,
 				06DAC7B02A127DB50086CC41 /* Validator.swift in Sources */,
 				06982BC22A0D0F41007284BC /* ForgotPasswordViewController.swift in Sources */,
 				06BE2BF32A0C4C550003C875 /* SceneDelegate.swift in Sources */,

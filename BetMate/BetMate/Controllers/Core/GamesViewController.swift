@@ -47,6 +47,8 @@ class GamesViewController: UIViewController {
         setupUI()
         
         collectionView.reloadData()
+        
+        FootballNtworkManager.shared.test()
     }
     
     override func viewWillLayoutSubviews() {

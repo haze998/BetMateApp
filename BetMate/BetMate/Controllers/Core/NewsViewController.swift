@@ -20,6 +20,7 @@ class NewsViewController: UIViewController {
         tableView.dataSource = self
         tableView.rowHeight = 270
         tableView.backgroundColor = .clear
+        tableView.showsVerticalScrollIndicator = false
         tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: String(describing: NewsTableViewCell.self))
         return tableView
     }()

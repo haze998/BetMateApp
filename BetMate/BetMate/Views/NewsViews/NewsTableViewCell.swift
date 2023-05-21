@@ -20,7 +20,7 @@ class NewsTableViewCell: UITableViewCell {
     }()
     
     private lazy var logoNews: UIImageView = {
-        let image = UIImageView(image: UIImage(named: "flame"))
+        let image = UIImageView(image: UIImage(named: "sportnews"))
         return image
     }()
     
@@ -50,6 +50,7 @@ class NewsTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont(name: FontNames.exoSemiBold.rawValue, size: 12)
         label.textColor = UIColor(red: 0.114, green: 0.208, blue: 0.341, alpha: 0.5)
+        label.text = "02/22/2023"
         return label
     }()
     
@@ -60,11 +61,11 @@ class NewsTableViewCell: UITableViewCell {
     
     private lazy var postImage: UIImageView = {
         let image = UIImageView()
+        image.layer.cornerRadius = 10
+        image.clipsToBounds = true
         return image
     }()
-    
-    private let targetSize = CGSize(width: 200, height: 200)
-    
+        
     override func layoutSubviews() {
         super.layoutSubviews()
         contentView.addSubview(bgView)
@@ -78,16 +79,31 @@ class NewsTableViewCell: UITableViewCell {
         // spacing between cells
         self.contentView.frame = self.contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 18, right: 0))
         backgroundColor = .clear
-        postImage.layer.cornerRadius = 10
+        
     }
     
     // MARK: - Configure cell
     func configureCell(with newsArticle: NewsArticle) {
-        newsTitle.text = newsArticle.title
-        newsContent.text = newsArticle.content
-        postDate.text = newsArticle.publishedAt
+        if ((newsArticle.title?.isEmpty) == nil) {
+            newsTitle.text = "(Error downloading news title)"
+        } else {
+            newsTitle.text = newsArticle.title
+        }
+        
+        if ((newsArticle.content?.isEmpty) == nil) {
+            newsContent.text = "(Error downloading news content)"
+        } else {
+            newsContent.text = newsArticle.content
+        }
+        
         let imageURL = URL(string: newsArticle.urlToImage ?? "")
-        postImage.sd_setImage(with: imageURL)
+        if imageURL != nil {
+            postImage.sd_setImage(with: imageURL)
+        } else {
+            postImage.image = UIImage(named: "image_placeholder")
+        }
+        
+        postDate.text = newsArticle.publishedAt
     }
     
     // MARK: - Setup Layout
@@ -99,25 +115,25 @@ class NewsTableViewCell: UITableViewCell {
         
         logoNews.snp.makeConstraints { make in
             make.width.height.equalTo(20)
-            make.top.equalTo(bgView).inset(6)
-            make.left.equalTo(bgView).inset(6)
+            make.top.equalTo(4)
+            make.left.equalTo(8)
         }
         
         newsTitle.snp.makeConstraints { make in
-            make.left.equalTo(logoNews.snp.right).offset(8)
-            make.top.equalTo(12)
+            make.top.equalTo(6)
+            make.left.equalTo(logoNews.snp.right).offset(6)
             make.width.equalTo(300)
         }
         
         deviderView.snp.makeConstraints { make in
-            make.width.equalTo(340)
-            make.centerX.equalToSuperview()
-            make.top.equalTo(logoNews.snp.bottom).offset(6)
+            make.width.equalToSuperview()
+            make.top.equalTo(logoNews.snp.bottom).offset(4)
             make.height.equalTo(3)
+            make.leading.trailing.equalTo(contentView).inset(8)
         }
         
         newsContent.snp.makeConstraints { make in
-            make.top.equalTo(deviderView.snp.bottom).offset(6)
+            make.top.equalTo(deviderView.snp.bottom).offset(8)
             make.width.equalTo(300)
             make.left.equalTo(8)
         }
@@ -129,9 +145,8 @@ class NewsTableViewCell: UITableViewCell {
         }
         
         postImageContainer.snp.makeConstraints { make in
-            make.width.equalTo(335)
-            make.height.equalTo(145)
-            make.centerX.equalToSuperview()
+            make.width.equalToSuperview()
+            make.leading.trailing.bottom.equalTo(contentView).inset(8)
             make.top.equalTo(postDate.snp.bottom).offset(2)
         }
         
