@@ -68,18 +68,15 @@ class NewsTableViewCell: UITableViewCell {
         
     override func layoutSubviews() {
         super.layoutSubviews()
-        contentView.addSubview(bgView)
-        bgView.addSubviews(view: [logoNews, newsTitle, deviderView, newsContent, postDate, postImageContainer, postImage])
-        bgView.addSubview(logoNews)
         setupUI()
         setupLayout()
     }
     
+    // MARK: - Setup UI
     private func setupUI() {
         // spacing between cells
         self.contentView.frame = self.contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 18, right: 0))
         backgroundColor = .clear
-        
     }
     
     // MARK: - Configure cell
@@ -108,6 +105,8 @@ class NewsTableViewCell: UITableViewCell {
     
     // MARK: - Setup Layout
     private func setupLayout() {
+        contentView.addSubview(bgView)
+        bgView.addSubviews(view: [logoNews, newsTitle, deviderView, newsContent, postDate, postImageContainer, postImage])
         
         bgView.snp.makeConstraints { make in
             make.edges.equalTo(contentView)

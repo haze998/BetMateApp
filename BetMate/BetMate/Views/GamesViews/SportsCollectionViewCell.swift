@@ -22,12 +22,28 @@ class SportsCollectionViewCell: UICollectionViewCell {
         label.textColor = .labelColor
         return label
     }()
+    
+    override var isSelected: Bool {
+            didSet {
+                updateSelectionState()
+            }
+        }
         
     override func layoutSubviews() {
         super.layoutSubviews()
         setupUI()
         setupConstraints()
     }
+    
+    override func prepareForReuse() {
+            super.prepareForReuse()
+            updateSelectionState()
+        }
+    
+    func updateSelectionState() {
+           layer.borderWidth = 3
+        layer.borderColor = isSelected ? UIColor.borderViewColor : UIColor.clear.cgColor
+       }
     
     // MARK: - SetupUI
     private func setupUI() {

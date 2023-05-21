@@ -29,6 +29,17 @@ class GamesViewController: UIViewController {
         return collectionView
     }()
     
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.rowHeight = 335
+        tableView.backgroundColor = .clear
+        tableView.showsVerticalScrollIndicator = false
+        tableView.register(BasketballTableViewCell.self, forCellReuseIdentifier: String(describing: BasketballTableViewCell.self))
+        return tableView
+    }()
+    
     private let sportArr = [
         GamesViewModel(sport: Sport(sportName: "football", icon: UIImage(named: "football") ?? UIImage())),
         GamesViewModel(sport: Sport(sportName: "baseball", icon: UIImage(named: "baseball") ?? UIImage())),
@@ -48,7 +59,6 @@ class GamesViewController: UIViewController {
         
         collectionView.reloadData()
         
-        FootballNtworkManager.shared.test()
     }
     
     override func viewWillLayoutSubviews() {
@@ -69,7 +79,7 @@ class GamesViewController: UIViewController {
     
     // MARK: - Setup layout
     private func setupConstraints() {
-        self.view.addSubviews(view: [titleLabel, collectionView])
+        self.view.addSubviews(view: [titleLabel, collectionView, tableView])
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(70)
             make.left.equalTo(20)
@@ -80,10 +90,16 @@ class GamesViewController: UIViewController {
             make.top.equalTo(titleLabel.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview()
         }
+        
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(collectionView.snp.bottom).offset(15)
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.bottom.equalToSuperview()
+        }
     }
 }
 
-// MARK: - Extensions
+// MARK: - CollectionView extensions DataSource / Delegate
 extension GamesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         sportArr.count
@@ -96,4 +112,41 @@ extension GamesViewController: UICollectionViewDataSource {
     }
 }
 
-extension GamesViewController: UICollectionViewDelegate { }
+extension GamesViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        // Deselect the previously selected cell, if there is one
+        if let selectedIndexPath = collectionView.indexPathsForSelectedItems?.first,
+           let selectedCell = collectionView.cellForItem(at: selectedIndexPath) as? SportsCollectionViewCell {
+            selectedCell.isSelected = false
+        }
+        
+        // Highlight the selected cell
+        if let selectedCell = collectionView.cellForItem(at: indexPath) as? SportsCollectionViewCell {
+            selectedCell.isSelected = true
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        // the first cell in the collection will always be selected by default
+        if indexPath.item == 0 && indexPath.section == 0 {
+            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
+            collectionView(collectionView, didSelectItemAt: indexPath)
+        }
+    }
+}
+
+// MARK: - TableView extensions DataSource / Delegate
+extension GamesViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: BasketballTableViewCell.self)) as? BasketballTableViewCell else { return UITableViewCell() }
+        return cell
+    }
+}
+
+extension GamesViewController: UITableViewDelegate { }
