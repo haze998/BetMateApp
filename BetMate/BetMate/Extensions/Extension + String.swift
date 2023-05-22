@@ -19,4 +19,11 @@ extension String {
         }
         return nil
     }
+    
+    func getCurrentDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let currentDate = dateFormatter.string(from: Date())
+        return currentDate
+    }
 }

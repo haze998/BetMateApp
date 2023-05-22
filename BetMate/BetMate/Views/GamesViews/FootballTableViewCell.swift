@@ -1,5 +1,5 @@
 //
-//  BasketballTableViewCell.swift
+//  FootballTableViewCell.swift
 //  BetMate
 //
 //  Created by Evgeniy Docenko on 21.05.2023.
@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import SDWebImage
 
-class BasketballTableViewCell: UITableViewCell {
+class FootballTableViewCell: UITableViewCell {
 
     // MARK: - Views
     private lazy var bgView: UIView = {
@@ -23,13 +23,13 @@ class BasketballTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont(name: FontNames.exoMedium.rawValue, size: 14)
         label.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
-        label.text = "18:30, 15 August"
+//        label.text = "18:30, 15 August"
         return label
     }()
     
     private lazy var leftTeamLogo: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "footballteam1")
+//        image.image = UIImage(named: "footballteam1")
         image.layer.cornerRadius = 10
         image.clipsToBounds = true
         return image
@@ -45,7 +45,7 @@ class BasketballTableViewCell: UITableViewCell {
 
     private lazy var rightTeamLogo: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "footballteam2")
+//        image.image = UIImage(named: "footballteam2")
         image.layer.cornerRadius = 10
         image.clipsToBounds = true
         return image
@@ -54,7 +54,7 @@ class BasketballTableViewCell: UITableViewCell {
     private lazy var leftTeamName: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: FontNames.exoMedium.rawValue, size: 14)
-        label.text = "Chelsea"
+//        label.text = "Chelsea"
         label.textColor = .labelColor
         return label
     }()
@@ -62,7 +62,7 @@ class BasketballTableViewCell: UITableViewCell {
     private lazy var rightTeamName: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: FontNames.exoMedium.rawValue, size: 14)
-        label.text = "Manutd"
+//        label.text = "Manutd"
         label.textColor = .labelColor
         return label
     }()
@@ -90,7 +90,7 @@ class BasketballTableViewCell: UITableViewCell {
         label.font = UIFont(name: FontNames.exoMedium.rawValue, size: 12)
         label.textColor = .labelColor
         label.textAlignment = .center
-        label.text = "Chelsea (2.0)"
+        label.text = "TODO"
         return label
     }()
     
@@ -99,7 +99,7 @@ class BasketballTableViewCell: UITableViewCell {
         label.font = UIFont(name: FontNames.exoMedium.rawValue, size: 12)
         label.textColor = .labelColor
         label.textAlignment = .center
-        label.text = "Manutd (1.85)"
+        label.text = "TODO"
         return label
     }()
     
@@ -117,7 +117,14 @@ class BasketballTableViewCell: UITableViewCell {
     }
     
     // MARK: - Configure cell
-    func configureCell() {
+    func configureCell(with footballResponse: FootballResponse) {
+        dateLabel.text = footballResponse.fixture?.date
+        let homeImgURL = URL(string: footballResponse.teams?.home?.logo ?? "")
+        leftTeamLogo.sd_setImage(with: homeImgURL)
+        let awayImgURL = URL(string: footballResponse.teams?.away?.logo ?? "")
+        rightTeamLogo.sd_setImage(with: awayImgURL)
+        leftTeamName.text = footballResponse.teams?.home?.name
+        rightTeamName.text = footballResponse.teams?.away?.name
         
     }
     

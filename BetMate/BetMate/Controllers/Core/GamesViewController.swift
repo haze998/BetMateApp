@@ -36,29 +36,35 @@ class GamesViewController: UIViewController {
         tableView.rowHeight = 335
         tableView.backgroundColor = .clear
         tableView.showsVerticalScrollIndicator = false
-        tableView.register(BasketballTableViewCell.self, forCellReuseIdentifier: String(describing: BasketballTableViewCell.self))
+        tableView.register(FootballTableViewCell.self, forCellReuseIdentifier: String(describing: FootballTableViewCell.self))
         return tableView
     }()
     
+    let viewModel = GamesViewModel()
     private let sportArr = [
-        GamesViewModel(sport: Sport(sportName: "football", icon: UIImage(named: "football") ?? UIImage())),
-        GamesViewModel(sport: Sport(sportName: "baseball", icon: UIImage(named: "baseball") ?? UIImage())),
-        GamesViewModel(sport: Sport(sportName: "basketball", icon: UIImage(named: "basketball") ?? UIImage())),
-        GamesViewModel(sport: Sport(sportName: "formula 1", icon: UIImage(named: "formula1") ?? UIImage())),
-        GamesViewModel(sport: Sport(sportName: "handball", icon: UIImage(named: "handball") ?? UIImage())),
-        GamesViewModel(sport: Sport(sportName: "hockey", icon: UIImage(named: "hockey") ?? UIImage())),
-        GamesViewModel(sport: Sport(sportName: "rugby", icon: UIImage(named: "rugby") ?? UIImage())),
-        GamesViewModel(sport: Sport(sportName: "volleyball", icon: UIImage(named: "volleyball") ?? UIImage()))
+        Sport(sportName: "football",
+              icon: UIImage(named: "football") ?? UIImage()),
+        Sport(sportName: "baseball",
+              icon: UIImage(named: "baseball") ?? UIImage()),
+        Sport(sportName: "basketball",
+              icon: UIImage(named: "basketball") ?? UIImage()),
+        Sport(sportName: "formula1",
+              icon: UIImage(named: "formula1") ?? UIImage()),
+        Sport(sportName: "handball",
+              icon: UIImage(named: "handball") ?? UIImage()),
+        Sport(sportName: "hockey",
+              icon: UIImage(named: "hockey") ?? UIImage()),
+        Sport(sportName: "rugby",
+              icon: UIImage(named: "rugby") ?? UIImage()),
+        Sport(sportName: "volleyball",
+              icon: UIImage(named: "volleyball") ?? UIImage()),
     ]
-    
-    
+        
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        
         collectionView.reloadData()
-        
     }
     
     override func viewWillLayoutSubviews() {
@@ -71,6 +77,14 @@ class GamesViewController: UIViewController {
         self.view.backgroundColor = .background
     }
     
+    // MARK: - Private functions
+    private func fetchedFootballInfo() {
+        viewModel.getFootballInfo {
+            self.tableView.reloadData()
+        }
+    }
+    
+    // MARK: - Create compositional layout
     private func createLayout() -> UICollectionViewCompositionalLayout {
         return UICollectionViewCompositionalLayout { (sectionNumber, _) -> NSCollectionLayoutSection? in
             return self.collectionView.sportSectionLayout()
@@ -114,16 +128,17 @@ extension GamesViewController: UICollectionViewDataSource {
 
 extension GamesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        // Deselect the previously selected cell, if there is one
-        if let selectedIndexPath = collectionView.indexPathsForSelectedItems?.first,
-           let selectedCell = collectionView.cellForItem(at: selectedIndexPath) as? SportsCollectionViewCell {
-            selectedCell.isSelected = false
-        }
-        
-        // Highlight the selected cell
-        if let selectedCell = collectionView.cellForItem(at: indexPath) as? SportsCollectionViewCell {
-            selectedCell.isSelected = true
+        switch indexPath.row {
+        case 0 :
+            fetchedFootballInfo()
+//        case 1:
+//        case 2:
+//        case 3:
+//        case 4:
+//        case 5:
+//        case 6:
+//        case 7:
+        default: break
         }
     }
     
@@ -140,11 +155,12 @@ extension GamesViewController: UICollectionViewDelegate {
 // MARK: - TableView extensions DataSource / Delegate
 extension GamesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        viewModel.footballInfoArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: BasketballTableViewCell.self)) as? BasketballTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FootballTableViewCell.self)) as? FootballTableViewCell else { return UITableViewCell() }
+        cell.configureCell(with: viewModel.footballInfoArr[indexPath.row])
         return cell
     }
 }

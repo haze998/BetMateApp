@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 class SportsCollectionViewCell: UICollectionViewCell {
-   
+    
     // MARK: - Private views
     private lazy var sportsImage: UIImageView = {
         let image = UIImageView()
@@ -24,27 +24,33 @@ class SportsCollectionViewCell: UICollectionViewCell {
     }()
     
     override var isSelected: Bool {
-            didSet {
-                updateSelectionState()
+        didSet {
+            switch isSelected {
+            case true:
+                layer.borderWidth = 3
+                layer.borderColor = UIColor.borderViewColor
+            case false:
+                layer.borderColor = UIColor.clear.cgColor
             }
         }
-        
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         setupUI()
         setupConstraints()
     }
     
-    override func prepareForReuse() {
-            super.prepareForReuse()
-            updateSelectionState()
-        }
+    //    override func prepareForReuse() {
+    //            super.prepareForReuse()
+    //            updateSelectionState()
+    //        }
     
-    func updateSelectionState() {
-           layer.borderWidth = 3
-        layer.borderColor = isSelected ? UIColor.borderViewColor : UIColor.clear.cgColor
-       }
-    
+    //    func updateSelectionState() {
+    //           layer.borderWidth = 3
+    //        layer.borderColor = isSelected ? UIColor.borderViewColor : UIColor.clear.cgColor
+    //       }
+    //
     // MARK: - SetupUI
     private func setupUI() {
         backgroundColor = .lightBackgroundView
@@ -52,11 +58,11 @@ class SportsCollectionViewCell: UICollectionViewCell {
     }
     
     // MARK: - Setup cell
-    func configureCell(with sport: GamesViewModel) {
+    func configureCell(with sport: Sport) {
         sportsImage.image = sport.icon
-        sportsLabel.text = sport.name
+        sportsLabel.text = sport.sportName
     }
- 
+    
     // MARK: - Setup layout
     private func setupConstraints() {
         contentView.addSubviews(view: [sportsImage, sportsLabel])
