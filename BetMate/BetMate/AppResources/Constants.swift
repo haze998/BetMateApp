@@ -13,6 +13,20 @@ enum FontNames: String {
     case exoMedium = "Exo-Medium"
 }
 
-enum ApiKey: String {
-    case apiKey = "15dd5551c63e45528394b8c64a4e3c0d"
+enum ApiKeys: String {
+    case newsApiKey = "YOUR_API_KEY"
+    case sportsApiKey = "YOUR_API__KEY"
+}
+
+enum CustomDate: String {
+    case currentDate
+}
+
+enum KindsOfSports {
+    case football
+    case baseball
+    case basketball
+    case hockey
+    case volleyball
+    case handball
 }

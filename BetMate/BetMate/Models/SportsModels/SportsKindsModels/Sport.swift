@@ -1,5 +1,5 @@
 //
-//  Sports.swift
+//  Sport.swift
 //  BetMate
 //
 //  Created by Evgeniy Docenko on 20.05.2023.

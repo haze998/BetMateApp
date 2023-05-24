@@ -1,5 +1,5 @@
 //
-//  FootballTableViewCell.swift
+//  GamesTableViewCell.swift
 //  BetMate
 //
 //  Created by Evgeniy Docenko on 21.05.2023.
@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import SDWebImage
 
-class FootballTableViewCell: UITableViewCell {
+class GamesTableViewCell: UITableViewCell {
 
     // MARK: - Views
     private lazy var bgView: UIView = {
@@ -116,16 +116,65 @@ class FootballTableViewCell: UITableViewCell {
         backgroundColor = .clear
     }
     
-    // MARK: - Configure cell
-    func configureCell(with footballResponse: FootballResponse) {
-        dateLabel.text = footballResponse.fixture?.date
+    // MARK: - Configure sports cell
+    func configureFootballCell(with footballResponse: FootballResponse) {
+        dateLabel.text = footballResponse.fixture?.date?.formatDateString(footballResponse.fixture?.date ?? "")
         let homeImgURL = URL(string: footballResponse.teams?.home?.logo ?? "")
         leftTeamLogo.sd_setImage(with: homeImgURL)
         let awayImgURL = URL(string: footballResponse.teams?.away?.logo ?? "")
         rightTeamLogo.sd_setImage(with: awayImgURL)
         leftTeamName.text = footballResponse.teams?.home?.name
         rightTeamName.text = footballResponse.teams?.away?.name
-        
+    }
+    
+    func configureBaseballCell(with baseballResponse: BaseballResponse) {
+        dateLabel.text = baseballResponse.date?.formatDateString(baseballResponse.date ?? "")
+        let homeImgURL = URL(string: baseballResponse.teams?.home?.logo ?? "")
+        leftTeamLogo.sd_setImage(with: homeImgURL)
+        let awayImgURL = URL(string: baseballResponse.teams?.away?.logo ?? "")
+        rightTeamLogo.sd_setImage(with: awayImgURL)
+        leftTeamName.text = baseballResponse.teams?.home?.name
+        rightTeamName.text = baseballResponse.teams?.away?.name
+    }
+    
+    func configureBasketballCell(with basketballResponse: BasketballResponse) {
+        dateLabel.text = basketballResponse.date?.formatDateString(basketballResponse.date ?? "")
+        let homeImgURL = URL(string: basketballResponse.teams?.home?.logo ?? "")
+        leftTeamLogo.sd_setImage(with: homeImgURL)
+        let awayImgURL = URL(string: basketballResponse.teams?.away?.logo ?? "")
+        rightTeamLogo.sd_setImage(with: awayImgURL)
+        leftTeamName.text = basketballResponse.teams?.home?.name
+        rightTeamName.text = basketballResponse.teams?.away?.name
+    }
+    
+    func configureHockeyCell(with hockeyResponse: HockeyResponse) {
+        dateLabel.text = hockeyResponse.date?.formatDateString(hockeyResponse.date ?? "")
+        let homeImgURL = URL(string: hockeyResponse.teams?.home?.logo ?? "")
+        leftTeamLogo.sd_setImage(with: homeImgURL)
+        let awayImgURL = URL(string: hockeyResponse.teams?.away?.logo ?? "")
+        rightTeamLogo.sd_setImage(with: awayImgURL)
+        leftTeamName.text = hockeyResponse.teams?.home?.name
+        rightTeamName.text = hockeyResponse.teams?.away?.name
+    }
+    
+    func configureVolleyballCell(with volleyballResponse: VolleyballResponse) {
+        dateLabel.text = volleyballResponse.date?.formatDateString(volleyballResponse.date ?? "")
+        let homeImgURL = URL(string: volleyballResponse.teams?.home?.logo ?? "")
+        leftTeamLogo.sd_setImage(with: homeImgURL)
+        let awayImgURL = URL(string: volleyballResponse.teams?.away?.logo ?? "")
+        rightTeamLogo.sd_setImage(with: awayImgURL)
+        leftTeamName.text = volleyballResponse.teams?.home?.name
+        rightTeamName.text = volleyballResponse.teams?.away?.name
+    }
+    
+    func configureHandballCell(with handballResponse: HandballResponse) {
+        dateLabel.text = handballResponse.date?.formatDateString(handballResponse.date ?? "")
+        let homeImgURL = URL(string: handballResponse.teams?.home?.logo ?? "")
+        leftTeamLogo.sd_setImage(with: homeImgURL)
+        let awayImgURL = URL(string: handballResponse.teams?.away?.logo ?? "")
+        rightTeamLogo.sd_setImage(with: awayImgURL)
+        leftTeamName.text = handballResponse.teams?.home?.name
+        rightTeamName.text = handballResponse.teams?.away?.name
     }
     
     // MARK: - Setup layout

@@ -20,6 +20,20 @@ extension String {
         return nil
     }
     
+    func formatDateString(_ dateString: String) -> String? {
+        let inputDateFormatter = DateFormatter()
+        inputDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        guard let inputDate = inputDateFormatter.date(from: dateString) else {
+            return nil
+        }
+        
+        let outputDateFormatter = DateFormatter()
+        outputDateFormatter.dateFormat = "dd.MM.yyyy HH:mm"
+        let outputDateString = outputDateFormatter.string(from: inputDate)
+        
+        return outputDateString
+    }
+    
     func getCurrentDate() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"

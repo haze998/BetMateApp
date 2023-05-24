@@ -25,13 +25,8 @@ class SportsCollectionViewCell: UICollectionViewCell {
     
     override var isSelected: Bool {
         didSet {
-            switch isSelected {
-            case true:
-                layer.borderWidth = 3
-                layer.borderColor = UIColor.borderViewColor
-            case false:
-                layer.borderColor = UIColor.clear.cgColor
-            }
+            layer.borderWidth = isSelected ? 3.0 : 0.0
+            layer.borderColor = isSelected ? UIColor.borderViewColor : nil
         }
     }
     
@@ -41,16 +36,6 @@ class SportsCollectionViewCell: UICollectionViewCell {
         setupConstraints()
     }
     
-    //    override func prepareForReuse() {
-    //            super.prepareForReuse()
-    //            updateSelectionState()
-    //        }
-    
-    //    func updateSelectionState() {
-    //           layer.borderWidth = 3
-    //        layer.borderColor = isSelected ? UIColor.borderViewColor : UIColor.clear.cgColor
-    //       }
-    //
     // MARK: - SetupUI
     private func setupUI() {
         backgroundColor = .lightBackgroundView

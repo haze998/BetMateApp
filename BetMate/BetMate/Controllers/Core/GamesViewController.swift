@@ -36,7 +36,7 @@ class GamesViewController: UIViewController {
         tableView.rowHeight = 335
         tableView.backgroundColor = .clear
         tableView.showsVerticalScrollIndicator = false
-        tableView.register(FootballTableViewCell.self, forCellReuseIdentifier: String(describing: FootballTableViewCell.self))
+        tableView.register(GamesTableViewCell.self, forCellReuseIdentifier: String(describing: GamesTableViewCell.self))
         return tableView
     }()
     
@@ -48,16 +48,12 @@ class GamesViewController: UIViewController {
               icon: UIImage(named: "baseball") ?? UIImage()),
         Sport(sportName: "basketball",
               icon: UIImage(named: "basketball") ?? UIImage()),
-        Sport(sportName: "formula1",
-              icon: UIImage(named: "formula1") ?? UIImage()),
-        Sport(sportName: "handball",
-              icon: UIImage(named: "handball") ?? UIImage()),
         Sport(sportName: "hockey",
               icon: UIImage(named: "hockey") ?? UIImage()),
-        Sport(sportName: "rugby",
-              icon: UIImage(named: "rugby") ?? UIImage()),
         Sport(sportName: "volleyball",
               icon: UIImage(named: "volleyball") ?? UIImage()),
+        Sport(sportName: "handball",
+              icon: UIImage(named: "handball") ?? UIImage())
     ]
         
     // MARK: - Lifecycle
@@ -78,8 +74,38 @@ class GamesViewController: UIViewController {
     }
     
     // MARK: - Private functions
-    private func fetchedFootballInfo() {
-        viewModel.getFootballInfo {
+    private func footballInfo() {
+        viewModel.fetchedFootballInfo {
+            self.tableView.reloadData()
+        }
+    }
+    
+    private func baseballInfo() {
+        viewModel.fetchedBaseballInfo {
+            self.tableView.reloadData()
+        }
+    }
+    
+    private func basketballInfo() {
+        viewModel.fetchedBasketballInfo {
+            self.tableView.reloadData()
+        }
+    }
+    
+    private func hockeyInfo() {
+        viewModel.fetchedHockeyInfo {
+            self.tableView.reloadData()
+        }
+    }
+    
+    private func volleyballInfo() {
+        viewModel.fetchedVolleyballInfo {
+            self.tableView.reloadData()
+        }
+    }
+    
+    private func handballInfo() {
+        viewModel.fetchedHandballInfo {
             self.tableView.reloadData()
         }
     }
@@ -129,25 +155,34 @@ extension GamesViewController: UICollectionViewDataSource {
 extension GamesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.row {
-        case 0 :
-            fetchedFootballInfo()
-//        case 1:
-//        case 2:
-//        case 3:
-//        case 4:
-//        case 5:
-//        case 6:
-//        case 7:
+        case 0:
+            viewModel.sports = .football
+            footballInfo()
+        case 1:
+            viewModel.sports = .baseball
+            baseballInfo()
+        case 2:
+            viewModel.sports = .basketball
+            basketballInfo()
+        case 3:
+            viewModel.sports = .hockey
+            hockeyInfo()
+        case 4:
+            viewModel.sports = .volleyball
+            volleyballInfo()
+        case 5:
+            viewModel.sports = .handball
+            handballInfo()
         default: break
         }
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         // the first cell in the collection will always be selected by default
         if indexPath.item == 0 && indexPath.section == 0 {
-            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
-            collectionView(collectionView, didSelectItemAt: indexPath)
+            collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .top)
+            self.collectionView(collectionView, didSelectItemAt: indexPath)
+            cell.isSelected = true
         }
     }
 }
@@ -155,12 +190,38 @@ extension GamesViewController: UICollectionViewDelegate {
 // MARK: - TableView extensions DataSource / Delegate
 extension GamesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.footballInfoArr.count
+        switch viewModel.sports {
+        case .football:
+            return viewModel.footballInfoArr.count
+        case .baseball:
+            return viewModel.baseballInfoArr.count
+        case .basketball:
+            return viewModel.basketballInfoArr.count
+        case .hockey:
+            return viewModel.hockeyInfoArr.count
+        case .volleyball:
+            return viewModel.volleyballInfoArr.count
+        case .handball:
+            return viewModel.handballInfoArr.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FootballTableViewCell.self)) as? FootballTableViewCell else { return UITableViewCell() }
-        cell.configureCell(with: viewModel.footballInfoArr[indexPath.row])
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: GamesTableViewCell.self)) as? GamesTableViewCell else { return UITableViewCell() }
+        switch viewModel.sports {
+        case .football:
+            cell.configureFootballCell(with: viewModel.footballInfoArr[indexPath.row])
+        case .baseball:
+            cell.configureBaseballCell(with: viewModel.baseballInfoArr[indexPath.row])
+        case .basketball:
+            cell.configureBasketballCell(with: viewModel.basketballInfoArr[indexPath.row])
+        case .hockey:
+            cell.configureHockeyCell(with: viewModel.hockeyInfoArr[indexPath.row])
+        case .volleyball:
+            cell.configureVolleyballCell(with: viewModel.volleyballInfoArr[indexPath.row])
+        case .handball:
+            cell.configureHandballCell(with: viewModel.handballInfoArr[indexPath.row])
+        }
         return cell
     }
 }
