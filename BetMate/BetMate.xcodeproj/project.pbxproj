@@ -98,6 +98,7 @@
 		06EEC8282A2394AF00525723 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EEC8272A2394AF00525723 /* OnboardingViewModel.swift */; };
 		06EEC82A2A239F2800525723 /* RegistryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EEC8292A239F2800525723 /* RegistryViewModel.swift */; };
 		06EEC82C2A23A22300525723 /* ForgotPassViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EEC82B2A23A22300525723 /* ForgotPassViewModel.swift */; };
+		06F546732A2502F4001779FF /* CustomScrollUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F546722A2502F4001779FF /* CustomScrollUpButton.swift */; };
 		06F75A9D2A11320D000A174B /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F75A9C2A11320D000A174B /* NewsViewController.swift */; };
 		06F75AA02A1134C7000A174B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 06F75A9F2A1134C7000A174B /* FirebaseAnalytics */; };
 		06F75AA22A1134C7000A174B /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 06F75AA12A1134C7000A174B /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -218,6 +219,7 @@
 		06EEC8272A2394AF00525723 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		06EEC8292A239F2800525723 /* RegistryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistryViewModel.swift; sourceTree = "<group>"; };
 		06EEC82B2A23A22300525723 /* ForgotPassViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassViewModel.swift; sourceTree = "<group>"; };
+		06F546722A2502F4001779FF /* CustomScrollUpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollUpButton.swift; sourceTree = "<group>"; };
 		06F75A9C2A11320D000A174B /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -478,6 +480,7 @@
 			isa = PBXGroup;
 			children = (
 				06A6B4642A15193300CFFB33 /* NewsTableViewCell.swift */,
+				06F546722A2502F4001779FF /* CustomScrollUpButton.swift */,
 			);
 			path = NewsViews;
 			sourceTree = "<group>";
@@ -773,6 +776,7 @@
 				0633A6322A18E73C00A027E5 /* Sport.swift in Sources */,
 				06EEC8222A238CDE00525723 /* Coordinator.swift in Sources */,
 				0633A6342A18F17900A027E5 /* Extension + UICollectionView.swift in Sources */,
+				06F546732A2502F4001779FF /* CustomScrollUpButton.swift in Sources */,
 				06BE2BF12A0C4C550003C875 /* AppDelegate.swift in Sources */,
 				068FFDA22A1BA1D700E764D8 /* Score.swift in Sources */,
 				0633A62F2A18E4EA00A027E5 /* SportsCollectionViewCell.swift in Sources */,

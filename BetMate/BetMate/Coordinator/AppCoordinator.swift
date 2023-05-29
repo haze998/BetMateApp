@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseAuth
 import UIKit
 
 class AppCoordinator: Coordinator {
@@ -19,7 +20,12 @@ class AppCoordinator: Coordinator {
     
     func start() {
         print("App Coordinator start")
-        showAuth()
+        
+        if Auth.auth().currentUser == nil {
+            showAuth()
+        } else {
+            showTabBar()
+        }
     }
     
     func showAuth() {

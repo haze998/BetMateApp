@@ -9,6 +9,7 @@ import Foundation
 
 class NewsViewModel {
     
+    weak var coordinator: NewsCoordinator?
     var sportNews: [NewsArticle] = []
     
     // MARK: - Fetched News

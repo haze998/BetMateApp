@@ -40,6 +40,11 @@ class GamesViewController: UIViewController {
         return tableView
     }()
     
+    private lazy var customScrollUpButton: CustomScrollUpButton = {
+        let button = CustomScrollUpButton(frame: CGRect(x: 300, y: 680, width: 50, height: 50))
+        return button
+    }()
+    
     let viewModel = GamesViewModel()
     private let sportArr = [
         Sport(sportName: "football",
@@ -67,6 +72,15 @@ class GamesViewController: UIViewController {
         super.viewWillLayoutSubviews()
         setupConstraints()
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > 50 {
+            customScrollUpButton.isHidden = false
+        } else {
+            customScrollUpButton.isHidden = true
+        }
+    }
+
     
     // MARK: - Setup UI
     private func setupUI() {
@@ -119,7 +133,7 @@ class GamesViewController: UIViewController {
     
     // MARK: - Setup layout
     private func setupConstraints() {
-        self.view.addSubviews(view: [titleLabel, collectionView, tableView])
+        self.view.addSubviews(view: [titleLabel, collectionView, tableView, customScrollUpButton])
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(70)
             make.left.equalTo(20)

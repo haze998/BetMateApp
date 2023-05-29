@@ -33,6 +33,11 @@ class NewsViewController: UIViewController {
         return label
     }()
     
+    private lazy var customScrollUpButton: CustomScrollUpButton = {
+        let button = CustomScrollUpButton(frame: CGRect(x: 300, y: 680, width: 50, height: 50))
+        return button
+    }()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,19 +50,18 @@ class NewsViewController: UIViewController {
         setupConstraints()
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > 50 {
+            customScrollUpButton.isHidden = false
+        } else {
+            customScrollUpButton.isHidden = true
+        }
+    }
+    
     // MARK: - SetupUI
     private func setupUI() {
         self.view.backgroundColor = .background
-        
-
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutButtonDidTap))
-//        navigationController?.navigationBar.prefersLargeTitles = true
-//        let largeTitleTextAttr = [
-//            NSAttributedString.Key.foregroundColor: UIColor(red: 0.11, green: 0.21, blue: 0.34, alpha: 1.00),
-//            NSAttributedString.Key.font: UIFont(name: FontNames.exoSemiBold.rawValue, size: 42)
-//        ]
-//        navigationController?.navigationBar.largeTitleTextAttributes = largeTitleTextAttr as [NSAttributedString.Key : Any]
-//        title = "News"
     }
     
     private func fetchedNews() {
@@ -76,16 +80,9 @@ class NewsViewController: UIViewController {
                 return
             }
             
-//            if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
-//                sceneDelegate.checkDefaultUserAuth()
-//            }
             switch wasLogout {
             case true:
-                print()
-//                let vc = LoginViewController()
-//                self.view.window?.rootViewController = vc
-//                self.view.window?.makeKeyAndVisible()
-//                router.showLogout(from: self)
+                print("TAP")
             case false:
                 return
             }
@@ -94,7 +91,7 @@ class NewsViewController: UIViewController {
     
     // MARK: - Setup constraints
     private func setupConstraints() {
-        view.addSubviews(view: [titleLabel, tableView])
+        view.addSubviews(view: [titleLabel, tableView, customScrollUpButton])
         
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(70)
