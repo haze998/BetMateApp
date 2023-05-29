@@ -13,7 +13,7 @@ class ForgotPasswordViewController: UIViewController {
     // MARK: - Private properties
     private let emailtextField = CustomTextField(fieldType: .email)
     private let customResetButton = CustomActionButton(actionButtonType: .reset)
-    
+    var viewModel: ForgotPassViewModel?
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()

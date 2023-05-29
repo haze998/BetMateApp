@@ -19,7 +19,7 @@ protocol AuthRouter {
 extension Router: AuthRouter {
     func showLogout(from viewController: UIViewController) {
         let vc = OnboardingViewController()
-        viewController.navigationController?.setViewControllers([vc], animated: true)
+        viewController.navigationController?.popToRootViewController(animated: true)
     }
     
     func showLogin(from viewController: UIViewController) {
@@ -37,7 +37,7 @@ extension Router: AuthRouter {
         viewController.navigationController?.pushViewController(vc, animated: true)
     }
     func showNews(from viewController: UIViewController) {
-        let vc = NewsViewController()
+        let vc = TabBarViewController()
         // set NewsViewController as root vc with new stack of Nav Controllers
         // the previous stack will be removed.
         viewController.navigationController?.setViewControllers([vc], animated: true)

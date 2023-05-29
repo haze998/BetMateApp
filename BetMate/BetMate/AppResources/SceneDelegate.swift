@@ -12,10 +12,28 @@ import GoogleSignIn
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
+    var appCoordinator: AppCoordinator?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        self.setupWindow(with: scene)
-        self.checkUserAuth()
+//        self.setupWindow(with: scene)
+//        self.checkUserAuth()
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        self.window = UIWindow(windowScene: windowScene)
+        let navigationCon = UINavigationController.init()
+        self.appCoordinator = AppCoordinator(navigationController: navigationCon)
+        appCoordinator?.start()
+        window?.rootViewController = navigationCon
+        window?.makeKeyAndVisible()
+        
+        
+//        ---
+//        guard let scene = (scene as? UIWindowScene) else { return }
+//        self.window = UIWindow(windowScene: scene)
+//        let builder = Assembly()
+//        self.appCoordinator = AppCoordinator(window: window, assemblyBuilder: builder)
+//        self.appCoordinator?.start()
+//        window?.overrideUserInterfaceStyle = .light
+//        window?.makeKeyAndVisible()
     }
     
     // MARK: - Setup window

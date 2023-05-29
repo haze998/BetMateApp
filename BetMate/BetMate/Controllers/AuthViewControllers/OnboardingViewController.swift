@@ -11,8 +11,6 @@ import SnapKit
 class OnboardingViewController: UIViewController {
     
     // MARK: - Private properties
-    private let router: AuthRouter = Router.shared
-    
     private let topLabel: UILabel = {
         let label = UILabel()
         label.text = "Welcome to your"
@@ -62,6 +60,8 @@ class OnboardingViewController: UIViewController {
         button.addTarget(self, action: #selector(registerButtonDidTap), for: .touchUpInside)
         return button
     }()
+    
+    var viewModel: OnboardingViewModel?
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -81,11 +81,11 @@ class OnboardingViewController: UIViewController {
     
     // MARK: - Selectors
     @objc private func loginButtonDidTap() {
-        self.router.showLogin(from: self)
+        viewModel?.goToLogin()
     }
     
     @objc private func registerButtonDidTap() {
-        self.router.showRegistry(from: self)
+        viewModel?.goToRegister()
     }
     
     // MARK: - Setup constraints

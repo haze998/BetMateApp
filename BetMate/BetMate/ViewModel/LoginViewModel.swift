@@ -1,5 +1,5 @@
 //
-//  GoogleAuthViewModel.swift
+//  LoginViewModel.swift
 //  BetMate
 //
 //  Created by Evgeniy Docenko on 16.05.2023.
@@ -9,8 +9,22 @@ import Foundation
 import Firebase
 import GoogleSignIn
 
-class GoogleAuthViewModel {
+class LoginViewModel {
         
+    weak var coordinator: AuthCoordinator?
+    
+    func goToTabBar() {
+        coordinator?.goToTabBarPage()
+    }
+    
+    func goToRegistry() {
+        coordinator?.goToRegistryPage()
+    }
+    
+    func goToForgotPass() {
+        coordinator?.goToForgotPassPage()
+    }
+    
     func signInWithGoogle(viewController: LoginViewController, completion: @escaping(Bool) -> Void) {
         
         // get app client id

@@ -39,7 +39,6 @@ class LoginViewController: UIViewController {
         return button
     }()
     
-    private let router: AuthRouter = Router.shared
     private let emailTextField = CustomTextField(fieldType: .email)
     private let passwordtextField = CustomTextField(fieldType: .password)
     private let eyeButton = EyeButton(frame: CGRect(x: 10, y: 0, width: 24, height: 24))
@@ -47,8 +46,8 @@ class LoginViewController: UIViewController {
     private let googleButton = CustomSocialsButton(typeOfSocials: .google)
     //    private let facebookButton = CustomSocialsButton(typeOfSocials: .facebook)
     //    private let appleButton = CustomSocialsButton(typeOfSocials: .apple)
-    private let viewModel = GoogleAuthViewModel()
     private var isPrivate = true
+    var viewModel: LoginViewModel?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -100,15 +99,20 @@ class LoginViewController: UIViewController {
     
     @objc
     private func forgotPassButtonDidTap() {
-        router.showForgotPass(from: self)
+        viewModel?.goToForgotPass()
     }
     
     @objc
     private func googleButtonDidtap() {
-        viewModel.signInWithGoogle(viewController: self) { isLogin in
+        viewModel?.signInWithGoogle(viewController: self) { isLogin in
             switch isLogin {
             case true:
-                self.router.showNews(from: self)
+//                print()
+//                let vc = TabBarViewController()
+//                self.view.window?.rootViewController = vc
+//                self.view.window?.makeKeyAndVisible()
+//                self.navigationController?.setViewControllers([vc], animated: false)
+                self.viewModel?.goToTabBar()
             case false:
                 return
             }
@@ -145,7 +149,11 @@ class LoginViewController: UIViewController {
             //            }
             switch wasLogin {
             case true:
-                self.router.showNews(from: self)
+                print()
+//                let vc = TabBarViewController()
+//                self.view.window?.rootViewController = vc
+//                self.view.window?.makeKeyAndVisible()
+//                self.viewModel?.goToTabBar()
             case false:
                 return
             }
@@ -154,7 +162,7 @@ class LoginViewController: UIViewController {
     
     @objc
     private func registerAccButtonDidTap() {
-        router.showRegistry(from: self)
+        viewModel?.goToRegistry()
     }
     
     // MARK: - Setup constraints

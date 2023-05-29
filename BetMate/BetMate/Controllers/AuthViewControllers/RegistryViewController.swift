@@ -22,13 +22,13 @@ class RegistryViewController: UIViewController {
         return button
     }()
     
-    private let router: AuthRouter = Router.shared
     private let usernamtextField = CustomTextField(fieldType: .username)
     private let emailTextField = CustomTextField(fieldType: .email)
     private let passwordTextField = CustomTextField(fieldType: .password)
     private let eyeButton = EyeButton(frame: CGRect(x: 10, y: 0, width: 24, height: 24))
     private let customRegistryButton = CustomActionButton(actionButtonType: .registry)
     private var isPrivate = true
+    var viewModel: RegistryViewModel?
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -118,7 +118,8 @@ class RegistryViewController: UIViewController {
 //            }
             switch wasRegistered {
             case true:
-                router.showNews(from: self)
+                print()
+//                viewModel?.goToTabBar()
             case false:
                 return
             }
@@ -127,7 +128,7 @@ class RegistryViewController: UIViewController {
     
     @objc
     private func loginAccButtonDidTap() {
-        router.showLogin(from: self)
+        viewModel?.goToLogin()
     }
     
     // MARK: - Setup constraints

@@ -50,7 +50,7 @@ class NewsViewController: UIViewController {
         self.view.backgroundColor = .background
         
 
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutButtonDidTap))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutButtonDidTap))
 //        navigationController?.navigationBar.prefersLargeTitles = true
 //        let largeTitleTextAttr = [
 //            NSAttributedString.Key.foregroundColor: UIColor(red: 0.11, green: 0.21, blue: 0.34, alpha: 1.00),
@@ -67,26 +67,30 @@ class NewsViewController: UIViewController {
     }
     
     // MARK: - Selectors
-//    @objc
-//    private func logoutButtonDidTap() {
-//        AuthNetworkManager.shared.signOutUser { [weak self] wasLogout, error in
-//            guard let self = self else { return }
-//            if let error = error {
-//                AlertManager.showLogoutErrorAlert(on: self, with: error)
-//                return
+    @objc
+    private func logoutButtonDidTap() {
+        AuthNetworkManager.shared.signOutUser { [weak self] wasLogout, error in
+            guard let self = self else { return }
+            if let error = error {
+                AlertManager.showLogoutErrorAlert(on: self, with: error)
+                return
+            }
+            
+//            if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+//                sceneDelegate.checkDefaultUserAuth()
 //            }
-//            
-////            if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
-////                sceneDelegate.checkDefaultUserAuth()
-////            }
-//            switch wasLogout {
-//            case true:
+            switch wasLogout {
+            case true:
+                print()
+//                let vc = LoginViewController()
+//                self.view.window?.rootViewController = vc
+//                self.view.window?.makeKeyAndVisible()
 //                router.showLogout(from: self)
-//            case false:
-//                return
-//            }
-//        }
-//    }
+            case false:
+                return
+            }
+        }
+    }
     
     // MARK: - Setup constraints
     private func setupConstraints() {

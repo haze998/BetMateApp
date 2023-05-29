@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		061C90E62A13890900A8078C /* GoogleAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061C90E52A13890900A8078C /* GoogleAuthViewModel.swift */; };
+		061C90E62A13890900A8078C /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061C90E52A13890900A8078C /* LoginViewModel.swift */; };
+		0624BE212A24DA8D000F04E9 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0624BE202A24DA8D000F04E9 /* TabBarCoordinator.swift */; };
+		0624BE232A24DCFA000F04E9 /* NewsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0624BE222A24DCFA000F04E9 /* NewsCoordinator.swift */; };
+		0624BE252A24DE5B000F04E9 /* GamesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0624BE242A24DE5B000F04E9 /* GamesCoordinator.swift */; };
+		0624BE272A24DE8E000F04E9 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0624BE262A24DE8E000F04E9 /* ProfileCoordinator.swift */; };
 		0633A62C2A18E07900A027E5 /* GamesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0633A62B2A18E07900A027E5 /* GamesViewModel.swift */; };
 		0633A62F2A18E4EA00A027E5 /* SportsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0633A62E2A18E4EA00A027E5 /* SportsCollectionViewCell.swift */; };
 		0633A6322A18E73C00A027E5 /* Sport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0633A6312A18E73C00A027E5 /* Sport.swift */; };
@@ -88,6 +92,12 @@
 		06DAC7B42A128E1F0086CC41 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06DAC7B32A128E1F0086CC41 /* GoogleService-Info.plist */; };
 		06DAC7B72A129B150086CC41 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 06DAC7B62A129B150086CC41 /* GoogleSignIn */; };
 		06DAC7B92A129B150086CC41 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 06DAC7B82A129B150086CC41 /* GoogleSignInSwift */; };
+		06EEC8222A238CDE00525723 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EEC8212A238CDE00525723 /* Coordinator.swift */; };
+		06EEC8242A238DD300525723 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EEC8232A238DD300525723 /* AppCoordinator.swift */; };
+		06EEC8262A238ECB00525723 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EEC8252A238ECB00525723 /* AuthCoordinator.swift */; };
+		06EEC8282A2394AF00525723 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EEC8272A2394AF00525723 /* OnboardingViewModel.swift */; };
+		06EEC82A2A239F2800525723 /* RegistryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EEC8292A239F2800525723 /* RegistryViewModel.swift */; };
+		06EEC82C2A23A22300525723 /* ForgotPassViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EEC82B2A23A22300525723 /* ForgotPassViewModel.swift */; };
 		06F75A9D2A11320D000A174B /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F75A9C2A11320D000A174B /* NewsViewController.swift */; };
 		06F75AA02A1134C7000A174B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 06F75A9F2A1134C7000A174B /* FirebaseAnalytics */; };
 		06F75AA22A1134C7000A174B /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 06F75AA12A1134C7000A174B /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -119,7 +129,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		061C90E52A13890900A8078C /* GoogleAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthViewModel.swift; sourceTree = "<group>"; };
+		061C90E52A13890900A8078C /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		0624BE202A24DA8D000F04E9 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		0624BE222A24DCFA000F04E9 /* NewsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCoordinator.swift; sourceTree = "<group>"; };
+		0624BE242A24DE5B000F04E9 /* GamesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesCoordinator.swift; sourceTree = "<group>"; };
+		0624BE262A24DE8E000F04E9 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		0633A62B2A18E07900A027E5 /* GamesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesViewModel.swift; sourceTree = "<group>"; };
 		0633A62E2A18E4EA00A027E5 /* SportsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsCollectionViewCell.swift; sourceTree = "<group>"; };
 		0633A6312A18E73C00A027E5 /* Sport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sport.swift; sourceTree = "<group>"; };
@@ -198,6 +212,12 @@
 		06DAC7AF2A127DB50086CC41 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		06DAC7B12A1289E40086CC41 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		06DAC7B32A128E1F0086CC41 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		06EEC8212A238CDE00525723 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		06EEC8232A238DD300525723 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		06EEC8252A238ECB00525723 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		06EEC8272A2394AF00525723 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		06EEC8292A239F2800525723 /* RegistryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistryViewModel.swift; sourceTree = "<group>"; };
+		06EEC82B2A23A22300525723 /* ForgotPassViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassViewModel.swift; sourceTree = "<group>"; };
 		06F75A9C2A11320D000A174B /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -246,7 +266,10 @@
 		061C90E42A1388C100A8078C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				061C90E52A13890900A8078C /* GoogleAuthViewModel.swift */,
+				06EEC8272A2394AF00525723 /* OnboardingViewModel.swift */,
+				061C90E52A13890900A8078C /* LoginViewModel.swift */,
+				06EEC8292A239F2800525723 /* RegistryViewModel.swift */,
+				06EEC82B2A23A22300525723 /* ForgotPassViewModel.swift */,
 				06A6B4612A1515C800CFFB33 /* NewsViewModel.swift */,
 				0633A62B2A18E07900A027E5 /* GamesViewModel.swift */,
 			);
@@ -524,6 +547,7 @@
 		06BE2BEF2A0C4C550003C875 /* BetMate */ = {
 			isa = PBXGroup;
 			children = (
+				06EEC8202A238CCE00525723 /* Coordinator */,
 				06DAC7AA2A1268830086CC41 /* Models */,
 				06982BC32A0D1671007284BC /* Views */,
 				061C90E42A1388C100A8078C /* ViewModel */,
@@ -567,6 +591,20 @@
 				068FFDA62A1BA28000E764D8 /* SportsModels */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		06EEC8202A238CCE00525723 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				06EEC8212A238CDE00525723 /* Coordinator.swift */,
+				06EEC8232A238DD300525723 /* AppCoordinator.swift */,
+				06EEC8252A238ECB00525723 /* AuthCoordinator.swift */,
+				0624BE202A24DA8D000F04E9 /* TabBarCoordinator.swift */,
+				0624BE222A24DCFA000F04E9 /* NewsCoordinator.swift */,
+				0624BE242A24DE5B000F04E9 /* GamesCoordinator.swift */,
+				0624BE262A24DE8E000F04E9 /* ProfileCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -690,8 +728,11 @@
 				06B07CFA2A1E6E6E009EAA21 /* BasketballScores.swift in Sources */,
 				068FFD9B2A1BA1D700E764D8 /* Extratime.swift in Sources */,
 				068FFDA12A1BA1D700E764D8 /* FotballStatus.swift in Sources */,
+				0624BE272A24DE8E000F04E9 /* ProfileCoordinator.swift in Sources */,
 				06B07D042A1E7878009EAA21 /* MainVolleyball.swift in Sources */,
+				0624BE252A24DE5B000F04E9 /* GamesCoordinator.swift in Sources */,
 				06506B912A1CED1800E88FA0 /* BaseballResponse.swift in Sources */,
+				06EEC82C2A23A22300525723 /* ForgotPassViewModel.swift in Sources */,
 				068DD2372A0FD8190000913B /* CustomSocialsButton.swift in Sources */,
 				068FFDA02A1BA1D700E764D8 /* FotballLeague.swift in Sources */,
 				068FFD992A1BA1D700E764D8 /* FootballResponse.swift in Sources */,
@@ -700,11 +741,12 @@
 				068FFD9F2A1BA1D700E764D8 /* Halftime.swift in Sources */,
 				06506B952A1CED5F00E88FA0 /* BaseballLeague.swift in Sources */,
 				068FFD952A1BA1D700E764D8 /* Penalty.swift in Sources */,
+				06EEC82A2A239F2800525723 /* RegistryViewModel.swift in Sources */,
 				0633A62C2A18E07900A027E5 /* GamesViewModel.swift in Sources */,
 				06982BC52A0D1682007284BC /* CustomTextField.swift in Sources */,
 				06982BB62A0D0E22007284BC /* LoginViewController.swift in Sources */,
 				068FFDA42A1BA1D700E764D8 /* Parameters.swift in Sources */,
-				061C90E62A13890900A8078C /* GoogleAuthViewModel.swift in Sources */,
+				061C90E62A13890900A8078C /* LoginViewModel.swift in Sources */,
 				06A6B4622A1515C800CFFB33 /* NewsViewModel.swift in Sources */,
 				0635A5BD2A13D06C003CBE55 /* ProfileViewController.swift in Sources */,
 				068FFD9A2A1BA1D700E764D8 /* FotballFixture.swift in Sources */,
@@ -713,6 +755,8 @@
 				06982BBB2A0D0E6A007284BC /* RegistryViewController.swift in Sources */,
 				06A6B45A2A150C8400CFFB33 /* NewsSource.swift in Sources */,
 				06BE2BF52A0C4C550003C875 /* OnboardingViewController.swift in Sources */,
+				0624BE232A24DCFA000F04E9 /* NewsCoordinator.swift in Sources */,
+				06EEC8282A2394AF00525723 /* OnboardingViewModel.swift in Sources */,
 				068DD22F2A0F9FE60000913B /* EyeButton.swift in Sources */,
 				0635A5BB2A13D05C003CBE55 /* GamesViewController.swift in Sources */,
 				06982BC72A0D1EDB007284BC /* Extension + UIColor.swift in Sources */,
@@ -720,11 +764,14 @@
 				0635A5BF2A13D124003CBE55 /* TabBarViewController.swift in Sources */,
 				063DBC7C2A165A5A00406059 /* Extension + String.swift in Sources */,
 				06B07D012A1E72D5009EAA21 /* MainHockey.swift in Sources */,
+				0624BE212A24DA8D000F04E9 /* TabBarCoordinator.swift in Sources */,
+				06EEC8242A238DD300525723 /* AppCoordinator.swift in Sources */,
 				068FFD942A1BA1D700E764D8 /* Goals.swift in Sources */,
 				068FFD932A1BA1D700E764D8 /* MainFootball.swift in Sources */,
 				06BE2C112A0C55310003C875 /* Extension + UIView.swift in Sources */,
 				068FFDA32A1BA1D700E764D8 /* Paging.swift in Sources */,
 				0633A6322A18E73C00A027E5 /* Sport.swift in Sources */,
+				06EEC8222A238CDE00525723 /* Coordinator.swift in Sources */,
 				0633A6342A18F17900A027E5 /* Extension + UICollectionView.swift in Sources */,
 				06BE2BF12A0C4C550003C875 /* AppDelegate.swift in Sources */,
 				068FFDA22A1BA1D700E764D8 /* Score.swift in Sources */,
@@ -735,6 +782,7 @@
 				06DAC7B02A127DB50086CC41 /* Validator.swift in Sources */,
 				06982BC22A0D0F41007284BC /* ForgotPasswordViewController.swift in Sources */,
 				06B07CF02A1E6CDC009EAA21 /* MainBasketball.swift in Sources */,
+				06EEC8262A238ECB00525723 /* AuthCoordinator.swift in Sources */,
 				06BE2BF32A0C4C550003C875 /* SceneDelegate.swift in Sources */,
 				06B07CFC2A1E6E96009EAA21 /* BasketballTeams.swift in Sources */,
 				06B07CF62A1E6E46009EAA21 /* BasketballCountry.swift in Sources */,
