@@ -11,7 +11,6 @@ import SnapKit
 class NewsViewController: UIViewController {
     
     // MARK: - Private properties
-    private let router: AuthRouter = Router.shared
     var viewModel = NewsViewModel()
     
     private lazy var tableView: UITableView = {

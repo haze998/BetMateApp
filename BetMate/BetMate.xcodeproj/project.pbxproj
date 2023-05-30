@@ -52,8 +52,6 @@
 		068FFDA42A1BA1D700E764D8 /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068FFD922A1BA1D700E764D8 /* Parameters.swift */; };
 		06982BB62A0D0E22007284BC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06982BB52A0D0E22007284BC /* LoginViewController.swift */; };
 		06982BBB2A0D0E6A007284BC /* RegistryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06982BBA2A0D0E6A007284BC /* RegistryViewController.swift */; };
-		06982BBE2A0D0EB6007284BC /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06982BBD2A0D0EB6007284BC /* Router.swift */; };
-		06982BC02A0D0EEC007284BC /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06982BBF2A0D0EEC007284BC /* MainRouter.swift */; };
 		06982BC22A0D0F41007284BC /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06982BC12A0D0F41007284BC /* ForgotPasswordViewController.swift */; };
 		06982BC52A0D1682007284BC /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06982BC42A0D1682007284BC /* CustomTextField.swift */; };
 		06982BC72A0D1EDB007284BC /* Extension + UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06982BC62A0D1EDB007284BC /* Extension + UIColor.swift */; };
@@ -176,8 +174,6 @@
 		068FFD922A1BA1D700E764D8 /* Parameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parameters.swift; sourceTree = "<group>"; };
 		06982BB52A0D0E22007284BC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		06982BBA2A0D0E6A007284BC /* RegistryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistryViewController.swift; sourceTree = "<group>"; };
-		06982BBD2A0D0EB6007284BC /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		06982BBF2A0D0EEC007284BC /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
 		06982BC12A0D0F41007284BC /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		06982BC42A0D1682007284BC /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		06982BC62A0D1EDB007284BC /* Extension + UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIColor.swift"; sourceTree = "<group>"; };
@@ -421,15 +417,6 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		06982BBC2A0D0EA8007284BC /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				06982BBD2A0D0EB6007284BC /* Router.swift */,
-				06982BBF2A0D0EEC007284BC /* MainRouter.swift */,
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
 		06982BC32A0D1671007284BC /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -567,7 +554,6 @@
 				061C90E42A1388C100A8078C /* ViewModel */,
 				06982BB92A0D0E53007284BC /* Controllers */,
 				06DAC7A72A12676C0086CC41 /* Managers */,
-				06982BBC2A0D0EA8007284BC /* Router */,
 				06982BB82A0D0E49007284BC /* Extensions */,
 				06982BB72A0D0E2A007284BC /* AppResources */,
 				06BE2BFB2A0C4C570003C875 /* LaunchScreen.storyboard */,
@@ -735,7 +721,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				068FFD9C2A1BA1D700E764D8 /* FootballTeams.swift in Sources */,
-				06982BBE2A0D0EB6007284BC /* Router.swift in Sources */,
 				06A6B45E2A150F0500CFFB33 /* NewsNetworkManager.swift in Sources */,
 				06DAC7AE2A1273B80086CC41 /* SignInUserInfo.swift in Sources */,
 				06506B9B2A1CEDDB00E88FA0 /* BasebalTeams.swift in Sources */,
@@ -808,7 +793,6 @@
 				06DAC7A92A12679C0086CC41 /* AuthNetworkManager.swift in Sources */,
 				06A6B4542A150BD600CFFB33 /* News.swift in Sources */,
 				068FFD9E2A1BA1D700E764D8 /* FootballAway.swift in Sources */,
-				06982BC02A0D0EEC007284BC /* MainRouter.swift in Sources */,
 				06B07CFE2A1E6EC8009EAA21 /* MainHandball.swift in Sources */,
 				0636172A2A2610DC00D30F55 /* DetailNewsViewController.swift in Sources */,
 				068FFD972A1BA1D700E764D8 /* FootbalHome.swift in Sources */,
