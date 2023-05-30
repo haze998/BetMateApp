@@ -20,6 +20,7 @@
 		0635A5BB2A13D05C003CBE55 /* GamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0635A5BA2A13D05C003CBE55 /* GamesViewController.swift */; };
 		0635A5BD2A13D06C003CBE55 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0635A5BC2A13D06C003CBE55 /* ProfileViewController.swift */; };
 		0635A5BF2A13D124003CBE55 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0635A5BE2A13D124003CBE55 /* TabBarViewController.swift */; };
+		0636172A2A2610DC00D30F55 /* DetailNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063617292A2610DC00D30F55 /* DetailNewsViewController.swift */; };
 		063DBC7C2A165A5A00406059 /* Extension + String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063DBC7B2A165A5A00406059 /* Extension + String.swift */; };
 		06506B8D2A1CEBF500E88FA0 /* MainBaseball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06506B8C2A1CEBF500E88FA0 /* MainBaseball.swift */; };
 		06506B8F2A1CECD600E88FA0 /* BaseballParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06506B8E2A1CECD600E88FA0 /* BaseballParameters.swift */; };
@@ -143,6 +144,7 @@
 		0635A5BA2A13D05C003CBE55 /* GamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesViewController.swift; sourceTree = "<group>"; };
 		0635A5BC2A13D06C003CBE55 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0635A5BE2A13D124003CBE55 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		063617292A2610DC00D30F55 /* DetailNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNewsViewController.swift; sourceTree = "<group>"; };
 		063DBC7B2A165A5A00406059 /* Extension + String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + String.swift"; sourceTree = "<group>"; };
 		06506B8C2A1CEBF500E88FA0 /* MainBaseball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBaseball.swift; sourceTree = "<group>"; };
 		06506B8E2A1CECD600E88FA0 /* BaseballParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseballParameters.swift; sourceTree = "<group>"; };
@@ -324,6 +326,14 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		063617282A260EA500D30F55 /* DetailNewsController */ = {
+			isa = PBXGroup;
+			children = (
+				063617292A2610DC00D30F55 /* DetailNewsViewController.swift */,
+			);
+			path = DetailNewsController;
+			sourceTree = "<group>";
+		};
 		06506B742A1CDDC300E88FA0 /* BaseballModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -406,6 +416,7 @@
 			children = (
 				0635A5B82A13CF25003CBE55 /* AuthViewControllers */,
 				0635A5B92A13CF46003CBE55 /* Core */,
+				063617282A260EA500D30F55 /* DetailNewsController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -799,6 +810,7 @@
 				068FFD9E2A1BA1D700E764D8 /* FootballAway.swift in Sources */,
 				06982BC02A0D0EEC007284BC /* MainRouter.swift in Sources */,
 				06B07CFE2A1E6EC8009EAA21 /* MainHandball.swift in Sources */,
+				0636172A2A2610DC00D30F55 /* DetailNewsViewController.swift in Sources */,
 				068FFD972A1BA1D700E764D8 /* FootbalHome.swift in Sources */,
 				06DAC7AC2A1268960086CC41 /* RegisterUserInfo.swift in Sources */,
 				0675BDDB2A1A8BCC00985D3E /* GamesTableViewCell.swift in Sources */,

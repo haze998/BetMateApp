@@ -12,7 +12,7 @@ class NewsViewController: UIViewController {
     
     // MARK: - Private properties
     private let router: AuthRouter = Router.shared
-    private let viewModel = NewsViewModel()
+    var viewModel = NewsViewModel()
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -120,4 +120,12 @@ extension NewsViewController: UITableViewDataSource {
     }
 }
 
-extension NewsViewController: UITableViewDelegate {}
+extension NewsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedNews = viewModel.sportNews[indexPath.row]
+        let detailVC = DetailNewsViewController()
+        detailVC.selectedNews = selectedNews
+//        navigationController?.navigationBar.isHidden = true
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
+}

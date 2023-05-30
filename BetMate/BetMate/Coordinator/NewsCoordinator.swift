@@ -32,5 +32,5 @@ class NewsCoordinator : Coordinator {
 //        onboardVC.viewModel = viewModel
         // Push it.
         navigationController.pushViewController(newsVC, animated: true)
-    }    
+    }
 }
