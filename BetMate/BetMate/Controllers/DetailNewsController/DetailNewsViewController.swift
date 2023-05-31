@@ -14,7 +14,6 @@ class DetailNewsViewController: UIViewController {
     // MARK: - Private properties
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.backgroundColor = .lightGray
         scrollView.alwaysBounceVertical = true
         scrollView.alwaysBounceHorizontal = false
         scrollView.showsHorizontalScrollIndicator = false
@@ -39,7 +38,6 @@ class DetailNewsViewController: UIViewController {
     
     private lazy var newsTitle: UILabel = {
         let label = UILabel()
-//        label.text = "No, staring at a screen won’t damage your eyes"
         label.font = UIFont(name: FontNames.exoBold.rawValue, size: 24)
         label.numberOfLines = 3
         label.textColor = .labelColor
@@ -55,17 +53,15 @@ class DetailNewsViewController: UIViewController {
     
     private lazy var auhtorName: UILabel = {
         let label = UILabel()
-//        label.text = "Author Name"
-        label.font = UIFont(name: FontNames.exoSemiBold.rawValue, size: 14)
+        label.font = UIFont(name: FontNames.exoSemiBold.rawValue, size: 16)
         label.textColor = .labelColor
         return label
     }()
     
     private lazy var postDate: UILabel = {
        let label = UILabel()
-        label.font = UIFont(name: FontNames.exoSemiBold.rawValue, size: 14)
+        label.font = UIFont(name: FontNames.exoSemiBold.rawValue, size: 16)
         label.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
-//        label.text = "2023/13/03 14:00"
         return label
     }()
     
@@ -76,15 +72,62 @@ class DetailNewsViewController: UIViewController {
         return view
     }()
     
+    private lazy var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: FontNames.exoBold.rawValue, size: 19)
+        label.textColor = .labelColor
+        label.numberOfLines = 3
+        return label
+    }()
+    
     private lazy var textView: UITextView = {
         let view = UITextView()
         view.font = UIFont(name: FontNames.exoMedium.rawValue, size: 17)
         view.backgroundColor = .clear
         view.textColor = .labelColor
-//        view.sizeToFit()
         view.isScrollEnabled = false
-        view.delegate = self
+        view.isUserInteractionEnabled = false
         return view
+    }()
+    
+    private lazy var linkLabel: UILabel = {
+        let label = UILabel()
+        label.text = "URL :"
+        label.font = UIFont(name: FontNames.exoBold.rawValue, size: 17)
+        label.textColor = .labelColor
+        return label
+    }()
+    
+    private lazy var linkUrlLabel: UILabel = {
+        let label = UILabel()
+        label.isUserInteractionEnabled = true
+        label.font = UIFont(name: FontNames.exoSemiBold.rawValue, size: 17)
+        label.textColor = .labelColor
+        return label
+    }()
+    
+    private lazy var sourceLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Source :"
+        label.font = UIFont(name: FontNames.exoBold.rawValue, size: 17)
+        label.textColor = .labelColor
+        return label
+    }()
+    
+    private lazy var sourceNameLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: FontNames.exoBold.rawValue, size: 17)
+        label.textColor = .labelColor
+        return label
+    }()
+    
+    private lazy var backButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "backArrow"), for: .normal)
+        button.backgroundColor = .background
+        button.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+        button.layer.cornerRadius = 15
+        return button
     }()
     
     var selectedNews: NewsArticle?
@@ -109,13 +152,34 @@ class DetailNewsViewController: UIViewController {
         auhtorName.text = newsInfo.author
         postDate.text = newsInfo.publishedAt?.formatDateString(newsInfo.publishedAt ?? "")
         textView.text = newsInfo.content
+        descriptionLabel.text = newsInfo.description
+        sourceNameLabel.text = newsInfo.source?.name
+        
+        let attributedText = NSAttributedString(string: newsInfo.url ?? "", attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
+        linkUrlLabel.attributedText = attributedText
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(linkUrlLabelDidTap))
+        linkUrlLabel.addGestureRecognizer(tapGesture)
+    }
+    
+    // MARK: - Selectors
+    @objc
+    private func backButtonDidTap() {
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
+    @objc
+    func linkUrlLabelDidTap() {
+        if let url = URL(string: linkUrlLabel.text ?? "") {
+            UIApplication.shared.open(url)
+        }
     }
     
     // MARK: - Setup layout
     private func setupLayout() {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
-        contentView.addSubviews(view: [newsImageView, newsTitle, authorImageView, auhtorName, postDate, deviderView, textView])
+        contentView.addSubviews(view: [newsImageView, newsTitle, authorImageView, auhtorName, postDate, deviderView, textView, backButton, descriptionLabel, linkLabel, linkUrlLabel, sourceLabel, sourceNameLabel])
         
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -154,6 +218,7 @@ class DetailNewsViewController: UIViewController {
         }
         
         auhtorName.snp.makeConstraints { make in
+            make.width.equalTo(200)
             make.left.equalTo(authorImageView.snp_rightMargin).offset(16)
             make.top.equalTo(newsTitle.snp_bottomMargin).offset(22)
         }
@@ -169,27 +234,43 @@ class DetailNewsViewController: UIViewController {
             make.leading.trailing.equalToSuperview().inset(16)
         }
         
+        descriptionLabel.snp.makeConstraints { make in
+            make.top.equalTo(deviderView.snp.bottom).offset(16)
+            make.leading.trailing.equalToSuperview().inset(16)
+        }
+        
         textView.snp.makeConstraints { make in
-            make.top.equalTo(deviderView.snp_bottomMargin).offset(16)
+            make.top.equalTo(descriptionLabel.snp_bottomMargin).offset(16)
             make.leading.trailing.equalTo(contentView).inset(16)
-            make.height.equalToSuperview()
-
+            make.height.equalTo(130)
+        }
+        
+        backButton.snp.makeConstraints { make in
+            make.height.width.equalTo(30)
+            make.top.equalTo(60)
+            make.left.equalTo(16)
+        }
+        
+        linkLabel.snp.makeConstraints { make in
+            make.top.equalTo(textView.snp.bottom).offset(10)
+            make.left.equalTo(16)
+        }
+        
+        linkUrlLabel.snp.makeConstraints { make in
+            make.left.equalTo(linkLabel.snp_rightMargin).offset(16)
+            make.right.equalToSuperview().inset(16)
+            make.top.equalTo(textView.snp.bottom).offset(10)
+        }
+        
+        sourceLabel.snp.makeConstraints { make in
+            make.top.equalTo(linkLabel.snp.bottom).offset(16)
+            make.left.equalTo(16)
+        }
+        
+        sourceNameLabel.snp.makeConstraints { make in
+            make.left.equalTo(sourceLabel.snp_rightMargin).offset(16)
+            make.top.equalTo(linkLabel.snp.bottom).offset(16)
         }
     }
 }
 
-extension DetailNewsViewController: UITextViewDelegate {
-    func textViewDidChange(_ textView: UITextView) {
-        let size = CGSize(width: textView.frame.size.width, height: .infinity)
-        let estimatedSize = textView.sizeThatFits(size)
-        
-        guard textView.contentSize.height < 100.0 else { textView.isScrollEnabled = true; return }
-        
-        textView.isScrollEnabled = false
-        textView.constraints.forEach { constraint in
-            if constraint.firstAttribute == .height {
-                constraint.constant = estimatedSize.height
-            }
-        }
-    }
-}

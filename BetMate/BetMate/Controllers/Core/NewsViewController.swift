@@ -33,7 +33,9 @@ class NewsViewController: UIViewController {
     }()
     
     private lazy var customScrollUpButton: CustomScrollUpButton = {
-        let button = CustomScrollUpButton(frame: CGRect(x: 300, y: 680, width: 50, height: 50))
+        let button = CustomScrollUpButton()
+        button.addTarget(self, action: #selector(scrollUpButtonDidtap), for: .touchUpInside)
+        button.layer.cornerRadius = 25
         return button
     }()
     
@@ -78,7 +80,7 @@ class NewsViewController: UIViewController {
                 AlertManager.showLogoutErrorAlert(on: self, with: error)
                 return
             }
-            
+
             switch wasLogout {
             case true:
                 print("TAP")
@@ -86,6 +88,12 @@ class NewsViewController: UIViewController {
                 return
             }
         }
+    }
+    
+    @objc
+    private func scrollUpButtonDidtap() {
+        let indexPath = IndexPath(row: 0, section: 0)
+            tableView.scrollToRow(at: indexPath, at: .top, animated: true)
     }
     
     // MARK: - Setup constraints
@@ -101,7 +109,12 @@ class NewsViewController: UIViewController {
             make.top.equalTo(titleLabel.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview().inset(20)
             make.bottom.equalToSuperview()
-            
+        }
+        
+        customScrollUpButton.snp.makeConstraints { make in
+            make.height.width.equalTo(50)
+            make.trailing.equalToSuperview().inset(25)
+            make.bottom.equalToSuperview().inset(100)
         }
     }
 }
@@ -124,7 +137,7 @@ extension NewsViewController: UITableViewDelegate {
         let selectedNews = viewModel.sportNews[indexPath.row]
         let detailVC = DetailNewsViewController()
         detailVC.selectedNews = selectedNews
-//        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.isHidden = true
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }

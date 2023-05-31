@@ -41,7 +41,9 @@ class GamesViewController: UIViewController {
     }()
     
     private lazy var customScrollUpButton: CustomScrollUpButton = {
-        let button = CustomScrollUpButton(frame: CGRect(x: 300, y: 680, width: 50, height: 50))
+        let button = CustomScrollUpButton()
+        button.addTarget(self, action: #selector(scrollUpButtonDidtap), for: .touchUpInside)
+        button.layer.cornerRadius = 25
         return button
     }()
     
@@ -85,6 +87,13 @@ class GamesViewController: UIViewController {
     // MARK: - Setup UI
     private func setupUI() {
         self.view.backgroundColor = .background
+    }
+    
+    // MARK: - Selectors
+    @objc
+    private func scrollUpButtonDidtap() {
+        let indexPath = IndexPath(row: 0, section: 0)
+            tableView.scrollToRow(at: indexPath, at: .top, animated: true)
     }
     
     // MARK: - Private functions
@@ -149,6 +158,12 @@ class GamesViewController: UIViewController {
             make.top.equalTo(collectionView.snp.bottom).offset(15)
             make.leading.trailing.equalToSuperview().inset(20)
             make.bottom.equalToSuperview()
+        }
+        
+        customScrollUpButton.snp.makeConstraints { make in
+            make.height.width.equalTo(50)
+            make.trailing.equalToSuperview().inset(25)
+            make.bottom.equalToSuperview().inset(100)
         }
     }
 }

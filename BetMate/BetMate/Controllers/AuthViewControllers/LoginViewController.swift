@@ -107,11 +107,6 @@ class LoginViewController: UIViewController {
         viewModel?.signInWithGoogle(viewController: self) { isLogin in
             switch isLogin {
             case true:
-//                print()
-//                let vc = TabBarViewController()
-//                self.view.window?.rootViewController = vc
-//                self.view.window?.makeKeyAndVisible()
-//                self.navigationController?.setViewControllers([vc], animated: false)
                 self.viewModel?.goToTabBar()
             case false:
                 return
@@ -144,16 +139,11 @@ class LoginViewController: UIViewController {
                 AlertManager.showSignInErrorAlert(on: self, with: error)
                 return
             }
-            //            if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
-            //                sceneDelegate.checkDefaultUserAuth()
-            //            }
+            
             switch wasLogin {
             case true:
                 print()
-//                let vc = TabBarViewController()
-//                self.view.window?.rootViewController = vc
-//                self.view.window?.makeKeyAndVisible()
-//                self.viewModel?.goToTabBar()
+                self.viewModel?.goToTabBar()
             case false:
                 return
             }

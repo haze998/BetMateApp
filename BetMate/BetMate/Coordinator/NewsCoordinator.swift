@@ -33,4 +33,5 @@ class NewsCoordinator : Coordinator {
         // Push it.
         navigationController.pushViewController(newsVC, animated: true)
     }
+    
 }

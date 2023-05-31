@@ -26,6 +26,7 @@ class AppCoordinator: Coordinator {
         } else {
             showTabBar()
         }
+        
     }
     
     func showAuth() {
@@ -47,6 +48,8 @@ class AppCoordinator: Coordinator {
         tabBarCoordinator.parentCoordinator = self
         tabBarCoordinator.start()
     }
+    
+   
     
     deinit {
         print("AppCoordinator Deinit")
