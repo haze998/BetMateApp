@@ -11,7 +11,16 @@ import SnapKit
 class NewsViewController: UIViewController {
     
     // MARK: - Private properties
-    var viewModel = NewsViewModel()
+    var viewModel: NewsViewModel
+    
+    init(viewModel: NewsViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -134,10 +143,6 @@ extension NewsViewController: UITableViewDataSource {
 
 extension NewsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedNews = viewModel.sportNews[indexPath.row]
-        let detailVC = DetailNewsViewController()
-        detailVC.selectedNews = selectedNews
-        navigationController?.navigationBar.isHidden = true
-        navigationController?.pushViewController(detailVC, animated: true)
+        viewModel.goToDetailNews(news: viewModel.sportNews[indexPath.row])
     }
 }

@@ -11,6 +11,17 @@ import SDWebImage
 
 class DetailNewsViewController: UIViewController {
     
+    var viewModel: DetailViewModel
+    
+    init(viewModel: DetailViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Private properties
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -130,7 +141,8 @@ class DetailNewsViewController: UIViewController {
         return button
     }()
     
-    var selectedNews: NewsArticle?
+//    var selectedNews: NewsArticle?
+    
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -145,7 +157,7 @@ class DetailNewsViewController: UIViewController {
     
     // MARK: - Setup UI
     private func setupUI() {
-        guard let newsInfo = selectedNews else { return }
+        let newsInfo = viewModel.news
         let ImgURL = URL(string: newsInfo.urlToImage ?? "")
         newsImageView.sd_setImage(with: ImgURL)
         newsTitle.text = newsInfo.title
@@ -195,7 +207,7 @@ class DetailNewsViewController: UIViewController {
             } else if UIScreen.main.bounds.height > 800 && UIScreen.main.bounds.height <= 813 {
                 make.height.equalTo(view.frame.height + 50)
             } else {
-                make.height.equalTo(1260)
+                make.height.equalTo(830)
                 scrollView.isScrollEnabled = true
             }
         }

@@ -23,7 +23,9 @@ class NewsCoordinator : Coordinator {
     
     func goToNewsPage() {
         // Instantiate ViewController
-        let newsVC = NewsViewController()
+        let viewModel = NewsViewModel(coordinator: self)
+        let newsVC = NewsViewController(viewModel: viewModel)
+        navigationController.navigationBar.isHidden = true
         // Instantiate ViewModel
 //        let viewModel =  OnboardingViewModel.init()
         // Set the Coordinator to the ViewModel
@@ -34,4 +36,19 @@ class NewsCoordinator : Coordinator {
         navigationController.pushViewController(newsVC, animated: true)
     }
     
+    func goToDetailNews(with sportsNews: NewsArticle) {
+        let viewModel = DetailViewModel(coordinator: self, news: sportsNews)
+        let vc = DetailNewsViewController(viewModel: viewModel)
+        
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    
+    // TODO: - If we logout call this method
+//    func goToLogout() {
+//        childrenCoordinator.removeAll()
+//        let appC = AppCoordinator(navigationController: navigationController)
+//        appC.childrenCoordinator.append(appC)
+//        appC.start()
+//    }
 }

@@ -62,6 +62,7 @@
 		06A6B4622A1515C800CFFB33 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A6B4612A1515C800CFFB33 /* NewsViewModel.swift */; };
 		06A6B4652A15193300CFFB33 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A6B4642A15193300CFFB33 /* NewsTableViewCell.swift */; };
 		06A6B4682A151C4400CFFB33 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 06A6B4672A151C4400CFFB33 /* SDWebImage */; };
+		06A7CBCC2A28B8DD00E170F9 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A7CBCB2A28B8DD00E170F9 /* DetailViewModel.swift */; };
 		06B07CF02A1E6CDC009EAA21 /* MainBasketball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B07CEF2A1E6CDC009EAA21 /* MainBasketball.swift */; };
 		06B07CF22A1E6E24009EAA21 /* BasketballParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B07CF12A1E6E24009EAA21 /* BasketballParameters.swift */; };
 		06B07CF42A1E6E34009EAA21 /* BasketballResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B07CF32A1E6E34009EAA21 /* BasketballResponse.swift */; };
@@ -183,6 +184,7 @@
 		06A6B45F2A15146900CFFB33 /* NewsArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsArticle.swift; sourceTree = "<group>"; };
 		06A6B4612A1515C800CFFB33 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		06A6B4642A15193300CFFB33 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		06A7CBCB2A28B8DD00E170F9 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		06B07CEF2A1E6CDC009EAA21 /* MainBasketball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBasketball.swift; sourceTree = "<group>"; };
 		06B07CF12A1E6E24009EAA21 /* BasketballParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketballParameters.swift; sourceTree = "<group>"; };
 		06B07CF32A1E6E34009EAA21 /* BasketballResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketballResponse.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				06EEC82B2A23A22300525723 /* ForgotPassViewModel.swift */,
 				06A6B4612A1515C800CFFB33 /* NewsViewModel.swift */,
 				0633A62B2A18E07900A027E5 /* GamesViewModel.swift */,
+				06A7CBCB2A28B8DD00E170F9 /* DetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -798,6 +801,7 @@
 				068FFD972A1BA1D700E764D8 /* FootbalHome.swift in Sources */,
 				06DAC7AC2A1268960086CC41 /* RegisterUserInfo.swift in Sources */,
 				0675BDDB2A1A8BCC00985D3E /* GamesTableViewCell.swift in Sources */,
+				06A7CBCC2A28B8DD00E170F9 /* DetailViewModel.swift in Sources */,
 				06506B8F2A1CECD600E88FA0 /* BaseballParameters.swift in Sources */,
 				068FFD982A1BA1D700E764D8 /* Periods.swift in Sources */,
 				06B07CF22A1E6E24009EAA21 /* BasketballParameters.swift in Sources */,

@@ -9,7 +9,17 @@ import Foundation
 
 class NewsViewModel {
     
+    weak var coordinator: NewsCoordinator?
     var sportNews: [NewsArticle] = []
+    
+    init(coordinator: NewsCoordinator) {
+        self.coordinator = coordinator
+ 
+    }
+    
+    func goToDetailNews(news: NewsArticle) {
+        coordinator?.goToDetailNews(with: news)
+    }
     
     // MARK: - Fetched News
     func fetchedNews(completion: @escaping() -> Void) {
