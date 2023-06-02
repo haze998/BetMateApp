@@ -49,8 +49,6 @@ class AppCoordinator: Coordinator {
         tabBarCoordinator.start()
     }
     
-   
-    
     deinit {
         print("AppCoordinator Deinit")
     }

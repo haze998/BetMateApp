@@ -71,7 +71,7 @@ class NewsViewController: UIViewController {
     // MARK: - SetupUI
     private func setupUI() {
         self.view.backgroundColor = .background
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutButtonDidTap))
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutButtonDidTap))
     }
     
     private func fetchedNews() {
@@ -81,23 +81,23 @@ class NewsViewController: UIViewController {
     }
     
     // MARK: - Selectors
-    @objc
-    private func logoutButtonDidTap() {
-        AuthNetworkManager.shared.signOutUser { [weak self] wasLogout, error in
-            guard let self = self else { return }
-            if let error = error {
-                AlertManager.showLogoutErrorAlert(on: self, with: error)
-                return
-            }
-
-            switch wasLogout {
-            case true:
-                print("TAP")
-            case false:
-                return
-            }
-        }
-    }
+//    @objc
+//    private func logoutButtonDidTap() {
+//        AuthNetworkManager.shared.signOutUser { [weak self] wasLogout, error in
+//            guard let self = self else { return }
+//            if let error = error {
+//                AlertManager.showLogoutErrorAlert(on: self, with: error)
+//                return
+//            }
+//
+//            switch wasLogout {
+//            case true:
+//                print("TAP")
+//            case false:
+//                return
+//            }
+//        }
+//    }
     
     @objc
     private func scrollUpButtonDidtap() {

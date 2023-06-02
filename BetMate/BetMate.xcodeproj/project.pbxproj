@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		060A5A7F2A2A2975000B7B14 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A5A7E2A2A2975000B7B14 /* ProfileViewModel.swift */; };
+		060A5A812A2A3415000B7B14 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A5A802A2A3415000B7B14 /* User.swift */; };
 		061C90E62A13890900A8078C /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061C90E52A13890900A8078C /* LoginViewModel.swift */; };
 		0624BE212A24DA8D000F04E9 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0624BE202A24DA8D000F04E9 /* TabBarCoordinator.swift */; };
 		0624BE232A24DCFA000F04E9 /* NewsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0624BE222A24DCFA000F04E9 /* NewsCoordinator.swift */; };
@@ -130,6 +132,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		060A5A7E2A2A2975000B7B14 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		060A5A802A2A3415000B7B14 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		061C90E52A13890900A8078C /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		0624BE202A24DA8D000F04E9 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		0624BE222A24DCFA000F04E9 /* NewsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCoordinator.swift; sourceTree = "<group>"; };
@@ -275,6 +279,7 @@
 				06A6B4612A1515C800CFFB33 /* NewsViewModel.swift */,
 				0633A62B2A18E07900A027E5 /* GamesViewModel.swift */,
 				06A7CBCB2A28B8DD00E170F9 /* DetailViewModel.swift */,
+				060A5A7E2A2A2975000B7B14 /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -444,8 +449,9 @@
 		06A6B4552A150BF000CFFB33 /* AuthModels */ = {
 			isa = PBXGroup;
 			children = (
-				06DAC7AB2A1268960086CC41 /* RegisterUserInfo.swift */,
 				06DAC7AD2A1273B80086CC41 /* SignInUserInfo.swift */,
+				06DAC7AB2A1268960086CC41 /* RegisterUserInfo.swift */,
+				060A5A802A2A3415000B7B14 /* User.swift */,
 			);
 			path = AuthModels;
 			sourceTree = "<group>";
@@ -729,6 +735,7 @@
 				06506B9B2A1CEDDB00E88FA0 /* BasebalTeams.swift in Sources */,
 				06B07CFA2A1E6E6E009EAA21 /* BasketballScores.swift in Sources */,
 				068FFD9B2A1BA1D700E764D8 /* Extratime.swift in Sources */,
+				060A5A7F2A2A2975000B7B14 /* ProfileViewModel.swift in Sources */,
 				068FFDA12A1BA1D700E764D8 /* FotballStatus.swift in Sources */,
 				0624BE272A24DE8E000F04E9 /* ProfileCoordinator.swift in Sources */,
 				06B07D042A1E7878009EAA21 /* MainVolleyball.swift in Sources */,
@@ -780,6 +787,7 @@
 				068FFDA22A1BA1D700E764D8 /* Score.swift in Sources */,
 				0633A62F2A18E4EA00A027E5 /* SportsCollectionViewCell.swift in Sources */,
 				06A6B4602A15146900CFFB33 /* NewsArticle.swift in Sources */,
+				060A5A812A2A3415000B7B14 /* User.swift in Sources */,
 				068DD2352A0FCF8F0000913B /* CustomActionButton.swift in Sources */,
 				0633A6372A190B2700A027E5 /* SportsNetworkManager.swift in Sources */,
 				06DAC7B02A127DB50086CC41 /* Validator.swift in Sources */,

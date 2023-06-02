@@ -22,17 +22,27 @@ class ProfileCoordinator : Coordinator {
     }
     
     func goToProfilePage() {
-        // Instantiate ViewController
-        let profileVC = ProfileViewController()
-        // Instantiate ViewModel
-//        let viewModel =  OnboardingViewModel.init()
-        // Set the Coordinator to the ViewModel
-//        viewModel.coordinator = self
-        // Set the ViewModel to ViewController
-//        onboardVC.viewModel = viewModel
-        // Push it.
+        let viewModel = ProfileViewModel(coordinator: self)
+        let profileVC = ProfileViewController(viewModel: viewModel)
         navigationController.pushViewController(profileVC, animated: true)
     }
     
+    func goToLogout() {
+//        childrenCoordinator.removeAll()
+        let appC = parentCoordinator as? AppCoordinator
+//        appC?.childrenCoordinator.append(appC!)
+        appC?.showAuth()
+        parentCoordinator?.childrenDidFinish(self)
+        
+        
+//        let appC = parentCoordinator as? AppCoordinator
+//        let transition = CATransition()
+//        transition.duration = 0.7
+//        transition.type = CATransitionType.fade
+//        navigationController.view.layer.add(transition, forKey: kCATransition)
+//        appC?.showTabBar()
+//        // Remember to clean up
+//        parentCoordinator?.childrenDidFinish(self)
+    }
 }
 
