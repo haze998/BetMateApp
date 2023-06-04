@@ -32,7 +32,6 @@ class ProfileViewController: UIViewController {
     
     private lazy var userIdLabel: UILabel = {
         let label = UILabel()
-//        label.text = "ID: 090335"
         label.font = UIFont(name: FontNames.exoSemiBold.rawValue, size: 16)
         label.textColor = .labelColor
         return label
@@ -75,7 +74,6 @@ class ProfileViewController: UIViewController {
     
     private lazy var userNameLabel: UILabel = {
         let label = UILabel()
-//        label.text = "User Name"
         label.font = UIFont(name: FontNames.exoSemiBold.rawValue, size: 24)
         label.textColor = .labelColor
         return label
@@ -91,7 +89,6 @@ class ProfileViewController: UIViewController {
     
     private lazy var emailNameLabel: UILabel = {
         let label = UILabel()
-//        label.text = "test.user@mail.com"
         label.font = UIFont(name: FontNames.exoSemiBold.rawValue, size: 24)
         label.textColor = .labelColor
         return label
@@ -105,6 +102,18 @@ class ProfileViewController: UIViewController {
         button.layer.borderColor = UIColor.borderViewColor
         button.addTarget(self, action: #selector(logoutButtonDidTap), for: .touchUpInside)
         return button
+    }()
+    
+    private lazy var addPhotoButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "addphoto"), for: .normal)
+        button.addTarget(self, action: #selector(addPhotoButtonDidTap), for: .touchUpInside)
+        return button
+    }()
+    
+    private var nameImage: String = {
+        var nameImage = ""
+        return nameImage
     }()
     
     // MARK: - Lifecycle
@@ -151,7 +160,7 @@ class ProfileViewController: UIViewController {
                 AlertManager.showLogoutErrorAlert(on: self, with: error)
                 return
             }
-
+            
             switch wasLogout {
             case true:
                 viewModel.goToLogout()
@@ -161,9 +170,18 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    @objc
+    private func addPhotoButtonDidTap() {
+        let vc = UIImagePickerController()
+        vc.sourceType = .photoLibrary
+        vc.delegate = self
+        vc.allowsEditing = true
+        present(vc, animated: true)
+    }
+    
     // MARK: Setup layout
     private func setupLayout() {
-        self.view.addSubviews(view: [avatarImageView, userIdLabel, deviderView, userInfoLogo, personalInfoLabel, personalInfoView])
+        self.view.addSubviews(view: [avatarImageView, userIdLabel, deviderView, userInfoLogo, personalInfoLabel, personalInfoView, addPhotoButton])
         self.personalInfoView.addSubviews(view: [nameInfo, userNameLabel, emailInfo, emailNameLabel, logoutButton])
         
         avatarImageView.snp.makeConstraints { make in
@@ -228,5 +246,46 @@ class ProfileViewController: UIViewController {
             make.top.equalTo(emailNameLabel.snp_bottomMargin).offset(40)
             make.centerX.equalToSuperview()
         }
+        
+        addPhotoButton.snp.makeConstraints { make in
+            make.height.width.equalTo(30)
+            make.left.equalTo(avatarImageView.snp_rightMargin).offset(0)
+            make.centerY.equalTo(avatarImageView).offset(60)
+        }
+    }
+}
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage") ] as? UIImage {
+            
+            let imageURL = info[UIImagePickerController.InfoKey.imageURL] as? URL
+            let imgName = imageURL?.lastPathComponent
+            
+            let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            let fileURL = documentsURL.appendingPathComponent(imgName!)
+            let pngImage = image.jpegData(compressionQuality: 0.9)! as NSData
+            do {
+                try pngImage.write(to: fileURL, options: .atomic)
+            } catch {
+                print("error")
+            }
+            
+            let filePath = documentsURL.appendingPathComponent(imgName!).path
+            if FileManager.default.fileExists(atPath: filePath) {
+                let new = UIImage(contentsOfFile: filePath)
+                nameImage = imgName!
+                avatarImageView.image = new
+            }
+            
+        }
+        
+        picker.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
 }
