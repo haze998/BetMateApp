@@ -21,12 +21,12 @@ class AppCoordinator: Coordinator {
     func start() {
         print("App Coordinator start")
         
-        if Auth.auth().currentUser == nil {
-            showAuth()
-        } else {
-            showTabBar()
-        }
-        
+//        if Auth.auth().currentUser == nil {
+//            showAuth()
+//        } else {
+//            showTabBar()
+//        }
+        test()
     }
     
     func showAuth() {
@@ -47,6 +47,13 @@ class AppCoordinator: Coordinator {
         childrenCoordinator.removeAll()
         tabBarCoordinator.parentCoordinator = self
         tabBarCoordinator.start()
+    }
+    
+    func test() {
+        // Initiate TabBar Coordinator
+        let vc = DetailGamesViewController()
+        navigationController.isNavigationBarHidden = true
+        navigationController.pushViewController(vc, animated: true)
     }
     
     deinit {

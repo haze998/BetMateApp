@@ -54,7 +54,6 @@ class GamesTableViewCell: UITableViewCell {
     private lazy var leftTeamName: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: FontNames.exoMedium.rawValue, size: 14)
-//        label.text = "Chelsea"
         label.textColor = .labelColor
         return label
     }()
@@ -62,7 +61,6 @@ class GamesTableViewCell: UITableViewCell {
     private lazy var rightTeamName: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: FontNames.exoMedium.rawValue, size: 14)
-//        label.text = "Manutd"
         label.textColor = .labelColor
         return label
     }()
@@ -90,7 +88,6 @@ class GamesTableViewCell: UITableViewCell {
         label.font = UIFont(name: FontNames.exoMedium.rawValue, size: 12)
         label.textColor = .labelColor
         label.textAlignment = .center
-        label.text = "TODO"
         return label
     }()
     
@@ -99,7 +96,6 @@ class GamesTableViewCell: UITableViewCell {
         label.font = UIFont(name: FontNames.exoMedium.rawValue, size: 12)
         label.textColor = .labelColor
         label.textAlignment = .center
-        label.text = "TODO"
         return label
     }()
     

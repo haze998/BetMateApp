@@ -255,4 +255,8 @@ extension GamesViewController: UITableViewDataSource {
     }
 }
 
-extension GamesViewController: UITableViewDelegate { }
+extension GamesViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+}
