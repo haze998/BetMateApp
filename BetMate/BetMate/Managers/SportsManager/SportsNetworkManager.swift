@@ -29,7 +29,7 @@ class SportsNetworkManager {
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let response = try decoder.decode(MainFootball.self, from: data)
                 DispatchQueue.main.async {
-                    completion(response.response ?? [])
+                    completion(response.response)
                 }
             } catch {
                 print(String(describing: error))

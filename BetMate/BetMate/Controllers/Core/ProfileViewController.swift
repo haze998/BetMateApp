@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SDWebImage
 
 class ProfileViewController: UIViewController {
     
@@ -150,7 +151,7 @@ class ProfileViewController: UIViewController {
             }
         }
     }
-    
+
     // MARK: - Selectors
     @objc
     private func logoutButtonDidTap() {

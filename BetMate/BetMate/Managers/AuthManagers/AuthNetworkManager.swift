@@ -8,6 +8,7 @@
 import Foundation
 import FirebaseAuth
 import FirebaseFirestore
+import GoogleSignIn
 
 class AuthNetworkManager {
     
@@ -71,12 +72,14 @@ class AuthNetworkManager {
         }
     }
     
+    // MARK: - Reset password
     public func forgotPassword(with email: String, completion: @escaping (Error?) -> Void) {
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             completion(error)
         }
     }
     
+    // MARK: - Fetch user info from firebase auth
     func fetchUserInfo(completion: @escaping(User?, Error?) -> Void) {
         
         guard let userUID = Auth.auth().currentUser?.uid else { return }
@@ -90,7 +93,7 @@ class AuthNetworkManager {
                     completion(nil, error)
                     return
                 }
-
+                
                 if let snapshot = snapshot,
                    let snapshotData = snapshot.data(),
                    let username = snapshotData["username"] as? String,
@@ -100,5 +103,4 @@ class AuthNetworkManager {
                 }
             }
     }
-    
 }

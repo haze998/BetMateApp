@@ -67,7 +67,7 @@ class GamesTableViewCell: UITableViewCell {
         return label
     }()
     
-    private lazy var leftOddsView: UIView = {
+    private lazy var leftGoalsView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         view.layer.borderColor = UIColor.borderViewColor
@@ -76,7 +76,7 @@ class GamesTableViewCell: UITableViewCell {
         return view
     }()
     
-    private lazy var rightOddsView: UIView = {
+    private lazy var rightGoalsView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         view.layer.borderColor = UIColor.borderViewColor
@@ -85,7 +85,7 @@ class GamesTableViewCell: UITableViewCell {
         return view
     }()
     
-    private lazy var leftTeamOdds: UILabel = {
+    private lazy var leftTeamGoals: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: FontNames.exoMedium.rawValue, size: 12)
         label.textColor = .labelColor
@@ -94,12 +94,20 @@ class GamesTableViewCell: UITableViewCell {
         return label
     }()
     
-    private lazy var rightTeamOdds: UILabel = {
+    private lazy var rightTeamGoals: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: FontNames.exoMedium.rawValue, size: 12)
         label.textColor = .labelColor
         label.textAlignment = .center
         label.text = "TODO"
+        return label
+    }()
+    
+    private lazy var colonLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: FontNames.exoBold.rawValue, size: 20)
+        label.text = ":"
+        label.textColor = .labelColor
         return label
     }()
     
@@ -118,13 +126,25 @@ class GamesTableViewCell: UITableViewCell {
     
     // MARK: - Configure sports cell
     func configureFootballCell(with footballResponse: FootballResponse) {
-        dateLabel.text = footballResponse.fixture?.date?.formatDateString(footballResponse.fixture?.date ?? "")
-        let homeImgURL = URL(string: footballResponse.teams?.home?.logo ?? "")
+        dateLabel.text = footballResponse.fixture.date.formatDateString(footballResponse.fixture.date)
+        let homeImgURL = URL(string: footballResponse.teams.home.logo)
         leftTeamLogo.sd_setImage(with: homeImgURL)
-        let awayImgURL = URL(string: footballResponse.teams?.away?.logo ?? "")
+        let awayImgURL = URL(string: footballResponse.teams.away.logo)
         rightTeamLogo.sd_setImage(with: awayImgURL)
-        leftTeamName.text = footballResponse.teams?.home?.name
-        rightTeamName.text = footballResponse.teams?.away?.name
+        leftTeamName.text = footballResponse.teams.home.name
+        rightTeamName.text = footballResponse.teams.away.name
+        
+        if ((footballResponse.goals.home) == nil) {
+            leftTeamGoals.text = "not started"
+        } else {
+            leftTeamGoals.text = "\(footballResponse.goals.home ?? 0)"
+        }
+        
+        if ((footballResponse.goals.away) == nil) {
+            rightTeamGoals.text = "not started"
+        } else {
+            rightTeamGoals.text = "\(footballResponse.goals.away ?? 0)"
+        }
     }
     
     func configureBaseballCell(with baseballResponse: BaseballResponse) {
@@ -180,9 +200,9 @@ class GamesTableViewCell: UITableViewCell {
     // MARK: - Setup layout
     private func setupLayout() {
         contentView.addSubview(bgView)
-        bgView.addSubviews(view: [dateLabel, leftTeamLogo, versusLabel, rightTeamLogo, leftTeamName, rightTeamName, leftOddsView, rightOddsView, leftTeamOdds, rightTeamOdds])
-        leftOddsView.addSubview(leftTeamOdds)
-        rightOddsView.addSubview(rightTeamOdds)
+        bgView.addSubviews(view: [dateLabel, leftTeamLogo, versusLabel, rightTeamLogo, leftTeamName, rightTeamName, leftGoalsView, rightGoalsView, leftTeamGoals, rightTeamGoals, colonLabel])
+        leftGoalsView.addSubview(leftTeamGoals)
+        rightGoalsView.addSubview(rightTeamGoals)
         
         bgView.snp.makeConstraints { make in
             make.edges.equalTo(contentView)
@@ -199,47 +219,54 @@ class GamesTableViewCell: UITableViewCell {
         }
         
         leftTeamLogo.snp.makeConstraints { make in
-            make.height.width.equalTo(58)
-            make.left.equalTo(52)
+            make.height.width.equalTo(85)
+            make.left.equalTo(44)
             make.top.equalTo(dateLabel.snp.bottom).offset(29)
         }
         
         rightTeamLogo.snp.makeConstraints { make in
-            make.height.width.equalTo(58)
-            make.left.equalTo(versusLabel.snp.right).offset(52)
+            make.height.width.equalTo(85)
+            make.right.equalToSuperview().inset(44)
             make.top.equalTo(dateLabel.snp.bottom).offset(29)
         }
         
         leftTeamName.snp.makeConstraints { make in
+            make.width.equalTo(70)
             make.centerX.equalTo(leftTeamLogo)
-            make.top.equalTo(leftTeamLogo.snp.bottom).offset(19)
+            make.top.equalTo(leftTeamLogo.snp.bottom).offset(20)
         }
         
         rightTeamName.snp.makeConstraints { make in
+            make.width.equalTo(70)
             make.centerX.equalTo(rightTeamLogo)
-            make.top.equalTo(leftTeamLogo.snp.bottom).offset(19)
+            make.top.equalTo(rightTeamLogo.snp.bottom).offset(20)
         }
         
-        leftOddsView.snp.makeConstraints { make in
+        leftGoalsView.snp.makeConstraints { make in
             make.width.equalTo(100)
             make.height.equalTo(30)
             make.top.equalTo(leftTeamName.snp.bottom).offset(21)
             make.centerX.equalTo(leftTeamName)
         }
         
-        rightOddsView.snp.makeConstraints { make in
+        rightGoalsView.snp.makeConstraints { make in
             make.width.equalTo(100)
             make.height.equalTo(30)
             make.top.equalTo(rightTeamName.snp.bottom).offset(21)
             make.centerX.equalTo(rightTeamName)
         }
         
-        leftTeamOdds.snp.makeConstraints { make in
-            make.centerX.edges.equalTo(leftOddsView)
+        leftTeamGoals.snp.makeConstraints { make in
+            make.centerX.edges.equalTo(leftGoalsView)
         }
         
-        rightTeamOdds.snp.makeConstraints { make in
-            make.centerX.edges.equalTo(rightOddsView)
+        rightTeamGoals.snp.makeConstraints { make in
+            make.centerX.edges.equalTo(rightGoalsView)
+        }
+        
+        colonLabel.snp.makeConstraints { make in
+            make.top.equalTo(versusLabel.snp_bottomMargin).offset(110)
+            make.centerX.equalTo(versusLabel)
         }
     }
 }
