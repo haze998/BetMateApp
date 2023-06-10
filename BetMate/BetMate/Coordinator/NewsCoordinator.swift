@@ -29,7 +29,7 @@ class NewsCoordinator : Coordinator {
     }
     
     func goToDetailNews(with sportsNews: NewsArticle) {
-        let viewModel = DetailViewModel(coordinator: self, news: sportsNews)
+        let viewModel = DetailNewsViewModel(coordinator: self, news: sportsNews)
         let vc = DetailNewsViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }

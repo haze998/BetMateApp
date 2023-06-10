@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DetailViewModel {
+class DetailNewsViewModel {
     weak var coordinator: NewsCoordinator?
     var news: NewsArticle
     

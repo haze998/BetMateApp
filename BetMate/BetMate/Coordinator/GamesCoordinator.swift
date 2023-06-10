@@ -23,16 +23,16 @@ class GamesCoordinator : Coordinator {
     
     func goToGamesPage() {
         // Instantiate ViewController
-        let gamesVC = GamesViewController()
-        // Instantiate ViewModel
-//        let viewModel =  OnboardingViewModel.init()
-        // Set the Coordinator to the ViewModel
-//        viewModel.coordinator = self
-        // Set the ViewModel to ViewController
-//        onboardVC.viewModel = viewModel
-        // Push it.
+        let viewModel = GamesViewModel(coordinator: self)
+        let gamesVC = GamesViewController(viewModel: viewModel)
+        navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(gamesVC, animated: true)
     }
-
+    
+    func goToDetailGames(with football: FootballResponse) {
+        let viewModel = DetailGamesViewModel(coordinator: self, football: football)
+        let vc = DetailGamesViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
     
 }

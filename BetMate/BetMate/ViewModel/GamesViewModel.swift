@@ -9,6 +9,17 @@ import Foundation
 import UIKit
 
 class GamesViewModel {
+    weak var coordinator: GamesCoordinator?
+//    var football: FootballResponse?
+    
+    init(coordinator: GamesCoordinator) {
+        self.coordinator = coordinator
+    }
+    
+    func goToDetailGames(football: FootballResponse) {
+        coordinator?.goToDetailGames(with: football)
+    }
+    
     // MARK: - Private properties
     private(set) var footballInfoArr: [FootballResponse] = []
     private(set) var baseballInfoArr: [BaseballResponse] = []

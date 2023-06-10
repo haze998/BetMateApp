@@ -11,6 +11,17 @@ import SDWebImage
 
 class DetailGamesViewController: UIViewController {
     
+    var viewModel: DetailGamesViewModel
+    
+    init(viewModel: DetailGamesViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Private properties
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -66,7 +77,7 @@ class DetailGamesViewController: UIViewController {
     private lazy var homeScore: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: FontNames.exoBold.rawValue, size: 30)
-        label.text = "186"
+//        label.text = "186"
         label.textColor = .labelColor
         return label
     }()
@@ -82,7 +93,7 @@ class DetailGamesViewController: UIViewController {
     private lazy var awayScore: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: FontNames.exoBold.rawValue, size: 30)
-        label.text = "73"
+//        label.text = "73"
         label.textColor = .labelColor
         return label
     }()
@@ -91,7 +102,7 @@ class DetailGamesViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont(name: FontNames.exoMedium.rawValue, size: 20)
         label.textColor = .labelColor
-        label.text = "Barcelona"
+//        label.text = "Barcelona"
         return label
     }()
     
@@ -99,14 +110,14 @@ class DetailGamesViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont(name: FontNames.exoMedium.rawValue, size: 20)
         label.textColor = .labelColor
-        label.text = "Munchester United"
+//        label.text = "Munchester United"
         return label
     }()
 
     private lazy var matchDate: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: FontNames.exoMedium.rawValue, size: 20)
-        label.text = "12-10-2023 14:00"
+//        label.text = "12-10-2023 14:00"
         label.textColor = .labelColor
         return label
     }()
@@ -129,7 +140,7 @@ class DetailGamesViewController: UIViewController {
     private let headToHeadDevider = DeviderView()
     private let matchCountry = InfoLabel(labelType: .matchCountry)
     private let matchLeague = InfoLabel(labelType: .matchLeague)
-    private let leagueType = InfoLabel(labelType: .leagueType)
+//    private let leagueType = InfoLabel(labelType: .leagueType)
     private let matchDateInfo = InfoLabel(labelType: .matchDate)
     private let seasonDate = InfoLabel(labelType: .seasonDate)
     
@@ -146,7 +157,20 @@ class DetailGamesViewController: UIViewController {
     
     // MARK: - Setup UI
     private func setupUI() {
-        
+        let footballInfo = viewModel.football
+        let homeImgURL = URL(string: footballInfo.teams.home.logo)
+        let awayImgURL = URL(string: footballInfo.teams.away.logo)
+        leftTeamLogo.sd_setImage(with: homeImgURL)
+        rightTeamLogo.sd_setImage(with: awayImgURL)
+        homeScore.text = "\(footballInfo.goals.home ?? 0)"
+        awayScore.text = "\(footballInfo.goals.away ?? 0)"
+        homeTeamName.text = footballInfo.teams.home.name
+        awayTeamName.text = footballInfo.teams.away.name
+        matchDate.text = footballInfo.fixture.date.formatDateString(footballInfo.fixture.date)
+        matchCountry.text = "Country :" + " " + footballInfo.league.country
+        matchLeague.text = "League :" + " " + footballInfo.league.name
+        matchDateInfo.text = "Date :" + " " + (footballInfo.fixture.date.formatDateString(footballInfo.fixture.date) ?? "")
+        seasonDate.text = "Season : \(footballInfo.league.season)"
     }
     
     // MARK: - Selectors
@@ -159,7 +183,7 @@ class DetailGamesViewController: UIViewController {
     private func setupLayout() {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
-        contentView.addSubviews(view: [matchView, matchInfoLabel, matchInfoDevider, oddsInfoLabel, oddsDevider, homeAwayOddslabel, homeOdds, awayOdds, matchCountry, matchLeague, leagueType, matchDateInfo, seasonDate, headToHeadInfo, headToHeadDevider])
+        contentView.addSubviews(view: [matchView, matchInfoLabel, matchInfoDevider, oddsInfoLabel, oddsDevider, homeAwayOddslabel, homeOdds, awayOdds, matchCountry, matchLeague, matchDateInfo, seasonDate, headToHeadInfo, headToHeadDevider])
         matchView.addSubviews(view: [backButton, leftTeamLogo, rightTeamLogo, scoreView, homeTeamName, awayTeamName, matchDate])
         scoreView.addSubviews(view: [homeScore, colonLabel, awayScore])
         
@@ -283,27 +307,22 @@ class DetailGamesViewController: UIViewController {
         
         matchCountry.snp.makeConstraints { make in
             make.top.equalTo(matchInfoDevider.snp_bottomMargin).offset(20)
-            make.left.equalTo(40)
+            make.centerX.equalToSuperview()
         }
         
         matchLeague.snp.makeConstraints { make in
             make.top.equalTo(matchCountry.snp_bottomMargin).offset(20)
-            make.left.equalTo(40)
-        }
-        
-        leagueType.snp.makeConstraints { make in
-            make.top.equalTo(matchLeague.snp_bottomMargin).offset(20)
-            make.left.equalTo(40)
+            make.centerX.equalToSuperview()
         }
         
         matchDateInfo.snp.makeConstraints { make in
-            make.top.equalTo(leagueType.snp_bottomMargin).offset(20)
-            make.left.equalTo(40)
+            make.top.equalTo(matchLeague.snp_bottomMargin).offset(20)
+            make.centerX.equalToSuperview()
         }
         
         seasonDate.snp.makeConstraints { make in
             make.top.equalTo(matchDateInfo.snp_bottomMargin).offset(20)
-            make.left.equalTo(40)
+            make.centerX.equalToSuperview()
         }
         
         headToHeadInfo.snp.makeConstraints { make in

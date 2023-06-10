@@ -10,6 +10,17 @@ import SnapKit
 
 class GamesViewController: UIViewController {
     
+    var viewModel: GamesViewModel
+    
+    init(viewModel: GamesViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: Private properties
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -46,8 +57,7 @@ class GamesViewController: UIViewController {
         button.layer.cornerRadius = 25
         return button
     }()
-    
-    let viewModel = GamesViewModel()
+
     private let sportArr = [
         Sport(sportName: "football",
               icon: UIImage(named: "football") ?? UIImage()),
@@ -257,6 +267,6 @@ extension GamesViewController: UITableViewDataSource {
 
 extension GamesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        viewModel.goToDetailGames(football: viewModel.footballInfoArr[indexPath.row])
     }
 }

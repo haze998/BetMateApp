@@ -14,7 +14,6 @@ class NewsViewModel {
     
     init(coordinator: NewsCoordinator) {
         self.coordinator = coordinator
- 
     }
     
     func goToDetailNews(news: NewsArticle) {

@@ -15,32 +15,7 @@ class SportsNetworkManager {
 
     // MARK: - Get football info
     func getFootballInfo(completion: @escaping ([FootballResponse]) -> Void) {
-        var url = URLRequest(url: URL(string: "https://v3.football.api-sports.io/fixtures?date=\(CustomDate.currentDate.rawValue.getCurrentDate())")!, timeoutInterval: Double.infinity)
-        url.allHTTPHeaderFields = [
-            "x-rapidapi-key" : "\(ApiKeys.sportsApiKey.rawValue)"
-        ]
-        
-        let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: url) { data, response, error in
-            guard let data = data else { return }
-        
-            do {
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let response = try decoder.decode(MainFootball.self, from: data)
-                DispatchQueue.main.async {
-                    completion(response.response)
-                }
-            } catch {
-                print(String(describing: error))
-            }
-        }
-        task.resume()
-    }
-    
-    // MARK: - Get baseball info
-    func getBaseballInfo(completion: @escaping ([BaseballResponse]) -> Void) {
-//        var url = URLRequest(url: URL(string: "https://v1.baseball.api-sports.io/games?date=\(CustomDate.currentDate.rawValue.getCurrentDate())")!)
+//        var url = URLRequest(url: URL(string: "https://v3.football.api-sports.io/fixtures?date=\(CustomDate.currentDate.rawValue.getCurrentDate())")!, timeoutInterval: Double.infinity)
 //        url.allHTTPHeaderFields = [
 //            "x-rapidapi-key" : "\(ApiKeys.sportsApiKey.rawValue)"
 //        ]
@@ -52,15 +27,40 @@ class SportsNetworkManager {
 //            do {
 //                let decoder = JSONDecoder()
 //                decoder.keyDecodingStrategy = .convertFromSnakeCase
-//                let response = try decoder.decode(MainBaseball.self, from: data)
+//                let response = try decoder.decode(MainFootball.self, from: data)
 //                DispatchQueue.main.async {
-//                    completion(response.response ?? [])
+//                    completion(response.response)
 //                }
 //            } catch {
 //                print(String(describing: error))
 //            }
 //        }
 //        task.resume()
+    }
+    
+    // MARK: - Get baseball info
+    func getBaseballInfo(completion: @escaping ([BaseballResponse]) -> Void) {
+        var url = URLRequest(url: URL(string: "https://v1.baseball.api-sports.io/games?date=\(CustomDate.currentDate.rawValue.getCurrentDate())")!)
+        url.allHTTPHeaderFields = [
+            "x-rapidapi-key" : "\(ApiKeys.sportsApiKey.rawValue)"
+        ]
+
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: url) { data, response, error in
+            guard let data = data else { return }
+
+            do {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let response = try decoder.decode(MainBaseball.self, from: data)
+                DispatchQueue.main.async {
+                    completion(response.response ?? [])
+                }
+            } catch {
+                print(String(describing: error))
+            }
+        }
+        task.resume()
     }
     
     // MARK: - Get basketball info

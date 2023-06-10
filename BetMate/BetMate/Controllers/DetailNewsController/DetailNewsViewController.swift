@@ -11,9 +11,9 @@ import SDWebImage
 
 class DetailNewsViewController: UIViewController {
     
-    var viewModel: DetailViewModel
+    var viewModel: DetailNewsViewModel
     
-    init(viewModel: DetailViewModel) {
+    init(viewModel: DetailNewsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -140,9 +140,6 @@ class DetailNewsViewController: UIViewController {
         button.layer.cornerRadius = 15
         return button
     }()
-    
-//    var selectedNews: NewsArticle?
-    
     
     // MARK: - Lifecycle
     override func viewDidLoad() {

@@ -100,7 +100,7 @@ class NewsTableViewCell: UITableViewCell {
             postImage.image = UIImage(named: "image_placeholder")
         }
         
-        postDate.text = newsArticle.publishedAt
+        postDate.text = newsArticle.publishedAt?.formatDateString(newsArticle.publishedAt ?? "")
     }
     
     // MARK: - Setup Layout
