@@ -66,7 +66,7 @@ class DetailGamesViewController: UIViewController {
     private lazy var homeScore: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: FontNames.exoBold.rawValue, size: 30)
-        label.text = "10"
+        label.text = "186"
         label.textColor = .labelColor
         return label
     }()
@@ -82,7 +82,7 @@ class DetailGamesViewController: UIViewController {
     private lazy var awayScore: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: FontNames.exoBold.rawValue, size: 30)
-        label.text = "0"
+        label.text = "73"
         label.textColor = .labelColor
         return label
     }()
@@ -102,21 +102,36 @@ class DetailGamesViewController: UIViewController {
         label.text = "Munchester United"
         return label
     }()
-    
-    private lazy var matchInfoLabel: UILabel = {
+
+    private lazy var matchDate: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: FontNames.exoSemiBold.rawValue, size: 30)
-        label.text = "Match Info"
+        label.font = UIFont(name: FontNames.exoMedium.rawValue, size: 20)
+        label.text = "12-10-2023 14:00"
         label.textColor = .labelColor
         return label
     }()
     
-    private lazy var deviderView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .labelColor
-        view.layer.cornerRadius = 3
-        return view
+    private lazy var homeAwayOddslabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: FontNames.exoMedium.rawValue, size: 20)
+        label.text = "home / away"
+        label.textColor = .labelColor
+        return label
     }()
+    
+    private let homeOdds = InfoLabel(labelType: .homeOdds)
+    private let awayOdds = InfoLabel(labelType: .awayOdds)
+    private let oddsInfoLabel = InfoLabel(labelType: .oddsInfo)
+    private let oddsDevider = DeviderView()
+    private let matchInfoLabel = InfoLabel(labelType: .matchInfo)
+    private let matchInfoDevider = DeviderView()
+    private let headToHeadInfo = InfoLabel(labelType: .headToHead)
+    private let headToHeadDevider = DeviderView()
+    private let matchCountry = InfoLabel(labelType: .matchCountry)
+    private let matchLeague = InfoLabel(labelType: .matchLeague)
+    private let leagueType = InfoLabel(labelType: .leagueType)
+    private let matchDateInfo = InfoLabel(labelType: .matchDate)
+    private let seasonDate = InfoLabel(labelType: .seasonDate)
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -144,8 +159,8 @@ class DetailGamesViewController: UIViewController {
     private func setupLayout() {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
-        contentView.addSubviews(view: [matchView, matchInfoLabel, deviderView])
-        matchView.addSubviews(view: [backButton, leftTeamLogo, rightTeamLogo, scoreView, homeTeamName, awayTeamName])
+        contentView.addSubviews(view: [matchView, matchInfoLabel, matchInfoDevider, oddsInfoLabel, oddsDevider, homeAwayOddslabel, homeOdds, awayOdds, matchCountry, matchLeague, leagueType, matchDateInfo, seasonDate, headToHeadInfo, headToHeadDevider])
+        matchView.addSubviews(view: [backButton, leftTeamLogo, rightTeamLogo, scoreView, homeTeamName, awayTeamName, matchDate])
         scoreView.addSubviews(view: [homeScore, colonLabel, awayScore])
         
         scrollView.snp.makeConstraints { make in
@@ -168,7 +183,7 @@ class DetailGamesViewController: UIViewController {
         }
         
         matchView.snp.makeConstraints { make in
-            make.height.equalTo(290)
+            make.height.equalTo(300)
             make.top.leading.trailing.equalToSuperview()
         }
         
@@ -224,13 +239,80 @@ class DetailGamesViewController: UIViewController {
             make.right.equalToSuperview().inset(20)
         }
         
-        matchInfoLabel.snp.makeConstraints { make in
-            make.top.equalTo(matchView.snp_bottomMargin).offset(20)
+        matchDate.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().inset(16)
+        }
+        
+        oddsInfoLabel.snp.makeConstraints { make in
+            make.top.equalTo(matchView.snp_bottomMargin).offset(40)
             make.centerX.equalToSuperview()
         }
         
-        deviderView.snp.makeConstraints { make in
-            make.top.equalTo(matchInfoLabel.snp_bottomMargin).offset(4)
+        oddsDevider.snp.makeConstraints { make in
+            make.top.equalTo(oddsInfoLabel.snp_bottomMargin).offset(5)
+            make.height.equalTo(1)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+        
+        homeAwayOddslabel.snp.makeConstraints { make in
+            make.top.equalTo(oddsDevider.snp_bottomMargin).offset(20)
+            make.centerX.equalToSuperview()
+        }
+        
+        homeOdds.snp.makeConstraints { make in
+            make.left.equalTo(40)
+            make.centerY.equalTo(homeAwayOddslabel)
+        }
+        
+        awayOdds.snp.makeConstraints { make in
+            make.right.equalToSuperview().inset(40)
+            make.centerY.equalTo(homeAwayOddslabel)
+        }
+        
+        matchInfoLabel.snp.makeConstraints { make in
+            make.top.equalTo(homeAwayOddslabel.snp_bottomMargin).offset(40)
+            make.centerX.equalToSuperview()
+        }
+
+        matchInfoDevider.snp.makeConstraints { make in
+            make.top.equalTo(matchInfoLabel.snp_bottomMargin).offset(5)
+            make.height.equalTo(1)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+        
+        matchCountry.snp.makeConstraints { make in
+            make.top.equalTo(matchInfoDevider.snp_bottomMargin).offset(20)
+            make.left.equalTo(40)
+        }
+        
+        matchLeague.snp.makeConstraints { make in
+            make.top.equalTo(matchCountry.snp_bottomMargin).offset(20)
+            make.left.equalTo(40)
+        }
+        
+        leagueType.snp.makeConstraints { make in
+            make.top.equalTo(matchLeague.snp_bottomMargin).offset(20)
+            make.left.equalTo(40)
+        }
+        
+        matchDateInfo.snp.makeConstraints { make in
+            make.top.equalTo(leagueType.snp_bottomMargin).offset(20)
+            make.left.equalTo(40)
+        }
+        
+        seasonDate.snp.makeConstraints { make in
+            make.top.equalTo(matchDateInfo.snp_bottomMargin).offset(20)
+            make.left.equalTo(40)
+        }
+        
+        headToHeadInfo.snp.makeConstraints { make in
+            make.top.equalTo(seasonDate.snp_bottomMargin).offset(40)
+            make.centerX.equalToSuperview()
+        }
+        
+        headToHeadDevider.snp.makeConstraints { make in
+            make.top.equalTo(headToHeadInfo.snp_bottomMargin).offset(5)
             make.height.equalTo(1)
             make.leading.trailing.equalToSuperview().inset(20)
         }

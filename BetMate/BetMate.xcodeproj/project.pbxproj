@@ -23,6 +23,8 @@
 		0635A5BD2A13D06C003CBE55 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0635A5BC2A13D06C003CBE55 /* ProfileViewController.swift */; };
 		0635A5BF2A13D124003CBE55 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0635A5BE2A13D124003CBE55 /* TabBarViewController.swift */; };
 		0636172A2A2610DC00D30F55 /* DetailNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063617292A2610DC00D30F55 /* DetailNewsViewController.swift */; };
+		063C1A242A348348001B89A3 /* InfoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063C1A232A348348001B89A3 /* InfoLabel.swift */; };
+		063C1A262A34853B001B89A3 /* DeviderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063C1A252A34853B001B89A3 /* DeviderView.swift */; };
 		063DBC7C2A165A5A00406059 /* Extension + String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063DBC7B2A165A5A00406059 /* Extension + String.swift */; };
 		06430D242A2CC10100812F59 /* GoogleUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06430D232A2CC10100812F59 /* GoogleUser.swift */; };
 		06506B8D2A1CEBF500E88FA0 /* MainBaseball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06506B8C2A1CEBF500E88FA0 /* MainBaseball.swift */; };
@@ -133,6 +135,8 @@
 		0635A5BC2A13D06C003CBE55 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0635A5BE2A13D124003CBE55 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		063617292A2610DC00D30F55 /* DetailNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNewsViewController.swift; sourceTree = "<group>"; };
+		063C1A232A348348001B89A3 /* InfoLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoLabel.swift; sourceTree = "<group>"; };
+		063C1A252A34853B001B89A3 /* DeviderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviderView.swift; sourceTree = "<group>"; };
 		063DBC7B2A165A5A00406059 /* Extension + String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + String.swift"; sourceTree = "<group>"; };
 		06430D232A2CC10100812F59 /* GoogleUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleUser.swift; sourceTree = "<group>"; };
 		06506B8C2A1CEBF500E88FA0 /* MainBaseball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBaseball.swift; sourceTree = "<group>"; };
@@ -308,6 +312,15 @@
 			path = DetailNewsController;
 			sourceTree = "<group>";
 		};
+		063C1A222A348323001B89A3 /* DetailGamesViews */ = {
+			isa = PBXGroup;
+			children = (
+				063C1A232A348348001B89A3 /* InfoLabel.swift */,
+				063C1A252A34853B001B89A3 /* DeviderView.swift */,
+			);
+			path = DetailGamesViews;
+			sourceTree = "<group>";
+		};
 		06506B742A1CDDC300E88FA0 /* BaseballModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -385,6 +398,7 @@
 				06A6B4522A150B5800CFFB33 /* AuthViews */,
 				06A6B4632A15190000CFFB33 /* NewsViews */,
 				0633A62D2A18E4C200A027E5 /* GamesViews */,
+				063C1A222A348323001B89A3 /* DetailGamesViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -734,6 +748,7 @@
 				0633A6322A18E73C00A027E5 /* Sport.swift in Sources */,
 				06EEC8222A238CDE00525723 /* Coordinator.swift in Sources */,
 				0633A6342A18F17900A027E5 /* Extension + UICollectionView.swift in Sources */,
+				063C1A262A34853B001B89A3 /* DeviderView.swift in Sources */,
 				06F546732A2502F4001779FF /* CustomScrollUpButton.swift in Sources */,
 				06BE2BF12A0C4C550003C875 /* AppDelegate.swift in Sources */,
 				0633A62F2A18E4EA00A027E5 /* SportsCollectionViewCell.swift in Sources */,
@@ -742,6 +757,7 @@
 				06F73B2E2A31EC130028BB36 /* DetailGamesViewController.swift in Sources */,
 				068DD2352A0FCF8F0000913B /* CustomActionButton.swift in Sources */,
 				0633A6372A190B2700A027E5 /* SportsNetworkManager.swift in Sources */,
+				063C1A242A348348001B89A3 /* InfoLabel.swift in Sources */,
 				06DAC7B02A127DB50086CC41 /* Validator.swift in Sources */,
 				06982BC22A0D0F41007284BC /* ForgotPasswordViewController.swift in Sources */,
 				06B07CF02A1E6CDC009EAA21 /* MainBasketball.swift in Sources */,
