@@ -9,10 +9,13 @@ import Foundation
 
 class DetailGamesViewModel {
     weak var coordinator: GamesCoordinator?
-    var football: FootballResponse
+    var football: FootballResponse?
+    var baseball: BaseballResponse?
+    var sports: KindsOfSports = .football
     
-    init(coordinator: GamesCoordinator? = nil, football: FootballResponse) {
+    init(coordinator: GamesCoordinator? = nil, football: FootballResponse? = nil, baseball: BaseballResponse? = nil) {
         self.coordinator = coordinator
         self.football = football
+        self.baseball = baseball
     }
 }

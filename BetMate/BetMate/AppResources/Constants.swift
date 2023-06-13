@@ -15,7 +15,7 @@ enum FontNames: String {
 
 enum ApiKeys: String {
     case newsApiKey = "YOUR_API_KEY"
-    case sportsApiKey = "YOUR_API_KEYy"
+    case sportsApiKey = "d9e37ef55094492e1e535efcdf70a952"
 }
 
 enum CustomDate: String {

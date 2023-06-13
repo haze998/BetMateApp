@@ -151,6 +151,8 @@ class GamesTableViewCell: UITableViewCell {
         rightTeamLogo.sd_setImage(with: awayImgURL)
         leftTeamName.text = baseballResponse.teams?.home?.name
         rightTeamName.text = baseballResponse.teams?.away?.name
+        leftTeamGoals.text = "\(baseballResponse.scores?.home?.total ?? 0)"
+        leftTeamGoals.text = "\(baseballResponse.scores?.away?.total ?? 0)"
     }
     
     func configureBasketballCell(with basketballResponse: BasketballResponse) {
@@ -171,6 +173,7 @@ class GamesTableViewCell: UITableViewCell {
         rightTeamLogo.sd_setImage(with: awayImgURL)
         leftTeamName.text = hockeyResponse.teams?.home?.name
         rightTeamName.text = hockeyResponse.teams?.away?.name
+
     }
     
     func configureVolleyballCell(with volleyballResponse: VolleyballResponse) {

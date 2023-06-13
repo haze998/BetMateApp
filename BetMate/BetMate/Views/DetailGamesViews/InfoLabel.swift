@@ -48,11 +48,11 @@ class InfoLabel: UILabel {
             textColor = .labelColor
         case .matchCountry:
             font = UIFont(name: FontNames.exoBold.rawValue, size: 20)
-            text = "Amsterdam"
+            text = "Country :" + " " + "Undefined"
             textColor = .labelColor
         case .matchLeague:
             font = UIFont(name: FontNames.exoBold.rawValue, size: 20)
-            text = "Challenge Cup"
+            text = "Challenge Cup :" + " " + "Undefined"
             textColor = .labelColor
         case .leagueType:
             font = UIFont(name: FontNames.exoBold.rawValue, size: 20)

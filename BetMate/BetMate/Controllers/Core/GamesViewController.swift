@@ -267,6 +267,25 @@ extension GamesViewController: UITableViewDataSource {
 
 extension GamesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.goToDetailGames(football: viewModel.footballInfoArr[indexPath.row])
+        
+        switch viewModel.sports {
+            
+        case .football:
+            viewModel.goToDetailGames(football: viewModel.footballInfoArr[indexPath.row])
+        case .baseball:
+            viewModel.goToDetailGames(baseball: viewModel.baseballInfoArr[indexPath.row])
+        case .basketball:
+            print("Tap")
+
+        case .hockey:
+            print("Tap")
+
+        case .volleyball:
+            print("Tap")
+
+        case .handball:
+            print("Tap")
+
+        }
     }
 }

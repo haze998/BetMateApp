@@ -29,8 +29,14 @@ class GamesCoordinator : Coordinator {
         navigationController.pushViewController(gamesVC, animated: true)
     }
     
-    func goToDetailGames(with football: FootballResponse) {
+    func goToDetailFootball(with football: FootballResponse) {
         let viewModel = DetailGamesViewModel(coordinator: self, football: football)
+        let vc = DetailGamesViewController(viewModel: viewModel)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func goToDetailBaseball(with baseball: BaseballResponse) {
+        let viewModel = DetailGamesViewModel(coordinator: self, baseball: baseball)
         let vc = DetailGamesViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
     }

@@ -77,7 +77,7 @@ class DetailGamesViewController: UIViewController {
     private lazy var homeScore: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: FontNames.exoBold.rawValue, size: 30)
-//        label.text = "186"
+        //        label.text = "186"
         label.textColor = .labelColor
         return label
     }()
@@ -93,7 +93,7 @@ class DetailGamesViewController: UIViewController {
     private lazy var awayScore: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: FontNames.exoBold.rawValue, size: 30)
-//        label.text = "73"
+        //        label.text = "73"
         label.textColor = .labelColor
         return label
     }()
@@ -102,7 +102,7 @@ class DetailGamesViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont(name: FontNames.exoMedium.rawValue, size: 20)
         label.textColor = .labelColor
-//        label.text = "Barcelona"
+        //        label.text = "Barcelona"
         return label
     }()
     
@@ -110,14 +110,14 @@ class DetailGamesViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont(name: FontNames.exoMedium.rawValue, size: 20)
         label.textColor = .labelColor
-//        label.text = "Munchester United"
+        //        label.text = "Munchester United"
         return label
     }()
-
+    
     private lazy var matchDate: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: FontNames.exoMedium.rawValue, size: 20)
-//        label.text = "12-10-2023 14:00"
+        //        label.text = "12-10-2023 14:00"
         label.textColor = .labelColor
         return label
     }()
@@ -140,7 +140,7 @@ class DetailGamesViewController: UIViewController {
     private let headToHeadDevider = DeviderView()
     private let matchCountry = InfoLabel(labelType: .matchCountry)
     private let matchLeague = InfoLabel(labelType: .matchLeague)
-//    private let leagueType = InfoLabel(labelType: .leagueType)
+    //    private let leagueType = InfoLabel(labelType: .leagueType)
     private let matchDateInfo = InfoLabel(labelType: .matchDate)
     private let seasonDate = InfoLabel(labelType: .seasonDate)
     
@@ -157,20 +157,33 @@ class DetailGamesViewController: UIViewController {
     
     // MARK: - Setup UI
     private func setupUI() {
-        let footballInfo = viewModel.football
-        let homeImgURL = URL(string: footballInfo.teams.home.logo)
-        let awayImgURL = URL(string: footballInfo.teams.away.logo)
-        leftTeamLogo.sd_setImage(with: homeImgURL)
-        rightTeamLogo.sd_setImage(with: awayImgURL)
-        homeScore.text = "\(footballInfo.goals.home ?? 0)"
-        awayScore.text = "\(footballInfo.goals.away ?? 0)"
-        homeTeamName.text = footballInfo.teams.home.name
-        awayTeamName.text = footballInfo.teams.away.name
-        matchDate.text = footballInfo.fixture.date.formatDateString(footballInfo.fixture.date)
-        matchCountry.text = "Country :" + " " + footballInfo.league.country
-        matchLeague.text = "League :" + " " + footballInfo.league.name
-        matchDateInfo.text = "Date :" + " " + (footballInfo.fixture.date.formatDateString(footballInfo.fixture.date) ?? "")
-        seasonDate.text = "Season : \(footballInfo.league.season)"
+        if let footballInfo = viewModel.football {
+            let footballHomeImgURL = URL(string: footballInfo.teams.home.logo)
+            let footballAwayImgURL = URL(string: footballInfo.teams.away.logo)
+            leftTeamLogo.sd_setImage(with: footballHomeImgURL)
+            rightTeamLogo.sd_setImage(with: footballAwayImgURL)
+            homeScore.text = "\(footballInfo.goals.home ?? 0)"
+            awayScore.text = "\(footballInfo.goals.away ?? 0)"
+            homeTeamName.text = footballInfo.teams.home.name
+            awayTeamName.text = footballInfo.teams.away.name
+            matchDate.text = footballInfo.fixture.date.formatDateString(footballInfo.fixture.date)
+            matchCountry.text = "Country :" + " " + (footballInfo.league.country)
+            matchLeague.text = "League :" + " " + (footballInfo.league.name)
+            matchDateInfo.text = "Date :" + " " + (footballInfo.fixture.date.formatDateString(footballInfo.fixture.date) ?? "")
+            seasonDate.text = "Season : \(footballInfo.league.season)"
+        } else if let baseballInfo = viewModel.baseball {
+            let homeImgURL = URL(string: baseballInfo.teams?.home?.logo ?? "")
+            let awayImgURL = URL(string: baseballInfo.teams?.away?.logo ?? "")
+            leftTeamLogo.sd_setImage(with: homeImgURL)
+            rightTeamLogo.sd_setImage(with: awayImgURL)
+            homeScore.text = "\(baseballInfo.scores?.home?.total ?? 0)"
+            awayScore.text = "\(baseballInfo.scores?.away?.total ?? 0)"
+            homeTeamName.text = baseballInfo.teams?.home?.name
+            awayTeamName.text = baseballInfo.teams?.away?.name
+            matchDate.text = baseballInfo.date?.formatDateString(baseballInfo.date ?? "")
+            matchDateInfo.text = "Date :" + " " + (baseballInfo.date?.formatDateString(baseballInfo.date ?? "") ?? "")
+            seasonDate.text = "Season : \(baseballInfo.league?.season ?? 0)"
+        }
     }
     
     // MARK: - Selectors
@@ -298,7 +311,7 @@ class DetailGamesViewController: UIViewController {
             make.top.equalTo(homeAwayOddslabel.snp_bottomMargin).offset(40)
             make.centerX.equalToSuperview()
         }
-
+        
         matchInfoDevider.snp.makeConstraints { make in
             make.top.equalTo(matchInfoLabel.snp_bottomMargin).offset(5)
             make.height.equalTo(1)

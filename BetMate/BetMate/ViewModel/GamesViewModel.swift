@@ -17,7 +17,11 @@ class GamesViewModel {
     }
     
     func goToDetailGames(football: FootballResponse) {
-        coordinator?.goToDetailGames(with: football)
+        coordinator?.goToDetailFootball(with: football)
+    }
+    
+    func goToDetailGames() {
+        
     }
     
     // MARK: - Private properties
@@ -76,5 +80,10 @@ class GamesViewModel {
             comletion()
         }
     }
+}
 
+extension GamesViewModel {
+    func goToDetailGames(baseball: BaseballResponse) {
+        coordinator?.goToDetailBaseball(with: baseball)
+    }
 }
