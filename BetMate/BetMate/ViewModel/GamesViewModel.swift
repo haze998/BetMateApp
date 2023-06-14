@@ -10,18 +10,13 @@ import UIKit
 
 class GamesViewModel {
     weak var coordinator: GamesCoordinator?
-//    var football: FootballResponse?
     
     init(coordinator: GamesCoordinator) {
         self.coordinator = coordinator
     }
     
     func goToDetailGames(football: FootballResponse) {
-        coordinator?.goToDetailFootball(with: football)
-    }
-    
-    func goToDetailGames() {
-        
+        coordinator?.goToDetailGames(with: football)
     }
     
     // MARK: - Private properties
@@ -84,6 +79,22 @@ class GamesViewModel {
 
 extension GamesViewModel {
     func goToDetailGames(baseball: BaseballResponse) {
-        coordinator?.goToDetailBaseball(with: baseball)
+        coordinator?.goToDetailGames(with: baseball)
+    }
+    
+    func goToDetailGames(basketball: BasketballResponse) {
+        coordinator?.goToDetailGames(with: basketball)
+    }
+    
+    func goToDetailGames(hockey: HockeyResponse) {
+        coordinator?.goToDetailGames(with: hockey)
+    }
+    
+    func goToDetailGames(volleyball: VolleyballResponse) {
+        coordinator?.goToDetailGames(with: volleyball)
+    }
+    
+    func goToDetailGames(handball: HandballResponse) {
+        coordinator?.goToDetailGames(with: handball)
     }
 }

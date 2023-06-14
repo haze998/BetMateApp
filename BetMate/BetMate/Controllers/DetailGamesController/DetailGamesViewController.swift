@@ -140,7 +140,6 @@ class DetailGamesViewController: UIViewController {
     private let headToHeadDevider = DeviderView()
     private let matchCountry = InfoLabel(labelType: .matchCountry)
     private let matchLeague = InfoLabel(labelType: .matchLeague)
-    //    private let leagueType = InfoLabel(labelType: .leagueType)
     private let matchDateInfo = InfoLabel(labelType: .matchDate)
     private let seasonDate = InfoLabel(labelType: .seasonDate)
     
@@ -183,6 +182,18 @@ class DetailGamesViewController: UIViewController {
             matchDate.text = baseballInfo.date?.formatDateString(baseballInfo.date ?? "")
             matchDateInfo.text = "Date :" + " " + (baseballInfo.date?.formatDateString(baseballInfo.date ?? "") ?? "")
             seasonDate.text = "Season : \(baseballInfo.league?.season ?? 0)"
+        } else if let basketballInfo = viewModel.basketball {
+            let homeImgURL = URL(string: basketballInfo.teams?.home?.logo ?? "")
+            let awayImgURL = URL(string: basketballInfo.teams?.away?.logo ?? "")
+            leftTeamLogo.sd_setImage(with: homeImgURL)
+            rightTeamLogo.sd_setImage(with: awayImgURL)
+            homeScore.text = "\(basketballInfo.scores?.home?.total ?? 0)"
+            awayScore.text = "\(basketballInfo.scores?.away?.total ?? 0)"
+            homeTeamName.text = basketballInfo.teams?.home?.name
+            awayTeamName.text = basketballInfo.teams?.away?.name
+            matchDate.text = basketballInfo.date?.formatDateString(basketballInfo.date ?? "")
+            matchDateInfo.text = "Date :" + " " + (basketballInfo.date?.formatDateString(basketballInfo.date ?? "") ?? "")
+            seasonDate.text = "Season : \(basketballInfo.league?.name ?? "")"
         }
     }
     

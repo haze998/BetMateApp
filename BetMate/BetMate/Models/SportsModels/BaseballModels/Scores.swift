@@ -9,11 +9,11 @@ import Foundation
 
 // MARK: - Scores
 struct BaseballScores: Codable {
-    let home, away: ScoresAway?
+    let home, away: BaseballScoresAway?
 }
 
 // MARK: - ScoresAway
-struct ScoresAway: Codable {
+struct BaseballScoresAway: Codable {
     let hits, errors: Int?
     let total: Int?
 }

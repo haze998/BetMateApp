@@ -43,6 +43,7 @@
 		06982BC22A0D0F41007284BC /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06982BC12A0D0F41007284BC /* ForgotPasswordViewController.swift */; };
 		06982BC52A0D1682007284BC /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06982BC42A0D1682007284BC /* CustomTextField.swift */; };
 		06982BC72A0D1EDB007284BC /* Extension + UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06982BC62A0D1EDB007284BC /* Extension + UIColor.swift */; };
+		069C1D932A3A002D00B0053C /* FootballOdds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069C1D922A3A002D00B0053C /* FootballOdds.swift */; };
 		06A6B4542A150BD600CFFB33 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A6B4532A150BD600CFFB33 /* News.swift */; };
 		06A6B45A2A150C8400CFFB33 /* NewsSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A6B4592A150C8400CFFB33 /* NewsSource.swift */; };
 		06A6B45E2A150F0500CFFB33 /* NewsNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A6B45D2A150F0500CFFB33 /* NewsNetworkManager.swift */; };
@@ -156,6 +157,7 @@
 		06982BC12A0D0F41007284BC /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		06982BC42A0D1682007284BC /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		06982BC62A0D1EDB007284BC /* Extension + UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIColor.swift"; sourceTree = "<group>"; };
+		069C1D922A3A002D00B0053C /* FootballOdds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootballOdds.swift; sourceTree = "<group>"; };
 		06A6B4532A150BD600CFFB33 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		06A6B4592A150C8400CFFB33 /* NewsSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSource.swift; sourceTree = "<group>"; };
 		06A6B45D2A150F0500CFFB33 /* NewsNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsNetworkManager.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 				06B07CDE2A1E5F5D009EAA21 /* HandballModels */,
 				06B07CFF2A1E72AC009EAA21 /* HockeyModels */,
 				06B07D022A1E7851009EAA21 /* VolleyballModels */,
+				069C1D912A39FFF900B0053C /* OddsModels */,
 			);
 			path = SportsModels;
 			sourceTree = "<group>";
@@ -404,6 +407,22 @@
 				063C1A222A348323001B89A3 /* DetailGamesViews */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		069C1D912A39FFF900B0053C /* OddsModels */ = {
+			isa = PBXGroup;
+			children = (
+				069C1D942A3A004E00B0053C /* Football */,
+			);
+			path = OddsModels;
+			sourceTree = "<group>";
+		};
+		069C1D942A3A004E00B0053C /* Football */ = {
+			isa = PBXGroup;
+			children = (
+				069C1D922A3A002D00B0053C /* FootballOdds.swift */,
+			);
+			path = Football;
 			sourceTree = "<group>";
 		};
 		06A6B4522A150B5800CFFB33 /* AuthViews */ = {
@@ -781,6 +800,7 @@
 				06506B8F2A1CECD600E88FA0 /* BaseballParameters.swift in Sources */,
 				06B07CF22A1E6E24009EAA21 /* BasketballParameters.swift in Sources */,
 				06F75A9D2A11320D000A174B /* NewsViewController.swift in Sources */,
+				069C1D932A3A002D00B0053C /* FootballOdds.swift in Sources */,
 				06F73B2B2A31DE000028BB36 /* FootballModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,7 +9,6 @@ import Foundation
 
 // MARK: - MainHandball
 struct MainHandball: Codable {
-    let welcomeGet: String?
     let parameters: HandballParameters?
     let results: Int?
     let response: [HandballResponse]?

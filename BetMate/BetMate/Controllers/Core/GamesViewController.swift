@@ -226,7 +226,7 @@ extension GamesViewController: UICollectionViewDelegate {
     }
 }
 
-// MARK: - TableView extensions DataSource / Delegate
+// MARK: - TableView extension DataSource
 extension GamesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch viewModel.sports {
@@ -265,27 +265,22 @@ extension GamesViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - TableView extension Delegate
 extension GamesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         switch viewModel.sports {
-            
         case .football:
             viewModel.goToDetailGames(football: viewModel.footballInfoArr[indexPath.row])
         case .baseball:
             viewModel.goToDetailGames(baseball: viewModel.baseballInfoArr[indexPath.row])
         case .basketball:
-            print("Tap")
-
+            viewModel.goToDetailGames(basketball: viewModel.basketballInfoArr[indexPath.row])
         case .hockey:
-            print("Tap")
-
+            viewModel.goToDetailGames(hockey: viewModel.hockeyInfoArr[indexPath.row])
         case .volleyball:
-            print("Tap")
-
+            viewModel.goToDetailGames(volleyball: viewModel.volleyballInfoArr[indexPath.row])
         case .handball:
-            print("Tap")
-
+            viewModel.goToDetailGames(handball: viewModel.handballInfoArr[indexPath.row])
         }
     }
 }

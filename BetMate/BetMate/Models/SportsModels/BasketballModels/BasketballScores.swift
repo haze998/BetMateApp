@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - Scores
 struct BasketballScores: Codable {
-    let home, away: ScoresAway?
+    let home, away: BasketballScoresAway?
 }
 
 // MARK: - ScoresAway

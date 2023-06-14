@@ -152,7 +152,7 @@ class GamesTableViewCell: UITableViewCell {
         leftTeamName.text = baseballResponse.teams?.home?.name
         rightTeamName.text = baseballResponse.teams?.away?.name
         leftTeamGoals.text = "\(baseballResponse.scores?.home?.total ?? 0)"
-        leftTeamGoals.text = "\(baseballResponse.scores?.away?.total ?? 0)"
+        rightTeamGoals.text = "\(baseballResponse.scores?.away?.total ?? 0)"
     }
     
     func configureBasketballCell(with basketballResponse: BasketballResponse) {
@@ -163,6 +163,9 @@ class GamesTableViewCell: UITableViewCell {
         rightTeamLogo.sd_setImage(with: awayImgURL)
         leftTeamName.text = basketballResponse.teams?.home?.name
         rightTeamName.text = basketballResponse.teams?.away?.name
+        leftTeamGoals.text = "\(basketballResponse.scores?.home?.total ?? 0)"
+        rightTeamGoals.text = "\(basketballResponse.scores?.away?.total ?? 0)"
+
     }
     
     func configureHockeyCell(with hockeyResponse: HockeyResponse) {
@@ -173,7 +176,8 @@ class GamesTableViewCell: UITableViewCell {
         rightTeamLogo.sd_setImage(with: awayImgURL)
         leftTeamName.text = hockeyResponse.teams?.home?.name
         rightTeamName.text = hockeyResponse.teams?.away?.name
-
+        leftTeamGoals.text = "\(hockeyResponse.scores?.home ?? 0)"
+        rightTeamGoals.text = "\(hockeyResponse.scores?.away ?? 0)"
     }
     
     func configureVolleyballCell(with volleyballResponse: VolleyballResponse) {
@@ -184,6 +188,8 @@ class GamesTableViewCell: UITableViewCell {
         rightTeamLogo.sd_setImage(with: awayImgURL)
         leftTeamName.text = volleyballResponse.teams?.home?.name
         rightTeamName.text = volleyballResponse.teams?.away?.name
+        leftTeamGoals.text = "\(volleyballResponse.scores?.home ?? 0)"
+        rightTeamGoals.text = "\(volleyballResponse.scores?.away ?? 0)"
     }
     
     func configureHandballCell(with handballResponse: HandballResponse) {
@@ -194,6 +200,8 @@ class GamesTableViewCell: UITableViewCell {
         rightTeamLogo.sd_setImage(with: awayImgURL)
         leftTeamName.text = handballResponse.teams?.home?.name
         rightTeamName.text = handballResponse.teams?.away?.name
+        leftTeamGoals.text = "\(handballResponse.scores?.home ?? 0)"
+        rightTeamGoals.text = "\(handballResponse.scores?.away ?? 0)"
     }
     
     // MARK: - Setup layout
