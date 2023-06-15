@@ -161,15 +161,48 @@ class SportsNetworkManager {
     }
     
     // MARK: - Get ODDs info
-    func getFootballOddsInfo(with fixture: Int, completion: @escaping () -> Void) {
+    func getFootballOddsInfo(with fixture: Int, completion: @escaping ([FootballOddsResponse]) -> Void) {
         var url = URLRequest(url: URL(string: "https://v3.football.api-sports.io/odds?fixture=\(fixture)")!)
         url.allHTTPHeaderFields = [
             "x-rapidapi-key" : "\(ApiKeys.sportsApiKey.rawValue)"
         ]
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: url) { data, response, error in
+            guard let data = data else { return }
+            do {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let response = try decoder.decode(FootballOdds.self, from: data)
+                DispatchQueue.main.async {
+                    completion(response.response ?? [])
+                }
+            } catch {
+                print(String(describing: error))
+            }
+        }
+        task.resume()
     }
     
     // MARK: - Get head to head info
-    func getHeadToHeadInfo(homeID: String, awayID: String, completion: @escaping() -> Void) {
-        
+    func getFootballHeadToHead(homeID: Int, awayID: Int, completion: @escaping([HeadToHeadFootballResponse]) -> Void) {
+        var url = URLRequest(url: URL(string: "https://v3.football.api-sports.io/fixtures/headtohead?h2h=\(homeID)-\(awayID)")!)
+        url.allHTTPHeaderFields = [
+            "x-rapidapi-key" : "\(ApiKeys.sportsApiKey.rawValue)"
+        ]
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: url) { data, response, error in
+            guard let data = data else { return }
+            do {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let response = try decoder.decode(MainHeadToHeadFootball.self, from: data)
+                DispatchQueue.main.async {
+                    completion(response.response ?? [])
+                }
+            } catch {
+                print(String(describing: error))
+            }
+        }
+        task.resume()
     }
 }

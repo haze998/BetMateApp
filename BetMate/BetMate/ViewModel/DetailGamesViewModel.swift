@@ -16,6 +16,8 @@ class DetailGamesViewModel {
     var volleyball: VolleyballResponse?
     var handball: HandballResponse?
     var sports: KindsOfSports = .football
+    var footballOddsArr: [FootballOddsResponse] = []
+    var footballHthArr: [HeadToHeadFootballResponse] = []
     
     init(coordinator: GamesCoordinator? = nil, football: FootballResponse? = nil, baseball: BaseballResponse? = nil, basketball: BasketballResponse? = nil, hockey: HockeyResponse? = nil, volleyball: VolleyballResponse? = nil, handball: HandballResponse? = nil) {
         self.coordinator = coordinator
@@ -25,5 +27,19 @@ class DetailGamesViewModel {
         self.hockey = hockey
         self.volleyball = volleyball
         self.handball = handball
+    }
+    
+    func fetchFootballOdds(completion: @escaping () -> Void) {
+        SportsNetworkManager.shared.getFootballOddsInfo(with: football?.fixture.id ?? 0) { result in
+            self.footballOddsArr = result
+            completion()
+        }
+    }
+    
+    func fetchHtHFootbal(completion: @escaping () -> Void) {
+        SportsNetworkManager.shared.getFootballHeadToHead(homeID: football?.teams.home.id ?? 0, awayID: football?.teams.away.id ?? 0) { result in
+            self.footballHthArr = result
+            completion()
+        }
     }
 }

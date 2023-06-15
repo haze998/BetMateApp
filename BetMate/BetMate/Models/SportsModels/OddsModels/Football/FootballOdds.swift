@@ -30,7 +30,7 @@ struct FootballOddsParameters: Codable {
 struct FootballOddsResponse: Codable {
     let league: FootballOddsLeague?
     let fixture: FootballOddsFixture?
-    let update: Date?
+    let update: String?
     let bookmakers: [FootballBookmaker]?
 }
 
@@ -57,7 +57,7 @@ struct FootballValue: Codable {
 struct FootballOddsFixture: Codable {
     let id: Int?
     let timezone: String?
-    let date: Date?
+    let date: String?
     let timestamp: Int?
 }
 

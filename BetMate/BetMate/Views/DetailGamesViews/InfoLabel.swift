@@ -68,11 +68,11 @@ class InfoLabel: UILabel {
             textColor = .labelColor
         case .homeOdds:
             font = UIFont(name: FontNames.exoBold.rawValue, size: 20)
-            text = "1.234"
+//            text = "1.234"
             textColor = .labelColor
         case .awayOdds:
             font = UIFont(name: FontNames.exoBold.rawValue, size: 20)
-            text = "0.7"
+//            text = "0.7"
             textColor = .labelColor
         }
     }

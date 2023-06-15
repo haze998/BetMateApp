@@ -39,6 +39,17 @@ class DetailGamesViewController: UIViewController {
         return contentView
     }()
     
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.rowHeight = 220
+        tableView.backgroundColor = .clear
+        tableView.showsVerticalScrollIndicator = false
+        tableView.register(DetailGamesCell.self, forCellReuseIdentifier: String(describing: DetailGamesCell.self))
+        return tableView
+    }()
+    
     private var matchView: UIView = {
         let view = UIView()
         view.backgroundColor = .lightBackgroundView
@@ -147,6 +158,8 @@ class DetailGamesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        fetchedFootballOdds()
+        fetchedFootballHtH()
     }
     
     override func viewWillLayoutSubviews() {
@@ -194,6 +207,59 @@ class DetailGamesViewController: UIViewController {
             matchDate.text = basketballInfo.date?.formatDateString(basketballInfo.date ?? "")
             matchDateInfo.text = "Date :" + " " + (basketballInfo.date?.formatDateString(basketballInfo.date ?? "") ?? "")
             seasonDate.text = "Season : \(basketballInfo.league?.name ?? "")"
+        } else if let hockeyInfo = viewModel.hockey {
+            let homeImgURL = URL(string: hockeyInfo.teams?.home?.logo ?? "")
+            let awayImgURL = URL(string: hockeyInfo.teams?.away?.logo ?? "")
+            leftTeamLogo.sd_setImage(with: homeImgURL)
+            rightTeamLogo.sd_setImage(with: awayImgURL)
+            homeScore.text = "\(hockeyInfo.scores?.home ?? 0)"
+            awayScore.text = "\(hockeyInfo.scores?.away ?? 0)"
+            homeTeamName.text = hockeyInfo.teams?.home?.name
+            awayTeamName.text = hockeyInfo.teams?.away?.name
+            matchDate.text = hockeyInfo.date?.formatDateString(hockeyInfo.date ?? "")
+            matchDateInfo.text = "Date :" + " " + (hockeyInfo.date?.formatDateString(hockeyInfo.date ?? "") ?? "")
+            seasonDate.text = "Season : \(hockeyInfo.league?.season ?? 0)"
+        } else if let volleyballInfo = viewModel.volleyball {
+            let homeImgURL = URL(string: volleyballInfo.teams?.home?.logo ?? "")
+            let awayImgURL = URL(string: volleyballInfo.teams?.away?.logo ?? "")
+            leftTeamLogo.sd_setImage(with: homeImgURL)
+            rightTeamLogo.sd_setImage(with: awayImgURL)
+            homeScore.text = "\(volleyballInfo.scores?.home ?? 0)"
+            awayScore.text = "\(volleyballInfo.scores?.away ?? 0)"
+            homeTeamName.text = volleyballInfo.teams?.home?.name
+            awayTeamName.text = volleyballInfo.teams?.away?.name
+            matchDate.text = volleyballInfo.date?.formatDateString(volleyballInfo.date ?? "")
+            matchDateInfo.text = "Date :" + " " + (volleyballInfo.date?.formatDateString(volleyballInfo.date ?? "") ?? "")
+            seasonDate.text = "Season : \(volleyballInfo.league?.season ?? 0)"
+        } else if let handballInfo = viewModel.handball {
+            let homeImgURL = URL(string: handballInfo.teams?.home?.logo ?? "")
+            let awayImgURL = URL(string: handballInfo.teams?.away?.logo ?? "")
+            leftTeamLogo.sd_setImage(with: homeImgURL)
+            rightTeamLogo.sd_setImage(with: awayImgURL)
+            homeScore.text = "\(handballInfo.scores?.home ?? 0)"
+            awayScore.text = "\(handballInfo.scores?.away ?? 0)"
+            homeTeamName.text = handballInfo.teams?.home?.name
+            awayTeamName.text = handballInfo.teams?.away?.name
+            matchDate.text = handballInfo.date?.formatDateString(handballInfo.date ?? "")
+            matchDateInfo.text = "Date :" + " " + (handballInfo.date?.formatDateString(handballInfo.date ?? "") ?? "")
+            seasonDate.text = "Season : \(handballInfo.league?.season ?? 0)"
+        } 
+
+    }
+    
+    // MARK: - Private funcs
+    private func fetchedFootballOdds() {
+        viewModel.fetchFootballOdds {
+//            self.homeOdds.text = self.viewModel.footballOddsArr.first?.bookmakers?.first?.bets?.first?.values?.first?.odd
+//            self.awayOdds.text = self.viewModel.footballOddsArr.first?.bookmakers?.first?.bets?.first?.values?.first?.odd
+            self.homeOdds.text = self.viewModel.footballOddsArr.first?.bookmakers?.first?.bets?.first?.values?[0].odd
+            self.awayOdds.text = self.viewModel.footballOddsArr.first?.bookmakers?.first?.bets?.first?.values?[1].odd
+        }
+    }
+    
+    private func fetchedFootballHtH() {
+        viewModel.fetchHtHFootbal {
+            self.tableView.reloadData()
         }
     }
     
@@ -207,7 +273,7 @@ class DetailGamesViewController: UIViewController {
     private func setupLayout() {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
-        contentView.addSubviews(view: [matchView, matchInfoLabel, matchInfoDevider, oddsInfoLabel, oddsDevider, homeAwayOddslabel, homeOdds, awayOdds, matchCountry, matchLeague, matchDateInfo, seasonDate, headToHeadInfo, headToHeadDevider])
+        contentView.addSubviews(view: [matchView, matchInfoLabel, matchInfoDevider, oddsInfoLabel, oddsDevider, homeAwayOddslabel, homeOdds, awayOdds, matchCountry, matchLeague, matchDateInfo, seasonDate, headToHeadInfo, headToHeadDevider, tableView])
         matchView.addSubviews(view: [backButton, leftTeamLogo, rightTeamLogo, scoreView, homeTeamName, awayTeamName, matchDate])
         scoreView.addSubviews(view: [homeScore, colonLabel, awayScore])
         
@@ -225,7 +291,7 @@ class DetailGamesViewController: UIViewController {
             } else if UIScreen.main.bounds.height > 800 && UIScreen.main.bounds.height <= 813 {
                 make.height.equalTo(view.frame.height + 50)
             } else {
-                make.height.equalTo(830)
+                make.height.equalTo(1300)
                 scrollView.isScrollEnabled = true
             }
         }
@@ -359,5 +425,27 @@ class DetailGamesViewController: UIViewController {
             make.height.equalTo(1)
             make.leading.trailing.equalToSuperview().inset(20)
         }
+        
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(headToHeadDevider.snp.bottom).offset(20)
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.bottom.equalToSuperview()
+        }
     }
 }
+
+extension DetailGamesViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewModel.footballHthArr.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DetailGamesCell.self), for: indexPath) as? DetailGamesCell else { return UITableViewCell() }
+        cell.configureCell(with: viewModel.footballHthArr[indexPath.row])
+        return cell
+    }
+    
+    
+}
+
+extension DetailGamesViewController: UITableViewDelegate { }
