@@ -102,3 +102,14 @@ class DetailGamesCell: UITableViewCell {
         }
     }
 }
+
+extension DetailGamesCell {
+    func configureCell(with hthBaseball: HeadToHeadBaseballResponse) {
+        guard let homeImgURL = URL(string: hthBaseball.teams?.home?.logo ?? "") else { return }
+        guard let awayImgURL = URL(string: hthBaseball.teams?.away?.logo ?? "") else { return }
+        leftTeamLogo.sd_setImage(with: homeImgURL)
+        rightTeamLogo.sd_setImage(with: awayImgURL)
+        scoreLabel.text = "\(hthBaseball.scores?.home?.total ?? 0)" + " " + ":" + " " + "\(hthBaseball.scores?.away?.total ?? 0)"
+        dateLabel.text = hthBaseball.date?.formatDateString(hthBaseball.date ?? "")
+    }
+}

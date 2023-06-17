@@ -8,6 +8,8 @@
 import Foundation
 
 class DetailGamesViewModel {
+    
+    // MARK: - Properties
     weak var coordinator: GamesCoordinator?
     var football: FootballResponse?
     var baseball: BaseballResponse?
@@ -18,7 +20,9 @@ class DetailGamesViewModel {
     var sports: KindsOfSports = .football
     var footballOddsArr: [FootballOddsResponse] = []
     var footballHthArr: [HeadToHeadFootballResponse] = []
+    var baseballHthArr: [HeadToHeadBaseballResponse] = []
     
+    // MARK: - init
     init(coordinator: GamesCoordinator? = nil, football: FootballResponse? = nil, baseball: BaseballResponse? = nil, basketball: BasketballResponse? = nil, hockey: HockeyResponse? = nil, volleyball: VolleyballResponse? = nil, handball: HandballResponse? = nil) {
         self.coordinator = coordinator
         self.football = football
@@ -29,16 +33,26 @@ class DetailGamesViewModel {
         self.handball = handball
     }
     
+    // MARK: - Fetch football odds
     func fetchFootballOdds(completion: @escaping () -> Void) {
-        SportsNetworkManager.shared.getFootballOddsInfo(with: football?.fixture.id ?? 0) { result in
-            self.footballOddsArr = result
+//        SportsNetworkManager.shared.getFootballOddsInfo(with: football?.fixture.id ?? 0) { result in
+//            self.footballOddsArr = result
+//            completion()
+//        }
+    }
+    
+    // MARK: - Fetch football h2h
+    func fetchHtHFootbal(completion: @escaping () -> Void) {
+        SportsNetworkManager.shared.getFootballHeadToHead(homeID: football?.teams.home.id ?? 0, awayID: football?.teams.away.id ?? 0) { result in
+            self.footballHthArr = result
             completion()
         }
     }
     
-    func fetchHtHFootbal(completion: @escaping () -> Void) {
-        SportsNetworkManager.shared.getFootballHeadToHead(homeID: football?.teams.home.id ?? 0, awayID: football?.teams.away.id ?? 0) { result in
-            self.footballHthArr = result
+    // MARK: - Fetch baseball h2h
+    func fetchHtHBaseball(completion: @escaping () -> Void) {
+        SportsNetworkManager.shared.getBaseballHeadToHead(homeID: baseball?.teams?.home?.id ?? 0, awayID: baseball?.teams?.away?.id ?? 0) { result in
+            self.baseballHthArr = result
             completion()
         }
     }

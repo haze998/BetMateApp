@@ -160,6 +160,7 @@ class DetailGamesViewController: UIViewController {
         setupUI()
         fetchedFootballOdds()
         fetchedFootballHtH()
+        fetchedBaseballHtH()
     }
     
     override func viewWillLayoutSubviews() {
@@ -250,8 +251,6 @@ class DetailGamesViewController: UIViewController {
     // MARK: - Private funcs
     private func fetchedFootballOdds() {
         viewModel.fetchFootballOdds {
-//            self.homeOdds.text = self.viewModel.footballOddsArr.first?.bookmakers?.first?.bets?.first?.values?.first?.odd
-//            self.awayOdds.text = self.viewModel.footballOddsArr.first?.bookmakers?.first?.bets?.first?.values?.first?.odd
             self.homeOdds.text = self.viewModel.footballOddsArr.first?.bookmakers?.first?.bets?.first?.values?[0].odd
             self.awayOdds.text = self.viewModel.footballOddsArr.first?.bookmakers?.first?.bets?.first?.values?[1].odd
         }
@@ -262,6 +261,13 @@ class DetailGamesViewController: UIViewController {
             self.tableView.reloadData()
         }
     }
+    
+    private func fetchedBaseballHtH() {
+        viewModel.fetchHtHBaseball {
+            self.tableView.reloadData()
+        }
+    }
+
     
     // MARK: - Selectors
     @objc
@@ -436,12 +442,49 @@ class DetailGamesViewController: UIViewController {
 
 extension DetailGamesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.footballHthArr.count
+        if viewModel.football != nil {
+            return viewModel.footballHthArr.count
+        } else if viewModel.baseball != nil {
+            return viewModel.baseballHthArr.count
+        }
+//        switch viewModel.sports {
+//        case .football:
+//            return viewModel.footballHthArr.count
+//        case .baseball:
+//            return viewModel.baseballHthArr.count
+//        case .basketball:
+//            return 1
+//        case .hockey:
+//            return 2
+//        case .volleyball:
+//            return 3
+//        case .handball:
+//            return 4
+//        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DetailGamesCell.self), for: indexPath) as? DetailGamesCell else { return UITableViewCell() }
-        cell.configureCell(with: viewModel.footballHthArr[indexPath.row])
+        if viewModel.football != nil {
+            cell.configureCell(with: viewModel.footballHthArr[indexPath.row])
+        } else if viewModel.baseball != nil {
+            cell.configureCell(with: viewModel.baseballHthArr[indexPath.row])
+        }
+//        switch viewModel.sports {
+//        case .football:
+//            cell.configureCell(with: viewModel.footballHthArr[indexPath.row])
+//        case .baseball:
+//            cell.configureCell(with: viewModel.baseballHthArr[indexPath.row])
+//        case .basketball:
+//            break
+//        case .hockey:
+//            break
+//        case .volleyball:
+//            break
+//        case .handball:
+//            break
+//        }
         return cell
     }
     
