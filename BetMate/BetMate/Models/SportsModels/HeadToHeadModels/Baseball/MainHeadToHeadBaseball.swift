@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: - Welcome
+// MARK: - MainHeadToHeadBaseball
 struct MainHeadToHeadBaseball: Codable {
     let welcomeGet: String?
     let parameters: HeadToHeadBaseballParameters?

@@ -158,9 +158,8 @@ class DetailGamesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        fetchedFootballOdds()
-        fetchedFootballHtH()
-        fetchedBaseballHtH()
+        fetchedOddsInfo()
+        fetchedHthInfo()
     }
     
     override func viewWillLayoutSubviews() {
@@ -244,30 +243,56 @@ class DetailGamesViewController: UIViewController {
             matchDate.text = handballInfo.date?.formatDateString(handballInfo.date ?? "")
             matchDateInfo.text = "Date :" + " " + (handballInfo.date?.formatDateString(handballInfo.date ?? "") ?? "")
             seasonDate.text = "Season : \(handballInfo.league?.season ?? 0)"
-        } 
-
+        }
     }
     
     // MARK: - Private funcs
-    private func fetchedFootballOdds() {
-        viewModel.fetchFootballOdds {
-            self.homeOdds.text = self.viewModel.footballOddsArr.first?.bookmakers?.first?.bets?.first?.values?[0].odd
-            self.awayOdds.text = self.viewModel.footballOddsArr.first?.bookmakers?.first?.bets?.first?.values?[1].odd
+    private func fetchedOddsInfo() {
+        if viewModel.football != nil {
+            viewModel.fetchFootballOdds {
+                self.homeOdds.text = self.viewModel.footballOddsArr.first?.bookmakers?.first?.bets?.first?.values?[0].odd
+                self.awayOdds.text = self.viewModel.footballOddsArr.first?.bookmakers?.first?.bets?.first?.values?[2].odd
+            }
+        } else if viewModel.baseball != nil {
+            viewModel.fetchBaseballOdds {
+                self.homeOdds.text = self.viewModel.footballOddsArr.first?.bookmakers?.first?.bets?.first?.values?[0].odd
+                self.awayOdds.text = self.viewModel.footballOddsArr.first?.bookmakers?.first?.bets?.first?.values?[2].odd
+            }
+        } else if viewModel.basketball != nil {
+            viewModel.fetchBasketballOdds {
+                self.homeOdds.text = self.viewModel.footballOddsArr.first?.bookmakers?.first?.bets?.first?.values?[0].odd
+                self.awayOdds.text = self.viewModel.footballOddsArr.first?.bookmakers?.first?.bets?.first?.values?[2].odd
+            }
         }
     }
     
-    private func fetchedFootballHtH() {
-        viewModel.fetchHtHFootbal {
-            self.tableView.reloadData()
+    private func fetchedHthInfo() {
+        if viewModel.football != nil {
+            viewModel.fetchHtHFootbal {
+                self.tableView.reloadData()
+            }
+        } else if viewModel.baseball != nil {
+            viewModel.fetchHtHBaseball {
+                self.tableView.reloadData()
+            }
+        } else if viewModel.basketball != nil {
+            viewModel.fetchHtHbasketball {
+                self.tableView.reloadData()
+            }
+        } else if viewModel.hockey != nil {
+            viewModel.fetchHtHhockey {
+                self.tableView.reloadData()
+            }
+        } else if viewModel.volleyball != nil {
+            viewModel.fetchHtHVolleyball {
+                self.tableView.reloadData()
+            }
+        } else if viewModel.handball != nil {
+            viewModel.fetchHtHHandball {
+                self.tableView.reloadData()
+            }
         }
     }
-    
-    private func fetchedBaseballHtH() {
-        viewModel.fetchHtHBaseball {
-            self.tableView.reloadData()
-        }
-    }
-
     
     // MARK: - Selectors
     @objc
@@ -440,27 +465,22 @@ class DetailGamesViewController: UIViewController {
     }
 }
 
+// MARK: - UITableView Data Source
 extension DetailGamesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if viewModel.football != nil {
             return viewModel.footballHthArr.count
         } else if viewModel.baseball != nil {
             return viewModel.baseballHthArr.count
+        } else if viewModel.basketball != nil {
+            return viewModel.basketballHthArr.count
+        } else if viewModel.hockey != nil {
+            return viewModel.hockeyHthArr.count
+        } else if viewModel.volleyball != nil {
+            return viewModel.volleyballHthArr.count
+        } else if viewModel.handball != nil {
+            return viewModel.handballHthArr.count
         }
-//        switch viewModel.sports {
-//        case .football:
-//            return viewModel.footballHthArr.count
-//        case .baseball:
-//            return viewModel.baseballHthArr.count
-//        case .basketball:
-//            return 1
-//        case .hockey:
-//            return 2
-//        case .volleyball:
-//            return 3
-//        case .handball:
-//            return 4
-//        }
         return 0
     }
     
@@ -470,25 +490,18 @@ extension DetailGamesViewController: UITableViewDataSource {
             cell.configureCell(with: viewModel.footballHthArr[indexPath.row])
         } else if viewModel.baseball != nil {
             cell.configureCell(with: viewModel.baseballHthArr[indexPath.row])
+        } else if viewModel.basketball != nil {
+            cell.configureCell(with: viewModel.basketballHthArr[indexPath.row])
+        } else if viewModel.hockey != nil {
+            cell.configureCell(with: viewModel.hockeyHthArr[indexPath.row])
+        } else if viewModel.volleyball != nil {
+            cell.configureCell(with: viewModel.volleyballHthArr[indexPath.row])
+        } else if viewModel.handball != nil {
+            cell.configureCell(with: viewModel.handballHthArr[indexPath.row])
         }
-//        switch viewModel.sports {
-//        case .football:
-//            cell.configureCell(with: viewModel.footballHthArr[indexPath.row])
-//        case .baseball:
-//            cell.configureCell(with: viewModel.baseballHthArr[indexPath.row])
-//        case .basketball:
-//            break
-//        case .hockey:
-//            break
-//        case .volleyball:
-//            break
-//        case .handball:
-//            break
-//        }
         return cell
     }
-    
-    
 }
 
+// MARK: UITableView Delegate
 extension DetailGamesViewController: UITableViewDelegate { }

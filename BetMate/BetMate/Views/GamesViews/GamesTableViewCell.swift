@@ -11,7 +11,7 @@ import SDWebImage
 
 class GamesTableViewCell: UITableViewCell {
 
-    // MARK: - Views
+    // MARK: - Private Views
     private lazy var bgView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 10
@@ -23,13 +23,11 @@ class GamesTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont(name: FontNames.exoMedium.rawValue, size: 14)
         label.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
-//        label.text = "18:30, 15 August"
         return label
     }()
     
     private lazy var leftTeamLogo: UIImageView = {
         let image = UIImageView()
-//        image.image = UIImage(named: "footballteam1")
         image.layer.cornerRadius = 10
         image.clipsToBounds = true
         return image
@@ -45,7 +43,6 @@ class GamesTableViewCell: UITableViewCell {
 
     private lazy var rightTeamLogo: UIImageView = {
         let image = UIImageView()
-//        image.image = UIImage(named: "footballteam2")
         image.layer.cornerRadius = 10
         image.clipsToBounds = true
         return image
@@ -121,7 +118,7 @@ class GamesTableViewCell: UITableViewCell {
     }
     
     // MARK: - Configure sports cell
-    func configureFootballCell(with footballResponse: FootballResponse) {
+    func configureCell(with footballResponse: FootballResponse) {
         dateLabel.text = footballResponse.fixture.date.formatDateString(footballResponse.fixture.date)
         let homeImgURL = URL(string: footballResponse.teams.home.logo)
         leftTeamLogo.sd_setImage(with: homeImgURL)
@@ -141,67 +138,6 @@ class GamesTableViewCell: UITableViewCell {
         } else {
             rightTeamGoals.text = "\(footballResponse.goals.away ?? 0)"
         }
-    }
-    
-    func configureBaseballCell(with baseballResponse: BaseballResponse) {
-        dateLabel.text = baseballResponse.date?.formatDateString(baseballResponse.date ?? "")
-        let homeImgURL = URL(string: baseballResponse.teams?.home?.logo ?? "")
-        leftTeamLogo.sd_setImage(with: homeImgURL)
-        let awayImgURL = URL(string: baseballResponse.teams?.away?.logo ?? "")
-        rightTeamLogo.sd_setImage(with: awayImgURL)
-        leftTeamName.text = baseballResponse.teams?.home?.name
-        rightTeamName.text = baseballResponse.teams?.away?.name
-        leftTeamGoals.text = "\(baseballResponse.scores?.home?.total ?? 0)"
-        rightTeamGoals.text = "\(baseballResponse.scores?.away?.total ?? 0)"
-    }
-    
-    func configureBasketballCell(with basketballResponse: BasketballResponse) {
-        dateLabel.text = basketballResponse.date?.formatDateString(basketballResponse.date ?? "")
-        let homeImgURL = URL(string: basketballResponse.teams?.home?.logo ?? "")
-        leftTeamLogo.sd_setImage(with: homeImgURL)
-        let awayImgURL = URL(string: basketballResponse.teams?.away?.logo ?? "")
-        rightTeamLogo.sd_setImage(with: awayImgURL)
-        leftTeamName.text = basketballResponse.teams?.home?.name
-        rightTeamName.text = basketballResponse.teams?.away?.name
-        leftTeamGoals.text = "\(basketballResponse.scores?.home?.total ?? 0)"
-        rightTeamGoals.text = "\(basketballResponse.scores?.away?.total ?? 0)"
-
-    }
-    
-    func configureHockeyCell(with hockeyResponse: HockeyResponse) {
-        dateLabel.text = hockeyResponse.date?.formatDateString(hockeyResponse.date ?? "")
-        let homeImgURL = URL(string: hockeyResponse.teams?.home?.logo ?? "")
-        leftTeamLogo.sd_setImage(with: homeImgURL)
-        let awayImgURL = URL(string: hockeyResponse.teams?.away?.logo ?? "")
-        rightTeamLogo.sd_setImage(with: awayImgURL)
-        leftTeamName.text = hockeyResponse.teams?.home?.name
-        rightTeamName.text = hockeyResponse.teams?.away?.name
-        leftTeamGoals.text = "\(hockeyResponse.scores?.home ?? 0)"
-        rightTeamGoals.text = "\(hockeyResponse.scores?.away ?? 0)"
-    }
-    
-    func configureVolleyballCell(with volleyballResponse: VolleyballResponse) {
-        dateLabel.text = volleyballResponse.date?.formatDateString(volleyballResponse.date ?? "")
-        let homeImgURL = URL(string: volleyballResponse.teams?.home?.logo ?? "")
-        leftTeamLogo.sd_setImage(with: homeImgURL)
-        let awayImgURL = URL(string: volleyballResponse.teams?.away?.logo ?? "")
-        rightTeamLogo.sd_setImage(with: awayImgURL)
-        leftTeamName.text = volleyballResponse.teams?.home?.name
-        rightTeamName.text = volleyballResponse.teams?.away?.name
-        leftTeamGoals.text = "\(volleyballResponse.scores?.home ?? 0)"
-        rightTeamGoals.text = "\(volleyballResponse.scores?.away ?? 0)"
-    }
-    
-    func configureHandballCell(with handballResponse: HandballResponse) {
-        dateLabel.text = handballResponse.date?.formatDateString(handballResponse.date ?? "")
-        let homeImgURL = URL(string: handballResponse.teams?.home?.logo ?? "")
-        leftTeamLogo.sd_setImage(with: homeImgURL)
-        let awayImgURL = URL(string: handballResponse.teams?.away?.logo ?? "")
-        rightTeamLogo.sd_setImage(with: awayImgURL)
-        leftTeamName.text = handballResponse.teams?.home?.name
-        rightTeamName.text = handballResponse.teams?.away?.name
-        leftTeamGoals.text = "\(handballResponse.scores?.home ?? 0)"
-        rightTeamGoals.text = "\(handballResponse.scores?.away ?? 0)"
     }
     
     // MARK: - Setup layout
@@ -276,4 +212,119 @@ class GamesTableViewCell: UITableViewCell {
             make.centerX.equalTo(versusLabel)
         }
     }
+}
+
+// MARK: - Extension GamesTableViewCell
+extension GamesTableViewCell {
+    func configureCell(with baseballResponse: BaseballResponse) {
+        dateLabel.text = baseballResponse.date?.formatDateString(baseballResponse.date ?? "")
+        let homeImgURL = URL(string: baseballResponse.teams?.home?.logo ?? "")
+        leftTeamLogo.sd_setImage(with: homeImgURL)
+        let awayImgURL = URL(string: baseballResponse.teams?.away?.logo ?? "")
+        rightTeamLogo.sd_setImage(with: awayImgURL)
+        leftTeamName.text = baseballResponse.teams?.home?.name
+        rightTeamName.text = baseballResponse.teams?.away?.name
+        
+        if baseballResponse.scores?.home?.total == nil {
+            leftTeamGoals.text = "not started"
+        } else {
+            leftTeamGoals.text = "\(baseballResponse.scores?.home?.total ?? 0)"
+        }
+        
+        if baseballResponse.scores?.away?.total == nil {
+            rightTeamGoals.text = "not started"
+        } else {
+            rightTeamGoals.text = "\(baseballResponse.scores?.away?.total ?? 0)"
+        }
+    }
+    
+    func configureCell(with basketballResponse: BasketballResponse) {
+        dateLabel.text = basketballResponse.date?.formatDateString(basketballResponse.date ?? "")
+        let homeImgURL = URL(string: basketballResponse.teams?.home?.logo ?? "")
+        leftTeamLogo.sd_setImage(with: homeImgURL)
+        let awayImgURL = URL(string: basketballResponse.teams?.away?.logo ?? "")
+        rightTeamLogo.sd_setImage(with: awayImgURL)
+        leftTeamName.text = basketballResponse.teams?.home?.name
+        rightTeamName.text = basketballResponse.teams?.away?.name
+        
+        if basketballResponse.scores?.home?.total == nil {
+            leftTeamGoals.text = "not started"
+        } else {
+            leftTeamGoals.text = "\(basketballResponse.scores?.home?.total ?? 0)"
+        }
+        
+        if basketballResponse.scores?.away?.total == nil {
+            rightTeamGoals.text = "not started"
+        } else {
+            rightTeamGoals.text = "\(basketballResponse.scores?.away?.total ?? 0)"
+        }
+    }
+    
+    func configureCell(with hockeyResponse: HockeyResponse) {
+        dateLabel.text = hockeyResponse.date?.formatDateString(hockeyResponse.date ?? "")
+        let homeImgURL = URL(string: hockeyResponse.teams?.home?.logo ?? "")
+        leftTeamLogo.sd_setImage(with: homeImgURL)
+        let awayImgURL = URL(string: hockeyResponse.teams?.away?.logo ?? "")
+        rightTeamLogo.sd_setImage(with: awayImgURL)
+        leftTeamName.text = hockeyResponse.teams?.home?.name
+        rightTeamName.text = hockeyResponse.teams?.away?.name
+        
+        if hockeyResponse.scores?.home == nil {
+            leftTeamGoals.text = "not started"
+        } else {
+            leftTeamGoals.text = "\(hockeyResponse.scores?.home ?? 0)"
+        }
+        
+        if hockeyResponse.scores?.away == nil {
+            rightTeamGoals.text = "not started"
+        } else {
+            rightTeamGoals.text = "\(hockeyResponse.scores?.away ?? 0)"
+        }
+    }
+    
+    func configureCell(with volleyballResponse: VolleyballResponse) {
+        dateLabel.text = volleyballResponse.date?.formatDateString(volleyballResponse.date ?? "")
+        let homeImgURL = URL(string: volleyballResponse.teams?.home?.logo ?? "")
+        leftTeamLogo.sd_setImage(with: homeImgURL)
+        let awayImgURL = URL(string: volleyballResponse.teams?.away?.logo ?? "")
+        rightTeamLogo.sd_setImage(with: awayImgURL)
+        leftTeamName.text = volleyballResponse.teams?.home?.name
+        rightTeamName.text = volleyballResponse.teams?.away?.name
+        
+        if volleyballResponse.scores?.home == nil {
+            leftTeamGoals.text = "not started"
+        } else {
+            leftTeamGoals.text = "\(volleyballResponse.scores?.home ?? 0)"
+        }
+        
+        if volleyballResponse.scores?.away == nil {
+            rightTeamGoals.text = "not started"
+        } else {
+            rightTeamGoals.text = "\(volleyballResponse.scores?.away ?? 0)"
+        }
+    }
+    
+    func configureCell(with handballResponse: HandballResponse) {
+        dateLabel.text = handballResponse.date?.formatDateString(handballResponse.date ?? "")
+        let homeImgURL = URL(string: handballResponse.teams?.home?.logo ?? "")
+        leftTeamLogo.sd_setImage(with: homeImgURL)
+        let awayImgURL = URL(string: handballResponse.teams?.away?.logo ?? "")
+        rightTeamLogo.sd_setImage(with: awayImgURL)
+        leftTeamName.text = handballResponse.teams?.home?.name
+        rightTeamName.text = handballResponse.teams?.away?.name
+        
+        if handballResponse.scores?.home == nil {
+            leftTeamGoals.text = "not started"
+        } else {
+            leftTeamGoals.text = "\(handballResponse.scores?.home ?? 0)"
+        }
+        
+        if handballResponse.scores?.away == nil {
+            rightTeamGoals.text = "not started"
+        } else {
+            rightTeamGoals.text = "\(handballResponse.scores?.away ?? 0)"
+        }
+        
+    }
+
 }

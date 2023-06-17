@@ -249,17 +249,17 @@ extension GamesViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: GamesTableViewCell.self)) as? GamesTableViewCell else { return UITableViewCell() }
         switch viewModel.sports {
         case .football:
-            cell.configureFootballCell(with: viewModel.footballInfoArr[indexPath.row])
+            cell.configureCell(with: viewModel.footballInfoArr[indexPath.row])
         case .baseball:
-            cell.configureBaseballCell(with: viewModel.baseballInfoArr[indexPath.row])
+            cell.configureCell(with: viewModel.baseballInfoArr[indexPath.row])
         case .basketball:
-            cell.configureBasketballCell(with: viewModel.basketballInfoArr[indexPath.row])
+            cell.configureCell(with: viewModel.basketballInfoArr[indexPath.row])
         case .hockey:
-            cell.configureHockeyCell(with: viewModel.hockeyInfoArr[indexPath.row])
+            cell.configureCell(with: viewModel.hockeyInfoArr[indexPath.row])
         case .volleyball:
-            cell.configureVolleyballCell(with: viewModel.volleyballInfoArr[indexPath.row])
+            cell.configureCell(with: viewModel.volleyballInfoArr[indexPath.row])
         case .handball:
-            cell.configureHandballCell(with: viewModel.handballInfoArr[indexPath.row])
+            cell.configureCell(with: viewModel.handballInfoArr[indexPath.row])
         }
         return cell
     }

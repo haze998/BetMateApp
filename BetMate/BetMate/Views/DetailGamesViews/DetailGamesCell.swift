@@ -44,7 +44,6 @@ class DetailGamesCell: UITableViewCell {
     private lazy var scoreLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: FontNames.exoBold.rawValue, size: 20)
-//        label.text = "VS"
         label.textColor = .labelColor
         return label
     }()
@@ -111,5 +110,41 @@ extension DetailGamesCell {
         rightTeamLogo.sd_setImage(with: awayImgURL)
         scoreLabel.text = "\(hthBaseball.scores?.home?.total ?? 0)" + " " + ":" + " " + "\(hthBaseball.scores?.away?.total ?? 0)"
         dateLabel.text = hthBaseball.date?.formatDateString(hthBaseball.date ?? "")
+    }
+    
+    func configureCell(with hthBasketball: BasketballHthResponse) {
+        guard let homeImgURL = URL(string: hthBasketball.teams?.home?.logo ?? "") else { return }
+        guard let awayImgURL = URL(string: hthBasketball.teams?.away?.logo ?? "") else { return }
+        leftTeamLogo.sd_setImage(with: homeImgURL)
+        rightTeamLogo.sd_setImage(with: awayImgURL)
+        scoreLabel.text = "\(hthBasketball.scores?.home?.total ?? 0)" + " " + ":" + " " + "\(hthBasketball.scores?.away?.total ?? 0)"
+        dateLabel.text = hthBasketball.date?.formatDateString(hthBasketball.date ?? "")
+    }
+    
+    func configureCell(with hthHockey: HockeyHthResponse) {
+        guard let homeImgURL = URL(string: hthHockey.teams?.home?.logo ?? "") else { return }
+        guard let awayImgURL = URL(string: hthHockey.teams?.away?.logo ?? "") else { return }
+        leftTeamLogo.sd_setImage(with: homeImgURL)
+        rightTeamLogo.sd_setImage(with: awayImgURL)
+        scoreLabel.text = "\(hthHockey.scores?.home ?? 0)" + " " + ":" + " " + "\(hthHockey.scores?.away ?? 0)"
+        dateLabel.text = hthHockey.date?.formatDateString(hthHockey.date ?? "")
+    }
+    
+    func configureCell(with hthVolleyball: VolleyballHthResponse) {
+        guard let homeImgURL = URL(string: hthVolleyball.teams?.home?.logo ?? "") else { return }
+        guard let awayImgURL = URL(string: hthVolleyball.teams?.away?.logo ?? "") else { return }
+        leftTeamLogo.sd_setImage(with: homeImgURL)
+        rightTeamLogo.sd_setImage(with: awayImgURL)
+        scoreLabel.text = "\(hthVolleyball.scores?.home ?? 0)" + " " + ":" + " " + "\(hthVolleyball.scores?.away ?? 0)"
+        dateLabel.text = hthVolleyball.date?.formatDateString(hthVolleyball.date ?? "")
+    }
+
+    func configureCell(with hthHandball: HandballHthResponse) {
+        guard let homeImgURL = URL(string: hthHandball.teams?.home?.logo ?? "") else { return }
+        guard let awayImgURL = URL(string: hthHandball.teams?.away?.logo ?? "") else { return }
+        leftTeamLogo.sd_setImage(with: homeImgURL)
+        rightTeamLogo.sd_setImage(with: awayImgURL)
+        scoreLabel.text = "\(hthHandball.scores?.home ?? 0)" + " " + ":" + " " + "\(hthHandball.scores?.away ?? 0)"
+        dateLabel.text = hthHandball.date?.formatDateString(hthHandball.date ?? "")
     }
 }

@@ -28,6 +28,12 @@
 		063C1A282A349416001B89A3 /* DetailGamesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063C1A272A349416001B89A3 /* DetailGamesViewModel.swift */; };
 		063DBC7C2A165A5A00406059 /* Extension + String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063DBC7B2A165A5A00406059 /* Extension + String.swift */; };
 		0642CC742A3DCE6900D8AEA2 /* MainHeadToHeadBaseball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0642CC732A3DCE6900D8AEA2 /* MainHeadToHeadBaseball.swift */; };
+		0642CC772A3DEE1400D8AEA2 /* BaseballOdds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0642CC762A3DEE1400D8AEA2 /* BaseballOdds.swift */; };
+		0642CC7A2A3DFEB400D8AEA2 /* MainBasketballHth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0642CC792A3DFEB400D8AEA2 /* MainBasketballHth.swift */; };
+		0642CC7D2A3E043000D8AEA2 /* BasketballOdds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0642CC7C2A3E043000D8AEA2 /* BasketballOdds.swift */; };
+		0642CC822A3E0C0500D8AEA2 /* MainHockeyHth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0642CC812A3E0C0500D8AEA2 /* MainHockeyHth.swift */; };
+		0642CC842A3E13B300D8AEA2 /* MainVolleyballHth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0642CC832A3E13B300D8AEA2 /* MainVolleyballHth.swift */; };
+		0642CC862A3E16A200D8AEA2 /* MainHandballHth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0642CC852A3E16A200D8AEA2 /* MainHandballHth.swift */; };
 		06430D242A2CC10100812F59 /* GoogleUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06430D232A2CC10100812F59 /* GoogleUser.swift */; };
 		06506B8D2A1CEBF500E88FA0 /* MainBaseball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06506B8C2A1CEBF500E88FA0 /* MainBaseball.swift */; };
 		06506B8F2A1CECD600E88FA0 /* BaseballParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06506B8E2A1CECD600E88FA0 /* BaseballParameters.swift */; };
@@ -145,6 +151,12 @@
 		063C1A272A349416001B89A3 /* DetailGamesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailGamesViewModel.swift; sourceTree = "<group>"; };
 		063DBC7B2A165A5A00406059 /* Extension + String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + String.swift"; sourceTree = "<group>"; };
 		0642CC732A3DCE6900D8AEA2 /* MainHeadToHeadBaseball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHeadToHeadBaseball.swift; sourceTree = "<group>"; };
+		0642CC762A3DEE1400D8AEA2 /* BaseballOdds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseballOdds.swift; sourceTree = "<group>"; };
+		0642CC792A3DFEB400D8AEA2 /* MainBasketballHth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBasketballHth.swift; sourceTree = "<group>"; };
+		0642CC7C2A3E043000D8AEA2 /* BasketballOdds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketballOdds.swift; sourceTree = "<group>"; };
+		0642CC812A3E0C0500D8AEA2 /* MainHockeyHth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHockeyHth.swift; sourceTree = "<group>"; };
+		0642CC832A3E13B300D8AEA2 /* MainVolleyballHth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVolleyballHth.swift; sourceTree = "<group>"; };
+		0642CC852A3E16A200D8AEA2 /* MainHandballHth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHandballHth.swift; sourceTree = "<group>"; };
 		06430D232A2CC10100812F59 /* GoogleUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleUser.swift; sourceTree = "<group>"; };
 		06506B8C2A1CEBF500E88FA0 /* MainBaseball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBaseball.swift; sourceTree = "<group>"; };
 		06506B8E2A1CECD600E88FA0 /* BaseballParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseballParameters.swift; sourceTree = "<group>"; };
@@ -341,6 +353,54 @@
 			path = Baseball;
 			sourceTree = "<group>";
 		};
+		0642CC752A3DEDF900D8AEA2 /* Baseball */ = {
+			isa = PBXGroup;
+			children = (
+				0642CC762A3DEE1400D8AEA2 /* BaseballOdds.swift */,
+			);
+			path = Baseball;
+			sourceTree = "<group>";
+		};
+		0642CC782A3DFE9700D8AEA2 /* Basketball */ = {
+			isa = PBXGroup;
+			children = (
+				0642CC792A3DFEB400D8AEA2 /* MainBasketballHth.swift */,
+			);
+			path = Basketball;
+			sourceTree = "<group>";
+		};
+		0642CC7B2A3E041600D8AEA2 /* Basketball */ = {
+			isa = PBXGroup;
+			children = (
+				0642CC7C2A3E043000D8AEA2 /* BasketballOdds.swift */,
+			);
+			path = Basketball;
+			sourceTree = "<group>";
+		};
+		0642CC7E2A3E079800D8AEA2 /* Hockey */ = {
+			isa = PBXGroup;
+			children = (
+				0642CC812A3E0C0500D8AEA2 /* MainHockeyHth.swift */,
+			);
+			path = Hockey;
+			sourceTree = "<group>";
+		};
+		0642CC7F2A3E07A000D8AEA2 /* Volleyball */ = {
+			isa = PBXGroup;
+			children = (
+				0642CC832A3E13B300D8AEA2 /* MainVolleyballHth.swift */,
+			);
+			path = Volleyball;
+			sourceTree = "<group>";
+		};
+		0642CC802A3E07A600D8AEA2 /* Handball */ = {
+			isa = PBXGroup;
+			children = (
+				0642CC852A3E16A200D8AEA2 /* MainHandballHth.swift */,
+			);
+			path = Handball;
+			sourceTree = "<group>";
+		};
 		06506B742A1CDDC300E88FA0 /* BaseballModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,6 +419,10 @@
 			children = (
 				066C6FD32A3B471F00518045 /* Football */,
 				0642CC722A3DCE4700D8AEA2 /* Baseball */,
+				0642CC782A3DFE9700D8AEA2 /* Basketball */,
+				0642CC7E2A3E079800D8AEA2 /* Hockey */,
+				0642CC7F2A3E07A000D8AEA2 /* Volleyball */,
+				0642CC802A3E07A600D8AEA2 /* Handball */,
 			);
 			path = HeadToHeadModels;
 			sourceTree = "<group>";
@@ -446,6 +510,8 @@
 			isa = PBXGroup;
 			children = (
 				069C1D942A3A004E00B0053C /* Football */,
+				0642CC752A3DEDF900D8AEA2 /* Baseball */,
+				0642CC7B2A3E041600D8AEA2 /* Basketball */,
 			);
 			path = OddsModels;
 			sourceTree = "<group>";
@@ -773,7 +839,10 @@
 				06506B912A1CED1800E88FA0 /* BaseballResponse.swift in Sources */,
 				06EEC82C2A23A22300525723 /* ForgotPassViewModel.swift in Sources */,
 				068DD2372A0FD8190000913B /* CustomSocialsButton.swift in Sources */,
+				0642CC7A2A3DFEB400D8AEA2 /* MainBasketballHth.swift in Sources */,
 				06506B972A1CED8100E88FA0 /* Scores.swift in Sources */,
+				0642CC7D2A3E043000D8AEA2 /* BasketballOdds.swift in Sources */,
+				0642CC772A3DEE1400D8AEA2 /* BaseballOdds.swift in Sources */,
 				06A6B4652A15193300CFFB33 /* NewsTableViewCell.swift in Sources */,
 				06506B952A1CED5F00E88FA0 /* BaseballLeague.swift in Sources */,
 				06EEC82A2A239F2800525723 /* RegistryViewModel.swift in Sources */,
@@ -786,6 +855,7 @@
 				06430D242A2CC10100812F59 /* GoogleUser.swift in Sources */,
 				06506B8D2A1CEBF500E88FA0 /* MainBaseball.swift in Sources */,
 				06DAC7B22A1289E40086CC41 /* AlertManager.swift in Sources */,
+				0642CC822A3E0C0500D8AEA2 /* MainHockeyHth.swift in Sources */,
 				06982BBB2A0D0E6A007284BC /* RegistryViewController.swift in Sources */,
 				06A6B45A2A150C8400CFFB33 /* NewsSource.swift in Sources */,
 				06BE2BF52A0C4C550003C875 /* OnboardingViewController.swift in Sources */,
@@ -816,6 +886,7 @@
 				0633A6372A190B2700A027E5 /* SportsNetworkManager.swift in Sources */,
 				063C1A242A348348001B89A3 /* InfoLabel.swift in Sources */,
 				06DAC7B02A127DB50086CC41 /* Validator.swift in Sources */,
+				0642CC842A3E13B300D8AEA2 /* MainVolleyballHth.swift in Sources */,
 				06982BC22A0D0F41007284BC /* ForgotPasswordViewController.swift in Sources */,
 				06B07CF02A1E6CDC009EAA21 /* MainBasketball.swift in Sources */,
 				06EEC8262A238ECB00525723 /* AuthCoordinator.swift in Sources */,
@@ -825,6 +896,7 @@
 				06BE2C0F2A0C52CD0003C875 /* Constants.swift in Sources */,
 				06B07CF82A1E6E5A009EAA21 /* BasketballLeague.swift in Sources */,
 				06DAC7A92A12679C0086CC41 /* AuthNetworkManager.swift in Sources */,
+				0642CC862A3E16A200D8AEA2 /* MainHandballHth.swift in Sources */,
 				06A6B4542A150BD600CFFB33 /* News.swift in Sources */,
 				066C6FD72A3B58FB00518045 /* DetailGamesCell.swift in Sources */,
 				06B07CFE2A1E6EC8009EAA21 /* MainHandball.swift in Sources */,

@@ -21,6 +21,14 @@ class DetailGamesViewModel {
     var footballOddsArr: [FootballOddsResponse] = []
     var footballHthArr: [HeadToHeadFootballResponse] = []
     var baseballHthArr: [HeadToHeadBaseballResponse] = []
+    var baseballOddsArr: [BaseballOddsResponse] = []
+    var basketballHthArr: [BasketballHthResponse] = []
+    var basketballOddsArr: [BasketballOddsResponse] = []
+    var hockeyHthArr: [HockeyHthResponse] = []
+    var volleyballHthArr: [VolleyballHthResponse] = []
+    var handballHthArr: [HandballHthResponse] = []
+
+
     
     // MARK: - init
     init(coordinator: GamesCoordinator? = nil, football: FootballResponse? = nil, baseball: BaseballResponse? = nil, basketball: BasketballResponse? = nil, hockey: HockeyResponse? = nil, volleyball: VolleyballResponse? = nil, handball: HandballResponse? = nil) {
@@ -35,10 +43,10 @@ class DetailGamesViewModel {
     
     // MARK: - Fetch football odds
     func fetchFootballOdds(completion: @escaping () -> Void) {
-//        SportsNetworkManager.shared.getFootballOddsInfo(with: football?.fixture.id ?? 0) { result in
-//            self.footballOddsArr = result
-//            completion()
-//        }
+        SportsNetworkManager.shared.getFootballOddsInfo(with: football?.fixture.id ?? 0) { result in
+            self.footballOddsArr = result
+            completion()
+        }
     }
     
     // MARK: - Fetch football h2h
@@ -53,6 +61,54 @@ class DetailGamesViewModel {
     func fetchHtHBaseball(completion: @escaping () -> Void) {
         SportsNetworkManager.shared.getBaseballHeadToHead(homeID: baseball?.teams?.home?.id ?? 0, awayID: baseball?.teams?.away?.id ?? 0) { result in
             self.baseballHthArr = result
+            completion()
+        }
+    }
+    
+    // MARK: - Fetch baseball odds
+    func fetchBaseballOdds(completion: @escaping () -> Void) {
+        SportsNetworkManager.shared.getBaseballOddsInfo(with: baseball?.id ?? 0) { result in
+            self.baseballOddsArr = result
+            completion()
+        }
+    }
+    
+    // MARK: - Fetch basketball h2h
+    func fetchHtHbasketball(completion: @escaping () -> Void) {
+        SportsNetworkManager.shared.getBasketballHeadToHead(homeID: baseball?.teams?.home?.id ?? 0, awayID: baseball?.teams?.away?.id ?? 0) { result in
+            self.basketballHthArr = result
+            completion()
+        }
+    }
+    
+    // MARK: - Fetch basketball odds
+    func fetchBasketballOdds(completion: @escaping () -> Void) {
+        SportsNetworkManager.shared.getBasketballOddsInfo(with: basketball?.id ?? 0) { result in
+            self.basketballOddsArr = result
+            completion()
+        }
+    }
+    
+    // MARK: - Fetch hockey h2h
+    func fetchHtHhockey(completion: @escaping () -> Void) {
+        SportsNetworkManager.shared.getHockeyHeadToHead(homeID: hockey?.teams?.home?.id ?? 0, awayID: hockey?.teams?.away?.id ?? 0) { result in
+            self.hockeyHthArr = result
+            completion()
+        }
+    }
+    
+    // MARK: - Fetch volleyball h2h
+    func fetchHtHVolleyball(completion: @escaping () -> Void) {
+        SportsNetworkManager.shared.getVolleyballHeadToHead(homeID: volleyball?.teams?.home?.id ?? 0, awayID: volleyball?.teams?.away?.id ?? 0) { result in
+            self.volleyballHthArr = result
+            completion()
+        }
+    }
+    
+    // MARK: - Fetch handball h2h
+    func fetchHtHHandball(completion: @escaping () -> Void) {
+        SportsNetworkManager.shared.getHandballHeadToHead(homeID: handball?.teams?.home?.id ?? 0, awayID: handball?.teams?.away?.id ?? 0) { result in
+            self.handballHthArr = result
             completion()
         }
     }
