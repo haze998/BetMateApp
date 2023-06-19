@@ -47,6 +47,7 @@ class DetailGamesViewController: UIViewController {
         tableView.backgroundColor = .clear
         tableView.showsVerticalScrollIndicator = false
         tableView.register(DetailGamesCell.self, forCellReuseIdentifier: String(describing: DetailGamesCell.self))
+        tableView.isScrollEnabled = false
         return tableView
     }()
     
@@ -153,6 +154,7 @@ class DetailGamesViewController: UIViewController {
     private let matchLeague = InfoLabel(labelType: .matchLeague)
     private let matchDateInfo = InfoLabel(labelType: .matchDate)
     private let seasonDate = InfoLabel(labelType: .seasonDate)
+
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -160,6 +162,7 @@ class DetailGamesViewController: UIViewController {
         setupUI()
         fetchedOddsInfo()
         fetchedHthInfo()
+        
     }
     
     override func viewWillLayoutSubviews() {
@@ -250,19 +253,32 @@ class DetailGamesViewController: UIViewController {
     private func fetchedOddsInfo() {
         if viewModel.football != nil {
             viewModel.fetchFootballOdds {
-                self.homeOdds.text = self.viewModel.footballOddsArr.first?.bookmakers?.first?.bets?.first?.values?[0].odd
-                self.awayOdds.text = self.viewModel.footballOddsArr.first?.bookmakers?.first?.bets?.first?.values?[2].odd
+                self.homeOdds.text = self.viewModel.footballOddsArr.first?.bookmakers?[0].bets?.first?.values?[0].odd ?? "no oods"
+                self.awayOdds.text = self.viewModel.footballOddsArr.first?.bookmakers?[0].bets?.first?.values?[2].odd ?? "no odds"
             }
         } else if viewModel.baseball != nil {
             viewModel.fetchBaseballOdds {
-                self.homeOdds.text = self.viewModel.footballOddsArr.first?.bookmakers?.first?.bets?.first?.values?[0].odd
-                self.awayOdds.text = self.viewModel.footballOddsArr.first?.bookmakers?.first?.bets?.first?.values?[2].odd
+                self.homeOdds.text = self.viewModel.baseballOddsArr.first?.bookmakers?[0].bets?.first?.values?[0].odd ?? "no oods"
+                self.awayOdds.text = self.viewModel.baseballOddsArr.first?.bookmakers?[0].bets?.first?.values?[2].odd ?? "no odds"
             }
         } else if viewModel.basketball != nil {
             viewModel.fetchBasketballOdds {
-                self.homeOdds.text = self.viewModel.footballOddsArr.first?.bookmakers?.first?.bets?.first?.values?[0].odd
-                self.awayOdds.text = self.viewModel.footballOddsArr.first?.bookmakers?.first?.bets?.first?.values?[2].odd
+                self.homeOdds.text = self.viewModel.baseballOddsArr.first?.bookmakers?[0].bets?.first?.values?[0].odd ?? "no oods"
+                self.awayOdds.text = self.viewModel.baseballOddsArr.first?.bookmakers?[0].bets?.first?.values?[2].odd ?? "no odds"
             }
+        } else if viewModel.hockey != nil {
+            viewModel.fetchHockeyOdds {
+                self.homeOdds.text = self.viewModel.hockeyOddsArr.first?.bookmakers?[0].bets?.first?.values?[0].odd ?? "no oods"
+                self.awayOdds.text = self.viewModel.hockeyOddsArr.first?.bookmakers?[0].bets?.first?.values?[2].odd ?? "no odds"
+            }
+        } else if viewModel.volleyball != nil {
+            viewModel.fetchVolleyballOdds {
+                self.homeOdds.text = self.viewModel.volleyballOddsArr.first?.bookmakers?[0].bets?.first?.values?[0].odd ?? "no oods"
+                self.awayOdds.text = self.viewModel.volleyballOddsArr.first?.bookmakers?[0].bets?.first?.values?[1].odd ?? "no odds"
+            }
+        } else if viewModel.handball != nil {
+                self.homeOdds.text = "no oods"
+                self.awayOdds.text = "no odds"
         }
     }
     
@@ -317,14 +333,8 @@ class DetailGamesViewController: UIViewController {
             make.bottom.equalTo(scrollView)
             make.left.right.equalTo(view)
             make.width.equalTo(scrollView)
-            if UIScreen.main.bounds.height < 800 {
-                make.height.equalTo(view.frame.height + 150)
-            } else if UIScreen.main.bounds.height > 800 && UIScreen.main.bounds.height <= 813 {
-                make.height.equalTo(view.frame.height + 50)
-            } else {
-                make.height.equalTo(1300)
-                scrollView.isScrollEnabled = true
-            }
+            make.height.equalTo(1380)
+            scrollView.isScrollEnabled = true
         }
         
         matchView.snp.makeConstraints { make in
@@ -504,4 +514,4 @@ extension DetailGamesViewController: UITableViewDataSource {
 }
 
 // MARK: UITableView Delegate
-extension DetailGamesViewController: UITableViewDelegate { }
+extension DetailGamesViewController: UITableViewDelegate {}

@@ -9,15 +9,16 @@ import Foundation
 
 // MARK: - BasketballOdds
 struct BasketballOdds: Codable {
-    let welcomeGet: String?
-    let parameters: BasketballOddsParameters?
-    let results: Int?
-    let response: [BasketballOddsResponse]?
+    let get : String?
+    let parameters : BasketballOddsParameters?
+    let errors : [String]?
+    let results : Int?
+    let response : [BasketballOddsResponse]?
 }
 
 // MARK: - Parameters
 struct BasketballOddsParameters: Codable {
-    let game: String?
+    let game : String?
 }
 
 // MARK: - Response
@@ -30,50 +31,55 @@ struct BasketballOddsResponse: Codable {
 
 // MARK: - Bookmaker
 struct BasketballOddsBookmaker: Codable {
-    let id: Int?
-    let name: String?
-    let bets: [BasketballOddsBet]?
+    let id : Int?
+    let name : String?
+    let bets : [BasketballOddsBet]?
 }
 
 // MARK: - Bet
 struct BasketballOddsBet: Codable {
-    let id: Int?
-    let name: String?
-    let values: [BasketballOddsValue]?
+    let id : Int?
+    let name : String?
+    let values : [BasketballOddsValue]?
 }
 
 // MARK: - Value
 struct BasketballOddsValue: Codable {
-    let value, odd: String?
+    let value : String?
+    let odd : String?
 }
 
 // MARK: - Country
 struct BasketballOddsCountry: Codable {
-    let id: Int?
-    let name, code: String?
-    let flag: String?
+    let id : Int?
+    let name : String?
+    let code : String?
+    let flag : String?
 }
 
 // MARK: - Game
 struct BasketballOddsGame: Codable {
-    let id: Int?
-    let date: String?
-    let time: String?
-    let timestamp: Int?
-    let timezone: String?
-    let status: BasketballOddsStatus?
-    let league: BasketballOddsLeague?
-    let country: BasketballOddsCountry?
-    let teams: BasketballOddsTeams?
-    let scores: BasketballOddsScores?
+    let id : Int?
+    let date : String?
+    let time : String?
+    let timestamp : Int?
+    let timezone : String?
+    let stage : String?
+    let week : String?
+    let status : BasketballOddsStatus?
+    let league : BasketballOddsLeague?
+//    let country : Country?
+    let teams : BasketballOddsTeams?
+    let scores : BasketballOddsScores?
 }
 
 // MARK: - League
 struct BasketballOddsLeague: Codable {
-    let id: Int?
-    let name, type: String?
-    let season: Int?
-    let logo: String?
+    let id : Int?
+    let name : String?
+    let type : String?
+    let season : Int?
+    let logo : String?
 }
 
 // MARK: - Scores

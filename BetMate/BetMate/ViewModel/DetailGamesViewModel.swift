@@ -24,7 +24,9 @@ class DetailGamesViewModel {
     var baseballOddsArr: [BaseballOddsResponse] = []
     var basketballHthArr: [BasketballHthResponse] = []
     var basketballOddsArr: [BasketballOddsResponse] = []
+    var hockeyOddsArr: [HockeyOddsResponse] = []
     var hockeyHthArr: [HockeyHthResponse] = []
+    var volleyballOddsArr: [VolleyballOddsResponse] = []
     var volleyballHthArr: [VolleyballHthResponse] = []
     var handballHthArr: [HandballHthResponse] = []
 
@@ -89,10 +91,26 @@ class DetailGamesViewModel {
         }
     }
     
+    // MARK: - Fetch hockey odds
+    func fetchHockeyOdds(completion: @escaping () -> Void) {
+        SportsNetworkManager.shared.getHockeyOddsInfo(with: hockey?.id ?? 0) { result in
+            self.hockeyOddsArr = result
+            completion()
+        }
+    }
+    
     // MARK: - Fetch hockey h2h
     func fetchHtHhockey(completion: @escaping () -> Void) {
         SportsNetworkManager.shared.getHockeyHeadToHead(homeID: hockey?.teams?.home?.id ?? 0, awayID: hockey?.teams?.away?.id ?? 0) { result in
             self.hockeyHthArr = result
+            completion()
+        }
+    }
+    
+    // MARK: - Fetch volleyball odds
+    func fetchVolleyballOdds(completion: @escaping () -> Void) {
+        SportsNetworkManager.shared.getVolleyballOddsInfo(with: volleyball?.id ?? 0) { result in
+            self.volleyballOddsArr = result
             completion()
         }
     }

@@ -50,10 +50,12 @@ class InfoLabel: UILabel {
             font = UIFont(name: FontNames.exoBold.rawValue, size: 20)
             text = "Country :" + " " + "Undefined"
             textColor = .labelColor
+            textAlignment = .left
         case .matchLeague:
             font = UIFont(name: FontNames.exoBold.rawValue, size: 20)
             text = "Challenge Cup :" + " " + "Undefined"
             textColor = .labelColor
+            textAlignment = .left
         case .leagueType:
             font = UIFont(name: FontNames.exoBold.rawValue, size: 20)
             text = "Cup"
@@ -62,17 +64,17 @@ class InfoLabel: UILabel {
             font = UIFont(name: FontNames.exoBold.rawValue, size: 20)
             text = "19-08-2023 15:00"
             textColor = .labelColor
+            textAlignment = .left
         case .seasonDate:
             font = UIFont(name: FontNames.exoBold.rawValue, size: 20)
             text = "2023"
             textColor = .labelColor
+            textAlignment = .left
         case .homeOdds:
             font = UIFont(name: FontNames.exoBold.rawValue, size: 20)
-//            text = "1.234"
             textColor = .labelColor
         case .awayOdds:
             font = UIFont(name: FontNames.exoBold.rawValue, size: 20)
-//            text = "0.7"
             textColor = .labelColor
         }
     }

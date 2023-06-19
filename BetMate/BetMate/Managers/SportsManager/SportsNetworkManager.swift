@@ -65,26 +65,26 @@ class SportsNetworkManager {
     
     // MARK: - Get basketball info
     func getBasketballInfo(completion: @escaping ([BasketballResponse]) -> Void) {
-                var url = URLRequest(url: URL(string: "https://v1.basketball.api-sports.io/games?date=\(CustomDate.currentDate.rawValue.getCurrentDate())")!)
-                url.allHTTPHeaderFields = [
-                    "x-rapidapi-key" : "\(ApiKeys.sportsApiKey.rawValue)"
-                ]
-        
-                let session = URLSession(configuration: .default)
-                let task = session.dataTask(with: url) { data, response, error in
-                    guard let data = data else { return }
-                    do {
-                        let decoder = JSONDecoder()
-                        decoder.keyDecodingStrategy = .convertFromSnakeCase
-                        let response = try decoder.decode(MainBasketball.self, from: data)
-                        DispatchQueue.main.async {
-                            completion(response.response ?? [])
-                        }
-                    } catch {
-                        print(String(describing: error))
-                    }
-                }
-                task.resume()
+//                var url = URLRequest(url: URL(string: "https://v1.basketball.api-sports.io/games?date=\(CustomDate.currentDate.rawValue.getCurrentDate())")!)
+//                url.allHTTPHeaderFields = [
+//                    "x-rapidapi-key" : "\(ApiKeys.sportsApiKey.rawValue)"
+//                ]
+//
+//                let session = URLSession(configuration: .default)
+//                let task = session.dataTask(with: url) { data, response, error in
+//                    guard let data = data else { return }
+//                    do {
+//                        let decoder = JSONDecoder()
+//                        decoder.keyDecodingStrategy = .convertFromSnakeCase
+//                        let response = try decoder.decode(MainBasketball.self, from: data)
+//                        DispatchQueue.main.async {
+//                            completion(response.response ?? [])
+//                        }
+//                    } catch {
+//                        print(String(describing: error))
+//                    }
+//                }
+//                task.resume()
     }
     
     
@@ -138,7 +138,7 @@ class SportsNetworkManager {
     
     // MARK: - Get handball info
     func getHandballInfo(completion: @escaping ([HandballResponse]) -> Void) {
-//                var url = URLRequest(url: URL(string: "https://v1.handball.api-sports.io/games?date=\(CustomDate.currentDate.rawValue.getCurrentDate())")!)
+//                var url = URLRequest(url: URL(string: "https://v1.handball.api-sports.io/games?date=2023-06-18")!)
 //                url.allHTTPHeaderFields = [
 //                    "x-rapidapi-key" : "\(ApiKeys.sportsApiKey.rawValue)"
 //                ]
@@ -208,7 +208,7 @@ class SportsNetworkManager {
     
     // MARK: - Get baseball ODDs info
     func getBaseballOddsInfo(with gameID: Int, completion: @escaping ([BaseballOddsResponse]) -> Void) {
-//        var url = URLRequest(url: URL(string: "https://v3.football.api-sports.io/odds?fixture=\(gameID)")!)
+//        var url = URLRequest(url: URL(string: "https://v1.baseball.api-sports.io/odds?game=\(gameID)")!)
 //        url.allHTTPHeaderFields = [
 //            "x-rapidapi-key" : "\(ApiKeys.sportsApiKey.rawValue)"
 //        ]
@@ -298,6 +298,29 @@ class SportsNetworkManager {
 //        task.resume()
     }
     
+    // MARK: - Get hockey ODDs info
+    func getHockeyOddsInfo(with gameID: Int, completion: @escaping ([HockeyOddsResponse]) -> Void) {
+//        var url = URLRequest(url: URL(string: "https://v1.hockey.api-sports.io/odds?game=\(gameID)")!)
+//        url.allHTTPHeaderFields = [
+//            "x-rapidapi-key" : "\(ApiKeys.sportsApiKey.rawValue)"
+//        ]
+//        let session = URLSession(configuration: .default)
+//        let task = session.dataTask(with: url) { data, response, error in
+//            guard let data = data else { return }
+//            do {
+//                let decoder = JSONDecoder()
+//                decoder.keyDecodingStrategy = .convertFromSnakeCase
+//                let response = try decoder.decode(HockeyOdds.self, from: data)
+//                DispatchQueue.main.async {
+//                    completion(response.response ?? [])
+//                }
+//            } catch {
+//                print(String(describing: error))
+//            }
+//        }
+//        task.resume()
+    }
+    
     // MARK: - Get hockey head to head info
     func getHockeyHeadToHead(homeID: Int, awayID: Int, completion: @escaping([HockeyHthResponse]) -> Void) {
 //        var url = URLRequest(url: URL(string: "https://v1.hockey.api-sports.io/games/h2h?h2h=\(homeID)-\(awayID)")!)
@@ -311,6 +334,29 @@ class SportsNetworkManager {
 //                let decoder = JSONDecoder()
 //                decoder.keyDecodingStrategy = .convertFromSnakeCase
 //                let response = try decoder.decode(MainHockeyHth.self, from: data)
+//                DispatchQueue.main.async {
+//                    completion(response.response ?? [])
+//                }
+//            } catch {
+//                print(String(describing: error))
+//            }
+//        }
+//        task.resume()
+    }
+    
+    // MARK: - Get volleyball ODDs info
+    func getVolleyballOddsInfo(with gameID: Int, completion: @escaping ([VolleyballOddsResponse]) -> Void) {
+//        var url = URLRequest(url: URL(string: "https://v1.volleyball.api-sports.io/odds?game=\(gameID)")!)
+//        url.allHTTPHeaderFields = [
+//            "x-rapidapi-key" : "\(ApiKeys.sportsApiKey.rawValue)"
+//        ]
+//        let session = URLSession(configuration: .default)
+//        let task = session.dataTask(with: url) { data, response, error in
+//            guard let data = data else { return }
+//            do {
+//                let decoder = JSONDecoder()
+//                decoder.keyDecodingStrategy = .convertFromSnakeCase
+//                let response = try decoder.decode(VolleyballOdds.self, from: data)
 //                DispatchQueue.main.async {
 //                    completion(response.response ?? [])
 //                }
