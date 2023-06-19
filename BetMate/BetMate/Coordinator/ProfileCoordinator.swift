@@ -28,11 +28,24 @@ class ProfileCoordinator : Coordinator {
     }
     
     func goToLogout() {
-//        childrenCoordinator.removeAll()
-        let appC = parentCoordinator as? AppCoordinator
-//        appC?.childrenCoordinator.append(appC!)
-        appC?.showAuth()
-        parentCoordinator?.childrenDidFinish(self)
+////        childrenCoordinator.removeAll()
+//        let appC = parentCoordinator as? AppCoordinator
+////        appC?.childrenCoordinator.append(appC!)
+//        appC?.showAuth()
+//        parentCoordinator?.childrenDidFinish(self)
+        
+        guard let appCoordinator = parentCoordinator as? AppCoordinator else {
+                return
+            }
+            
+            // Удалите текущий ProfileCoordinator из childrenCoordinator
+            parentCoordinator?.childrenDidFinish(self)
+            
+            // Сбросьте состояние AuthCoordinator перед повторным использованием
+            appCoordinator.childrenCoordinator.removeAll()
+            
+            // Показать экран авторизации через родительский AppCoordinator
+            appCoordinator.showAuth()
         
         
 //        let appC = parentCoordinator as? AppCoordinator

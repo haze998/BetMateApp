@@ -80,27 +80,67 @@ class AuthNetworkManager {
     }
     
     // MARK: - Fetch user info from firebase auth
-    func fetchUserInfo(completion: @escaping(User?, Error?) -> Void) {
+//    func fetchUserInfo(completion: @escaping(User?, Error?) -> Void) {
+//
+//        guard let userUID = Auth.auth().currentUser?.uid else { return }
+//
+//        let db = Firestore.firestore()
+//
+//        db.collection("users")
+//            .document(userUID)
+//            .getDocument { snapshot, error in
+//                if let error = error {
+//                    completion(nil, error)
+//                    return
+//                }
+//
+//                if let snapshot = snapshot,
+//                   let snapshotData = snapshot.data(),
+//                   let username = snapshotData["username"] as? String,
+//                   let email = snapshotData["email"] as? String {
+//                    let user = User(userName: username, email: email, userUID: userUID)
+//                    completion(user, nil)
+//                }
+//            }
+//    }
+    
+    // MARK: - Fetch user info from firebase auth
+    func fetchUserInfo(completion: @escaping (User?, Error?) -> Void) {
+        guard let user = Auth.auth().currentUser else {
+            // User is not auntheficated
+            completion(nil, nil)
+            return
+        }
         
-        guard let userUID = Auth.auth().currentUser?.uid else { return }
-        
+        let userUID = user.uid
         let db = Firestore.firestore()
         
-        db.collection("users")
-            .document(userUID)
-            .getDocument { snapshot, error in
-                if let error = error {
-                    completion(nil, error)
-                    return
+        if let providerData = user.providerData.first,
+           providerData.providerID == GoogleAuthProviderID {
+            // Authenfication with google
+            let username = user.displayName ?? ""
+            let email = user.email ?? ""
+            let user = User(userName: username, email: email, userUID: userUID)
+            completion(user, nil)
+        } else {
+            // Authenfication with email and password
+            db.collection("users")
+                .document(userUID)
+                .getDocument { snapshot, error in
+                    if let error = error {
+                        completion(nil, error)
+                        return
+                    }
+                    
+                    if let snapshot = snapshot,
+                       let snapshotData = snapshot.data(),
+                       let username = snapshotData["username"] as? String,
+                       let email = snapshotData["email"] as? String {
+                        let user = User(userName: username, email: email, userUID: userUID)
+                        completion(user, nil)
+                    }
                 }
-                
-                if let snapshot = snapshot,
-                   let snapshotData = snapshot.data(),
-                   let username = snapshotData["username"] as? String,
-                   let email = snapshotData["email"] as? String {
-                    let user = User(userName: username, email: email, userUID: userUID)
-                    completion(user, nil)
-                }
-            }
+        }
     }
+
 }
