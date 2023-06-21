@@ -44,8 +44,6 @@ class LoginViewController: UIViewController {
     private let eyeButton = EyeButton(frame: CGRect(x: 10, y: 0, width: 24, height: 24))
     private let customLoginButton = CustomActionButton(actionButtonType: .login)
     private let googleButton = CustomSocialsButton(typeOfSocials: .google)
-    //    private let facebookButton = CustomSocialsButton(typeOfSocials: .facebook)
-    //    private let appleButton = CustomSocialsButton(typeOfSocials: .apple)
     private var isPrivate = true
     var viewModel: LoginViewModel?
     
@@ -65,7 +63,6 @@ class LoginViewController: UIViewController {
     // MARK: - Setup UI
     private func setupUI() {
         self.view.backgroundColor = UIColor(red: 0.66, green: 0.85, blue: 0.86, alpha: 1.00)
-        
         navigationController?.navigationBar.prefersLargeTitles = true
         let largeTitleTextAttr = [
             NSAttributedString.Key.foregroundColor: UIColor(red: 0.11, green: 0.21, blue: 0.34, alpha: 1.00),
@@ -91,7 +88,7 @@ class LoginViewController: UIViewController {
     // MARK: - Selectors
     @objc
     private func eyeButtonDidTap() {
-        let imageName = isPrivate ? "eye" : "eye_slash"
+        let imageName = isPrivate ? ImageNames.eye.rawValue : ImageNames.eyeSlash.rawValue
         passwordtextField.isSecureTextEntry.toggle()
         eyeButton.setImage(UIImage(named: imageName), for: .normal)
         isPrivate.toggle()
@@ -207,6 +204,7 @@ class LoginViewController: UIViewController {
     }
 }
 
+// MARK: - UITextField Delegate
 extension LoginViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let text = textField.text else { return }

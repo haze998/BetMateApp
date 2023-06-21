@@ -25,7 +25,7 @@ class ProfileViewController: UIViewController {
     // MARK: - Private properties
     private lazy var avatarImageView: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "image_placeholder")
+        image.image = UIImage(named: ImageNames.imagePlaceholder.rawValue)
         image.layer.cornerRadius = 75
         image.clipsToBounds = true
         return image
@@ -46,7 +46,7 @@ class ProfileViewController: UIViewController {
     
     private lazy var userInfoLogo: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "personalInfo")
+        image.image = UIImage(named: ImageNames.personalInfo.rawValue)
         return image
     }()
     
@@ -97,7 +97,7 @@ class ProfileViewController: UIViewController {
     
     private lazy var logoutButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "logout"), for: .normal)
+        button.setImage(UIImage(named: ImageNames.logout.rawValue), for: .normal)
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.borderViewColor
@@ -107,7 +107,7 @@ class ProfileViewController: UIViewController {
     
     private lazy var addPhotoButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "addphoto"), for: .normal)
+        button.setImage(UIImage(named: ImageNames.addPhoto.rawValue), for: .normal)
         button.addTarget(self, action: #selector(addPhotoButtonDidTap), for: .touchUpInside)
         return button
     }()
@@ -256,6 +256,7 @@ class ProfileViewController: UIViewController {
     }
 }
 
+// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         

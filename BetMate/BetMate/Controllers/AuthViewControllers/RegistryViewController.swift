@@ -73,7 +73,7 @@ class RegistryViewController: UIViewController {
     // MARK: - Selectors
     @objc
     private func eyeButtonDidTap() {
-        let imageName = isPrivate ? "eye" : "eye_slash"
+        let imageName = isPrivate ? ImageNames.eye.rawValue : ImageNames.eyeSlash.rawValue
         passwordTextField.isSecureTextEntry.toggle()
         eyeButton.setImage(UIImage(named: imageName), for: .normal)
         isPrivate.toggle()
@@ -110,16 +110,10 @@ class RegistryViewController: UIViewController {
                 AlertManager.showRegistrationErrorAlert(on: self, with: error)
                 return
             }
-            
-//            if wasRegistered {
-//                if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
-//                    sceneDelegate.checkDefaultUserAuth()
-//                }
-//            }
+
             switch wasRegistered {
             case true:
-                print()
-//                viewModel?.goToTabBar()
+                viewModel?.goToTabBar()
             case false:
                 return
             }
@@ -170,6 +164,7 @@ class RegistryViewController: UIViewController {
     }
 }
 
+// MARK: - UITextField Delegate
 extension RegistryViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let text = textField.text else { return }

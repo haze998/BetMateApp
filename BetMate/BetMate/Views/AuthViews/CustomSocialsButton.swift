@@ -41,11 +41,11 @@ final class CustomSocialsButton: UIButton {
         
         switch typeOfSocials {
         case .google:
-            setImage(UIImage(named: "google"), for: .normal)
+            setImage(UIImage(named: ImageNames.google.rawValue), for: .normal)
         case .facebook:
-            setImage(UIImage(named: "facebook"), for: .normal)
+            setImage(UIImage(named: ImageNames.facebook.rawValue), for: .normal)
         case .apple:
-            setImage(UIImage(named: "apple"), for: .normal)
+            setImage(UIImage(named: ImageNames.apple.rawValue), for: .normal)
         }
     }
 }

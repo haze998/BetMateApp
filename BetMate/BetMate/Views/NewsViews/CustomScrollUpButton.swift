@@ -22,7 +22,7 @@ class CustomScrollUpButton: UIButton {
     
     // MARK: - Setup eye button
     private func setupButton() {
-        setImage(UIImage(named: "scrollup"), for: .normal)
+        setImage(UIImage(named: ImageNames.scrollup.rawValue), for: .normal)
         backgroundColor = .loginButtonColor
         layer.shadowColor = UIColor(red: 0.902, green: 0.224, blue: 0.275, alpha: 1).cgColor
         layer.shadowRadius = 20

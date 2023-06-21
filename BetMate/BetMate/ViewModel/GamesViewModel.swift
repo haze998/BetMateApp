@@ -52,7 +52,7 @@ class GamesViewModel {
         }
     }
     
-    // MARK: - get fetched handball info
+    // MARK: - get fetched hockey info
     func fetchedHockeyInfo(comletion: @escaping () -> Void) {
         SportsNetworkManager.shared.getHockeyInfo { result in
             self.hockeyInfoArr = result
@@ -60,7 +60,7 @@ class GamesViewModel {
         }
     }
     
-    // MARK: - get fetched rugby info
+    // MARK: - get fetched volleyball info
     func fetchedVolleyballInfo(comletion: @escaping () -> Void) {
         SportsNetworkManager.shared.getVolleyballInfo { result in
             self.volleyballInfoArr = result

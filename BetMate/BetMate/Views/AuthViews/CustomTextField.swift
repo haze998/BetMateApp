@@ -9,6 +9,7 @@ import UIKit
 
 final class CustomTextField: UITextField {
     
+    // MARK: - TextFieldType
     enum TextFieldType {
         case username
         case email
@@ -61,10 +62,10 @@ final class CustomTextField: UITextField {
         
         switch fieldType {
         case .username:
-            // setup key image on left side text field
+            // setup user image on left side text field
             let userView = UIImageView(frame:
                                         CGRect(x: 10, y: 0, width: 24, height: 24))
-            let userImage = UIImage(named: "profile")
+            let userImage = UIImage(named: ImageNames.user.rawValue)
             userView.image = userImage
             let userContainerView = UIView(frame:
                                             CGRect(x: 10, y: 0, width: 24, height: 24))
@@ -85,7 +86,7 @@ final class CustomTextField: UITextField {
             // setup email image on left side text field
             let emailView = UIImageView(frame:
                                             CGRect(x: 10, y: 0, width: 24, height: 24))
-            let emailImage = UIImage(named: "email")
+            let emailImage = UIImage(named: ImageNames.email.rawValue)
             emailView.image = emailImage
             let emailContainerView = UIView(frame:
                                                 CGRect(x: 10, y: 0, width: 24, height: 24))
@@ -108,7 +109,7 @@ final class CustomTextField: UITextField {
             // setup key image on left side text field
             let passView = UIImageView(frame:
                                         CGRect(x: 10, y: 0, width: 24, height: 24))
-            let passImage = UIImage(named: "carbon_password")
+            let passImage = UIImage(named: ImageNames.carbonPassword.rawValue)
             passView.image = passImage
             let passContainerView = UIView(frame:
                                             CGRect(x: 10, y: 0, width: 24, height: 24))

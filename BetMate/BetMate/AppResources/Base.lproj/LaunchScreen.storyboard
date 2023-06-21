@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Exo-SemiBold.ttf">
+            <string>Exo-SemiBold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="football-jersey" translatesAutoresizingMaskIntoConstraints="NO" id="eyQ-VM-5oa">
+                                <rect key="frame" x="71.666666666666686" y="301" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="M1d-wX-CIk"/>
+                                    <constraint firstAttribute="width" constant="250" id="tzD-Mk-ylp"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2H5-AQ-qDa">
+                                <rect key="frame" x="15.999999999999996" y="239.66666666666666" width="61.666666666666657" height="53.333333333333343"/>
+                                <fontDescription key="fontDescription" name="Exo-SemiBold" family="Exo" pointSize="40"/>
+                                <color key="textColor" red="0.11372549019607843" green="0.20784313725490194" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeC-44-cr8">
+                                <rect key="frame" x="284" y="559" width="93" height="53.333333333333371"/>
+                                <fontDescription key="fontDescription" name="Exo-SemiBold" family="Exo" pointSize="40"/>
+                                <color key="textColor" red="0.11372549019607843" green="0.20784313725490194" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.69803923369999998" green="0.85098040100000005" blue="0.85882353779999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="2H5-AQ-qDa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="3TC-XF-GWq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MeC-44-cr8" secondAttribute="trailing" constant="16" id="HYt-Qv-qdt"/>
+                            <constraint firstItem="eyQ-VM-5oa" firstAttribute="top" secondItem="2H5-AQ-qDa" secondAttribute="bottom" constant="8" id="Hrd-Y4-d8d"/>
+                            <constraint firstItem="eyQ-VM-5oa" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="LZq-Pn-MvP"/>
+                            <constraint firstItem="eyQ-VM-5oa" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="b5M-sH-nSM"/>
+                            <constraint firstItem="MeC-44-cr8" firstAttribute="top" secondItem="eyQ-VM-5oa" secondAttribute="bottom" constant="8" id="dE6-4H-Uyz"/>
+                            <constraint firstItem="MeC-44-cr8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" symbolic="YES" id="dIW-6n-1xk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2H5-AQ-qDa" secondAttribute="trailing" symbolic="YES" id="dzQ-7z-y0U"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.671755725190835" y="374.64788732394368"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="football-jersey" width="512" height="512"/>
+    </resources>
+</document>

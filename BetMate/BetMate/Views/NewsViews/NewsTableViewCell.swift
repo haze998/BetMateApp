@@ -20,7 +20,7 @@ class NewsTableViewCell: UITableViewCell {
     }()
     
     private lazy var logoNews: UIImageView = {
-        let image = UIImageView(image: UIImage(named: "sportnews"))
+        let image = UIImageView(image: UIImage(named: ImageNames.sportNews.rawValue))
         return image
     }()
     
@@ -50,7 +50,6 @@ class NewsTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont(name: FontNames.exoSemiBold.rawValue, size: 12)
         label.textColor = UIColor(red: 0.114, green: 0.208, blue: 0.341, alpha: 0.5)
-        label.text = "02/22/2023"
         return label
     }()
     

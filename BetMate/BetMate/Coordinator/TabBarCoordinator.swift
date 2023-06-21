@@ -45,7 +45,7 @@ class TabBarCoordinator: Coordinator {
         // Create the tabbar item for tabbar.
         let newsItem = UITabBarItem()
         newsItem.title = "News"
-        newsItem.image = UIImage.init(named: "flame")
+        newsItem.image = UIImage.init(named: ImageNames.flame.rawValue)
         newsNavigationController.tabBarItem = newsItem
         
         // Setup for profile tab
@@ -55,7 +55,7 @@ class TabBarCoordinator: Coordinator {
         
         let gamesItem = UITabBarItem()
         gamesItem.title = "Games"
-        gamesItem.image = UIImage.init(named: "gamepad")
+        gamesItem.image = UIImage.init(named: ImageNames.gamepad.rawValue)
         gamesNavigationController.tabBarItem = gamesItem
         
         // Setup for history tab
@@ -65,7 +65,7 @@ class TabBarCoordinator: Coordinator {
         
         let profileItem = UITabBarItem()
         profileItem.title = "Profile"
-        profileItem.image = UIImage.init(named: "user")
+        profileItem.image = UIImage.init(named: ImageNames.profile.rawValue)
         profileNavigationController.tabBarItem = profileItem
         
         vc.viewControllers = [newsNavigationController, gamesNavigationController, profileNavigationController]

@@ -79,32 +79,7 @@ class AuthNetworkManager {
         }
     }
     
-    // MARK: - Fetch user info from firebase auth
-//    func fetchUserInfo(completion: @escaping(User?, Error?) -> Void) {
-//
-//        guard let userUID = Auth.auth().currentUser?.uid else { return }
-//
-//        let db = Firestore.firestore()
-//
-//        db.collection("users")
-//            .document(userUID)
-//            .getDocument { snapshot, error in
-//                if let error = error {
-//                    completion(nil, error)
-//                    return
-//                }
-//
-//                if let snapshot = snapshot,
-//                   let snapshotData = snapshot.data(),
-//                   let username = snapshotData["username"] as? String,
-//                   let email = snapshotData["email"] as? String {
-//                    let user = User(userName: username, email: email, userUID: userUID)
-//                    completion(user, nil)
-//                }
-//            }
-//    }
-    
-    // MARK: - Fetch user info from firebase auth
+    // MARK: - Fetch user info from firebase auth (email/password or google auth)
     func fetchUserInfo(completion: @escaping (User?, Error?) -> Void) {
         guard let user = Auth.auth().currentUser else {
             // User is not auntheficated
@@ -113,7 +88,6 @@ class AuthNetworkManager {
         }
         
         let userUID = user.uid
-        let db = Firestore.firestore()
         
         if let providerData = user.providerData.first,
            providerData.providerID == GoogleAuthProviderID {
@@ -142,5 +116,5 @@ class AuthNetworkManager {
                 }
         }
     }
-
+    
 }

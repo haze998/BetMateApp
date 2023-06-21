@@ -30,8 +30,6 @@ class DetailGamesViewModel {
     var volleyballHthArr: [VolleyballHthResponse] = []
     var handballHthArr: [HandballHthResponse] = []
 
-
-    
     // MARK: - init
     init(coordinator: GamesCoordinator? = nil, football: FootballResponse? = nil, baseball: BaseballResponse? = nil, basketball: BasketballResponse? = nil, hockey: HockeyResponse? = nil, volleyball: VolleyballResponse? = nil, handball: HandballResponse? = nil) {
         self.coordinator = coordinator

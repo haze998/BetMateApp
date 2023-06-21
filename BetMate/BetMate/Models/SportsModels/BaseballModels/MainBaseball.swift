@@ -14,3 +14,49 @@ struct MainBaseball: Codable {
     let results: Int?
     let response: [BaseballResponse]?
 }
+
+// MARK: - Parameters
+struct BaseballParameters: Codable {
+    let date: String?
+}
+
+// MARK: - Response
+struct BaseballResponse: Codable {
+    let id: Int?
+    let date: String?
+    let time: String?
+    let timestamp: Int?
+    let league: BaseballLeague?
+    let teams: BasebalTeams?
+    let scores: BaseballScores?
+}
+
+// MARK: - League
+struct BaseballLeague: Codable {
+    let id: Int?
+    let logo: String?
+    let season: Int?
+}
+
+// MARK: - Scores
+struct BaseballScores: Codable {
+    let home, away: BaseballScoresAway?
+}
+
+// MARK: - ScoresAway
+struct BaseballScoresAway: Codable {
+    let hits, errors: Int?
+    let total: Int?
+}
+
+// MARK: - Teams
+struct BasebalTeams: Codable {
+    let home, away: BaseballTeamsAway?
+}
+
+// MARK: - TeamsAway
+struct BaseballTeamsAway: Codable {
+    let id: Int?
+    let name: String?
+    let logo: String?
+}

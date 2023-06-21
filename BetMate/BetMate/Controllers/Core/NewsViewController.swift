@@ -71,9 +71,9 @@ class NewsViewController: UIViewController {
     // MARK: - SetupUI
     private func setupUI() {
         self.view.backgroundColor = .background
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutButtonDidTap))
     }
     
+    // MARK: - Private funcs
     private func fetchedNews() {
         viewModel.fetchedNews {
             self.tableView.reloadData()
@@ -81,24 +81,6 @@ class NewsViewController: UIViewController {
     }
     
     // MARK: - Selectors
-//    @objc
-//    private func logoutButtonDidTap() {
-//        AuthNetworkManager.shared.signOutUser { [weak self] wasLogout, error in
-//            guard let self = self else { return }
-//            if let error = error {
-//                AlertManager.showLogoutErrorAlert(on: self, with: error)
-//                return
-//            }
-//
-//            switch wasLogout {
-//            case true:
-//                print("TAP")
-//            case false:
-//                return
-//            }
-//        }
-//    }
-    
     @objc
     private func scrollUpButtonDidtap() {
         let indexPath = IndexPath(row: 0, section: 0)
@@ -128,7 +110,7 @@ class NewsViewController: UIViewController {
     }
 }
 
-// MARK: - Extensions
+// MARK: - NewsViewController Data Source
 extension NewsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.sportNews.count
@@ -141,6 +123,7 @@ extension NewsViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - NewsViewController Delegate
 extension NewsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.goToDetailNews(news: viewModel.sportNews[indexPath.row])

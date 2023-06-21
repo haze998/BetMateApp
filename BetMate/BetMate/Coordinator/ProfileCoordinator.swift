@@ -46,16 +46,6 @@ class ProfileCoordinator : Coordinator {
             
             // Показать экран авторизации через родительский AppCoordinator
             appCoordinator.showAuth()
-        
-        
-//        let appC = parentCoordinator as? AppCoordinator
-//        let transition = CATransition()
-//        transition.duration = 0.7
-//        transition.type = CATransitionType.fade
-//        navigationController.view.layer.add(transition, forKey: kCATransition)
-//        appC?.showTabBar()
-//        // Remember to clean up
-//        parentCoordinator?.childrenDidFinish(self)
     }
 }
 

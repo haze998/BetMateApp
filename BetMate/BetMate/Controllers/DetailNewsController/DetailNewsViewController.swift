@@ -57,7 +57,7 @@ class DetailNewsViewController: UIViewController {
     
     private lazy var authorImageView: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "sportnews")
+        image.image = UIImage(named: ImageNames.sportNews.rawValue)
         image.layer.cornerRadius = 15
         return image
     }()
@@ -134,7 +134,7 @@ class DetailNewsViewController: UIViewController {
     
     private lazy var backButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "backArrow"), for: .normal)
+        button.setImage(UIImage(named: ImageNames.backArrow.rawValue), for: .normal)
         button.backgroundColor = .background
         button.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
         button.layer.cornerRadius = 15

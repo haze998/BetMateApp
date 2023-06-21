@@ -3,7 +3,6 @@
 //  BetMate
 //
 //  Created by Evgeniy Docenko on 17.06.2023.
-// HeadToHeadBaseball
 
 import Foundation
 

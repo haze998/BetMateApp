@@ -60,17 +60,17 @@ class GamesViewController: UIViewController {
 
     private let sportArr = [
         Sport(sportName: "football",
-              icon: UIImage(named: "football") ?? UIImage()),
+              icon: UIImage(named: ImageNames.football.rawValue) ?? UIImage()),
         Sport(sportName: "baseball",
-              icon: UIImage(named: "baseball") ?? UIImage()),
+              icon: UIImage(named: ImageNames.baseball.rawValue) ?? UIImage()),
         Sport(sportName: "basketball",
-              icon: UIImage(named: "basketball") ?? UIImage()),
+              icon: UIImage(named: ImageNames.basketball.rawValue) ?? UIImage()),
         Sport(sportName: "hockey",
-              icon: UIImage(named: "hockey") ?? UIImage()),
+              icon: UIImage(named: ImageNames.hockey.rawValue) ?? UIImage()),
         Sport(sportName: "volleyball",
-              icon: UIImage(named: "volleyball") ?? UIImage()),
+              icon: UIImage(named: ImageNames.volleyball.rawValue) ?? UIImage()),
         Sport(sportName: "handball",
-              icon: UIImage(named: "handball") ?? UIImage())
+              icon: UIImage(named: ImageNames.handball.rawValue) ?? UIImage())
     ]
         
     // MARK: - Lifecycle
@@ -178,7 +178,7 @@ class GamesViewController: UIViewController {
     }
 }
 
-// MARK: - CollectionView extensions DataSource / Delegate
+// MARK: - CollectionView extensions DataSource
 extension GamesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         sportArr.count
@@ -191,6 +191,7 @@ extension GamesViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: - CollectionView extensions Delegate
 extension GamesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.row {

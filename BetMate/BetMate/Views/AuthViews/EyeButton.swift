@@ -28,7 +28,7 @@ final class EyeButton: UIButton {
     
     // MARK: - Setup eye button
     private func setupEyeButton() {
-        setImage(UIImage(named: "eye_slash"), for: .normal)
+        setImage(UIImage(named: ImageNames.eyeSlash.rawValue), for: .normal)
         isEnabled = false
     }
     

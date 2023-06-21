@@ -60,7 +60,7 @@ class DetailGamesViewController: UIViewController {
     
     private lazy var backButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "backArrow"), for: .normal)
+        button.setImage(UIImage(named: ImageNames.backArrow.rawValue), for: .normal)
         button.backgroundColor = .background
         button.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
         button.layer.cornerRadius = 15
@@ -89,7 +89,6 @@ class DetailGamesViewController: UIViewController {
     private lazy var homeScore: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: FontNames.exoBold.rawValue, size: 30)
-        //        label.text = "186"
         label.textColor = .labelColor
         return label
     }()
@@ -105,7 +104,6 @@ class DetailGamesViewController: UIViewController {
     private lazy var awayScore: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: FontNames.exoBold.rawValue, size: 30)
-        //        label.text = "73"
         label.textColor = .labelColor
         return label
     }()
@@ -114,7 +112,6 @@ class DetailGamesViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont(name: FontNames.exoMedium.rawValue, size: 20)
         label.textColor = .labelColor
-        //        label.text = "Barcelona"
         return label
     }()
     
@@ -122,14 +119,12 @@ class DetailGamesViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont(name: FontNames.exoMedium.rawValue, size: 20)
         label.textColor = .labelColor
-        //        label.text = "Munchester United"
         return label
     }()
     
     private lazy var matchDate: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: FontNames.exoMedium.rawValue, size: 20)
-        //        label.text = "12-10-2023 14:00"
         label.textColor = .labelColor
         return label
     }()
@@ -154,7 +149,6 @@ class DetailGamesViewController: UIViewController {
     private let matchLeague = InfoLabel(labelType: .matchLeague)
     private let matchDateInfo = InfoLabel(labelType: .matchDate)
     private let seasonDate = InfoLabel(labelType: .seasonDate)
-
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -162,7 +156,6 @@ class DetailGamesViewController: UIViewController {
         setupUI()
         fetchedOddsInfo()
         fetchedHthInfo()
-        
     }
     
     override func viewWillLayoutSubviews() {
@@ -277,8 +270,8 @@ class DetailGamesViewController: UIViewController {
                 self.awayOdds.text = self.viewModel.volleyballOddsArr.first?.bookmakers?[0].bets?.first?.values?[1].odd ?? "no odds"
             }
         } else if viewModel.handball != nil {
-                self.homeOdds.text = "no oods"
-                self.awayOdds.text = "no odds"
+            self.homeOdds.text = "no oods"
+            self.awayOdds.text = "no odds"
         }
     }
     
