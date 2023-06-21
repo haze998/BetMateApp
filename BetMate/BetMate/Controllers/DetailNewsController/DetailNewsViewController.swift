@@ -135,9 +135,13 @@ class DetailNewsViewController: UIViewController {
     private lazy var backButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: ImageNames.backArrow.rawValue), for: .normal)
-        button.backgroundColor = .background
         button.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
-        button.layer.cornerRadius = 15
+        button.layer.cornerRadius = 25
+        button.backgroundColor = .loginButtonColor
+        button.layer.shadowColor = UIColor(red: 0.902, green: 0.224, blue: 0.275, alpha: 1).cgColor
+        button.layer.shadowRadius = 20
+        button.layer.shadowOpacity = 1
+        button.layer.shadowOffset = CGSize(width: 0, height: 0)
         return button
     }()
     
@@ -174,7 +178,7 @@ class DetailNewsViewController: UIViewController {
     // MARK: - Selectors
     @objc
     private func backButtonDidTap() {
-        navigationController?.popToRootViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     @objc
@@ -191,7 +195,8 @@ class DetailNewsViewController: UIViewController {
         contentView.addSubviews(view: [newsImageView, newsTitle, authorImageView, auhtorName, postDate, deviderView, textView, backButton, descriptionLabel, linkLabel, linkUrlLabel, sourceLabel, sourceNameLabel])
         
         scrollView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalToSuperview().offset(-40)
+            make.left.right.bottom.equalToSuperview()
         }
         
         contentView.snp.makeConstraints { make in
@@ -255,8 +260,8 @@ class DetailNewsViewController: UIViewController {
         }
         
         backButton.snp.makeConstraints { make in
-            make.height.width.equalTo(30)
-            make.top.equalTo(60)
+            make.height.width.equalTo(50)
+            make.bottom.equalTo(newsImageView.snp_bottomMargin).inset(20)
             make.left.equalTo(16)
         }
         

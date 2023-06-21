@@ -69,8 +69,8 @@ class TabBarCoordinator: Coordinator {
         profileNavigationController.tabBarItem = profileItem
         
         vc.viewControllers = [newsNavigationController, gamesNavigationController, profileNavigationController]
-        navigationController.pushViewController(vc, animated: false)
-        navigationController.setNavigationBarHidden(true, animated: true)
+        navigationController.setViewControllers([vc], animated: false)
+//        navigationController.setNavigationBarHidden(true, animated: true)
         
         // Add the coordinator into parent's child
         parentCoordinator?.childrenCoordinator.append(newsCoordinator)

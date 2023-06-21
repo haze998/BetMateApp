@@ -32,7 +32,7 @@ class AuthCoordinator: Coordinator {
         // Set the ViewModel to ViewController
         onboardVC.viewModel = viewModel
         // Push it.
-        navigationController.pushViewController(onboardVC, animated: true)
+        navigationController.setViewControllers([onboardVC], animated: true)
     }
     
     func goToLoginPage() {

@@ -61,9 +61,13 @@ class DetailGamesViewController: UIViewController {
     private lazy var backButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: ImageNames.backArrow.rawValue), for: .normal)
-        button.backgroundColor = .background
         button.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
         button.layer.cornerRadius = 15
+        button.backgroundColor = .loginButtonColor
+        button.layer.shadowColor = UIColor(red: 0.902, green: 0.224, blue: 0.275, alpha: 1).cgColor
+        button.layer.shadowRadius = 20
+        button.layer.shadowOpacity = 1
+        button.layer.shadowOffset = CGSize(width: 0, height: 0)
         return button
     }()
     
@@ -322,7 +326,7 @@ class DetailGamesViewController: UIViewController {
         }
         
         contentView.snp.makeConstraints { make in
-            make.top.equalTo(scrollView).offset(-60)
+            make.top.equalTo(scrollView).offset(-100)
             make.bottom.equalTo(scrollView)
             make.left.right.equalTo(view)
             make.width.equalTo(scrollView)
@@ -336,8 +340,8 @@ class DetailGamesViewController: UIViewController {
         }
         
         backButton.snp.makeConstraints { make in
+            make.centerY.equalTo(matchDate)
             make.height.width.equalTo(30)
-            make.top.equalTo(60)
             make.left.equalTo(16)
         }
         

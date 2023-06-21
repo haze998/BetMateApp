@@ -46,8 +46,8 @@ enum ImageNames: String {
 
 // MARK: - ApiKeys
 enum ApiKeys: String {
-    case newsApiKey = "YOUR_API_KEY"
-    case sportsApiKey = "YOUR_API__KEY"
+    case newsApiKey = "_"
+    case sportsApiKey = "d9e37ef55094492e1e535efcdf70a952"
 }
 
 // MARK: - CustomDate
