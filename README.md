@@ -34,16 +34,6 @@ User-Friendly Interface: BetMate's intuitive and visually appealing interface en
 - **Firebase Auth**
 - **Snapkit**
 
-## Overview
-The application contains 6 screens:
-| Onboarding | Authentication | Genre |
-|:------:|:--------:|:--------:|
-|![Onboarding](https://media.giphy.com/media/4xmUWdXJcrBUuOXPPn/giphy.gif) |![Authentication](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTcyMDM2MmFjMGFmODM4ZWJiODkxMWJhZWQ3ODVhMmU3YjU2NTFkOSZjdD1n/3XVT8ubrfMqDMy9czx/giphy.gif) |![Genre](https://media.giphy.com/media/p5xKLVAVnxjklubkSf/giphy.gif) |
-
-| Details | Search | Watchlist |
-|:------:|:--------:|:--------:|
-|![Details](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2U5Y2JlOWFkYTMyYTUxYTE4ODgyOTQ3NWE4NWJjMDBjM2JkMWI3MCZjdD1n/4Pwk8df3eyBk96tvUS/giphy.gif) |![Search](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWI5ZGVkNGUzODQxN2JhYmQ0MmNkNDg1ODBlMjNjMjQyZTdlZGRhYSZjdD1n/R7GK86Hx4F2ciBTazl/giphy.gif) |![Watchlist](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzU4N2ZhZDE2Mjk3ZTJiY2ZlNmRlN2IzYWZkZjk2NmJlNTUzN2UwNyZjdD1n/Ikw1E4HBe5aVk335At/giphy.gif) |
-
 ## Features
 - Onboarding Screen
 - Authentication with Firebase or Google Sign In
@@ -58,5 +48,3 @@ The application contains 6 screens:
 - Xcode 14.0+
 
 
-## Resources
-* [The Movie Database API]()
