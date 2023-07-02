@@ -1,4 +1,5 @@
 # BetMate App
+
 <img width="920" alt="image" src="https://github.com/haze998/BetMateApp/assets/102597481/114c1d85-3779-4be1-ba52-da8d0e3767fd">
 
 The ***BetMate App*** is a versatile iOS app designed to enhance your sports viewing experience by providing a comprehensive platform for accessing upcoming match schedules, real-time match results, team odds, and the latest sports news. Whether you're a passionate sports fan, a dedicated punter, or simply seeking to stay informed about the exciting world of sports, BetMate has you covered.
@@ -20,7 +21,6 @@ User-Friendly Interface: BetMate's intuitive and visually appealing interface en
 * [Technologies Used](#technologies-used)
 * [Features](#features)
 * [Requirements](requirements)
-* [Resources](resources)
 
 
 ## Technologies Used
@@ -43,7 +43,5 @@ User-Friendly Interface: BetMate's intuitive and visually appealing interface en
 - Custom Alerts
 
 ## Requirements
-- iOS 15.0+
+- iOS 16.0+
 - Xcode 14.0+
-
-
