@@ -33,6 +33,12 @@ User-Friendly Interface: BetMate's intuitive and visually appealing interface en
 - **Firebase Auth**
 - **Snapkit**
 
+  ## Overview
+| Onboarding & Authentication | News | Games & Profile |
+|:------:|:--------:|:--------:|
+|![Onboarding & Authentication](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeXVpeTluOGk4azBtdHQ3NDMwOXg4YnZkaDc0Z3R0aTY2dTRiam81OSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8VUG5oQP7X4GPB5kqH/giphy.gif) |![News](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnhhem90NzQ0YW84cW42cHBpZ2V4bzNnbzk2Mm9mcnhkYjNyb2VmayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KWBqZ7wS79gVp2IXxs/giphy.gif) |![Games & Profile](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGd6c2p4MnY4MW43czd0bThjOTE2a3FwazM1aGNvZ3ViM2lib25oaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dFK4F1e3r4id10z9A7/giphy.gif) |
+
+
 ## Features
 - Onboarding Screen
 - Authentication with Firebase or Google Sign In
